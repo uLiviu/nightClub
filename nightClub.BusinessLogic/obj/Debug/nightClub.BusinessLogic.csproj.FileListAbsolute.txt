@@ -1,0 +1,11 @@
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\bin\Debug\nightClub.BusinessLogic.dll
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\bin\Debug\nightClub.BusinessLogic.pdb
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\bin\Debug\nightClub.Domain.dll
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\bin\Debug\nightClub.Helpers.dll
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\bin\Debug\nightClub.Domain.pdb
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\bin\Debug\nightClub.Helpers.pdb
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\obj\Debug\nightClub.BusinessLogic.csproj.AssemblyReference.cache
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\obj\Debug\nightClub.BusinessLogic.csproj.CoreCompileInputs.cache
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\obj\Debug\nightClub.BusinessLogic.csproj.CopyComplete
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\obj\Debug\nightClub.BusinessLogic.dll
+E:\Semestru4\Project\nightClub\nightClub.BusinessLogic\obj\Debug\nightClub.BusinessLogic.pdb

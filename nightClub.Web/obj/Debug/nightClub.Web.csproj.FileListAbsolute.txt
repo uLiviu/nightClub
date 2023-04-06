@@ -91,3 +91,11 @@ E:\Semestru4\Project\nightClub\nightClub.Web\bin\System.Memory.xml
 E:\Semestru4\Project\nightClub\nightClub.Web\bin\System.Numerics.Vectors.xml
 E:\Semestru4\Project\nightClub\nightClub.Web\bin\System.Runtime.CompilerServices.Unsafe.xml
 E:\Semestru4\Project\nightClub\nightClub.Web\bin\System.Web.Optimization.xml
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\EntityFramework.dll
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\EntityFramework.SqlServer.dll
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.BusinessLogic.dll
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.Domain.dll
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.BusinessLogic.pdb
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.Domain.pdb
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\EntityFramework.xml
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\EntityFramework.SqlServer.xml
