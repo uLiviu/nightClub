@@ -6,6 +6,10 @@ namespace nightClub.Web.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // Animate.css
+            bundles.Add(new StyleBundle("~/bundles/animate/css").Include(
+                "~/Content/animate.min.css"));
+
             //Vendor CSS Files 
             bundles.Add(new StyleBundle("~/bundles/aos/css").Include(
                 "~/Vendor/aos/aos.css", new CssRewriteUrlTransform()));
@@ -25,6 +29,8 @@ namespace nightClub.Web.App_Start
             //Template Main CSS File 
             bundles.Add(new StyleBundle("~/bundles/main/css").Include(
                 "~/Content/css/style.css", new CssRewriteUrlTransform()));
+            bundles.Add(new StyleBundle("~/bundles/main1/css").Include(
+                "~/Content/css/aditional.css", new CssRewriteUrlTransform()));
 
             //Vendor JS Files
             bundles.Add(new ScriptBundle("~/bundles/purecounter_vanilla/js").Include(

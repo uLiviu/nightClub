@@ -39,6 +39,106 @@ h6 {
 .mainBg {
     background: silver;
 }
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+/*.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.animated {
+    animation: fadeIn 0.5s ease;
+}
+
+.view-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-icon {
+    font-size: 50px;
+    margin-right: 20px;
+    color: #fff;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-filled {
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.panel-body {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.control-label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #fff;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 10px 0;
+    background-color: transparent;
+    color: #fff;
+}
+
+.form-control:focus {
+    border-color: #c2a72d;
+    box-shadow: none;
+}
+
+.help-block {
+    color: #999;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.btn {
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.btn-accent {
+    background-color: #c2a72d;
+    color: #000;
+    border: none;
+}
+
+.btn-accent:hover {
+    background-color: #b3881b;
+}
+
+.btn-default {
+    background-color: #fff;
+    color: #c2a72d;
+    border: 2px solid #c2a72d;
+}
+
+.btn-default:hover {
+    background-color: #c2a72d;
+    color: #000;
+}*/
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -592,7 +692,7 @@ section {
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/
-.clients {
+/*.clients {
   padding-top: 20px;
 }
 
@@ -622,12 +722,12 @@ section {
 
 .clients .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #ffc451;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
-.features {
+/*.features {
   padding-top: 20px;
 }
 
@@ -658,12 +758,12 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 400px;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
-.services .icon-box {
+/*.services .icon-box {
   text-align: center;
   border: 1px solid #ebebeb;
   padding: 80px 20px;
@@ -715,12 +815,12 @@ section {
   border-color: #fff;
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
   transform: translateY(-10px);
-}
+}*/
 
 /*--------------------------------------------------------------
 # Cta
 --------------------------------------------------------------*/
-.cta {
+/*.cta {
   background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("../img/cta-bg.jpg") fixed center center;
   background-size: cover;
   padding: 60px 0;
@@ -754,12 +854,12 @@ section {
   background: #ffc451;
   border-color: #ffc451;
   color: #151515;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
-.portfolio .portfolio-item {
+/*.portfolio .portfolio-item {
   margin-bottom: 30px;
 }
 
@@ -877,12 +977,12 @@ section {
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
   opacity: 1;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
-.portfolio-details {
+/*.portfolio-details {
   padding-top: 40px;
 }
 
@@ -942,12 +1042,12 @@ section {
 
 .portfolio-details .portfolio-description p {
   padding: 0;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
-.counts .content {
+/*.counts .content {
   padding: 30px 0;
 }
 
@@ -1024,12 +1124,12 @@ section {
   .counts .image img {
     max-width: 100%;
   }
-}
+}*/
 
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
-.testimonials {
+/*.testimonials {
   padding: 80px 0;
   background: url("../img/testimonials-bg.jpg") no-repeat;
   background-position: center center;
@@ -1133,12 +1233,12 @@ section {
   .testimonials .testimonial-item p {
     width: 80%;
   }
-}
+}*/
 
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
-.team {
+/*.team {
   background: #fff;
   padding: 60px 0;
 }
@@ -1219,7 +1319,7 @@ section {
 .team .member:hover .social {
   opacity: 1;
   bottom: 15px;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Contact
@@ -1356,10 +1456,10 @@ section {
     transform: rotate(360deg);
   }
 }
-
-/*--------------------------------------------------------------
+/*
+--------------------------------------------------------------
 # Breadcrumbs
---------------------------------------------------------------*/
+--------------------------------------------------------------
 .breadcrumbs {
   padding: 15px 0;
   background: whitesmoke;
@@ -1407,7 +1507,7 @@ section {
   .breadcrumbs ol li {
     display: inline-block;
   }
-}
+}*/
 
 /*--------------------------------------------------------------
 # Footer

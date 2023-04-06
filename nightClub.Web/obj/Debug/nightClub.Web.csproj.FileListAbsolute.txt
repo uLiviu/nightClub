@@ -100,3 +100,5 @@ E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.Domain.pdb
 E:\Semestru4\Project\nightClub\nightClub.Web\bin\EntityFramework.xml
 E:\Semestru4\Project\nightClub\nightClub.Web\bin\EntityFramework.SqlServer.xml
 E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.BusinessLogic.dll.config
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.Helpers.dll
+E:\Semestru4\Project\nightClub\nightClub.Web\bin\nightClub.Helpers.pdb

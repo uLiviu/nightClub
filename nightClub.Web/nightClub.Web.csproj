@@ -153,6 +153,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -169,9 +170,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\aditional.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\pe-icons\helper.css" />
+    <Content Include="Content\pe-icons\pe-icon-7-stroke.css" />
+    <Content Include="Content\pe-icons\Pe-icon-7-stroke.svg" />
+    <Content Include="Content\stroke-icons\stroke.svg" />
+    <Content Include="Content\stroke-icons\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -217,7 +224,6 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="fonts\boxicons.svg" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -226,12 +232,6 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="forms\Readme.txt" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\bootstrap-icons.woff" />
-    <Content Include="fonts\bootstrap-icons.woff2" />
-    <Content Include="fonts\boxicons.eot" />
-    <Content Include="fonts\boxicons.ttf" />
-    <Content Include="fonts\boxicons.woff" />
-    <Content Include="fonts\boxicons.woff2" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -280,9 +280,12 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +308,12 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="forms\contact.php" />
+    <Content Include="Content\pe-icons\Pe-icon-7-stroke.eot" />
+    <Content Include="Content\pe-icons\Pe-icon-7-stroke.ttf" />
+    <Content Include="Content\pe-icons\Pe-icon-7-stroke.woff" />
+    <Content Include="Content\stroke-icons\stroke.eot" />
+    <Content Include="Content\stroke-icons\stroke.ttf" />
+    <Content Include="Content\stroke-icons\stroke.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -336,6 +345,7 @@
     <Content Include="Vendor\swiper\swiper-bundle.min.js.map" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -345,7 +355,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\nightClub.BusinessLogic\nightClub.BusinessLogic.csproj">

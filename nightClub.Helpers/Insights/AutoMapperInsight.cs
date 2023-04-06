@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace nightClub.Helpers.Insights
+﻿namespace nightClub.Helpers.Insights
 {
     public class AutoMapperInsight //Cum se realizeaza maparea intre clase
     {
