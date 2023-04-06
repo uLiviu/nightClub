@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nightClub.Web", "nightClub.Web\nightClub.Web.csproj", "{36CA08AA-8544-4776-9B68-F941EEB94AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nightClub.BusinessLogic", "nightClub.BusinessLogic\nightClub.BusinessLogic.csproj", "{91457CA2-5724-41BF-9F50-879B423FC571}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nightClub.Domain", "nightClub.Domain\nightClub.Domain.csproj", "{68C0FF49-343F-473C-8B2E-92671BD613A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nightClub.Helpers", "nightClub.Helpers\nightClub.Helpers.csproj", "{6AA17C58-4F34-4058-BBC5-8927A1CA826D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36CA08AA-8544-4776-9B68-F941EEB94AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36CA08AA-8544-4776-9B68-F941EEB94AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36CA08AA-8544-4776-9B68-F941EEB94AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36CA08AA-8544-4776-9B68-F941EEB94AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91457CA2-5724-41BF-9F50-879B423FC571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91457CA2-5724-41BF-9F50-879B423FC571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91457CA2-5724-41BF-9F50-879B423FC571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91457CA2-5724-41BF-9F50-879B423FC571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68C0FF49-343F-473C-8B2E-92671BD613A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68C0FF49-343F-473C-8B2E-92671BD613A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68C0FF49-343F-473C-8B2E-92671BD613A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68C0FF49-343F-473C-8B2E-92671BD613A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA17C58-4F34-4058-BBC5-8927A1CA826D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA17C58-4F34-4058-BBC5-8927A1CA826D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA17C58-4F34-4058-BBC5-8927A1CA826D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA17C58-4F34-4058-BBC5-8927A1CA826D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B521723-CEAC-4675-86C5-97063D6B0F15}
+	EndGlobalSection
+EndGlobal
