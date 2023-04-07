@@ -7,19 +7,23 @@ namespace nightClub.BusinessLogic.Implimentations
 {
     public class SessionBL : UserApi, ISession
     {
-        public ULoginResp UserLogin(ULoginData data)
+        public UResponse UserLogin(ULoginData data)
         {
             return UserLoginAction(data);
         }
-
-        public HttpCookie GenCookie(string loginCredential)
+        public UResponse UserRegister(URegisterData data)
         {
-            return Cookie(loginCredential);
+            return UserRegisterAction(data);
         }
 
-        public UserMinimal GetUserByCookie(string apiCookieValue)
-        {
-            return UserCookie(apiCookieValue);
-        }
+        //public HttpCookie GenCookie(string loginCredential)
+        //{
+        //    return Cookie(loginCredential);
+        //}
+
+        //public UserMinimal GetUserByCookie(string apiCookieValue)
+        //{
+        //    return UserCookie(apiCookieValue);
+        //}
     }
 }

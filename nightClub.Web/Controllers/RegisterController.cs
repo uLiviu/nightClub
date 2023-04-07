@@ -5,22 +5,20 @@ using nightClub.Web.Models;
 using System;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
 namespace nightClub.Web.Controllers
 {
-    public class LoginController : Controller
+    public class RegisterController : Controller
     {
         private readonly ISession _sessionBL;
 
-        public LoginController()
+        public RegisterController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _sessionBL = bl.GetSessionBL();
         }
-        
 
-        // GET: Login
+        // GET: Register
         public ActionResult Index()
         {
             return View();
@@ -28,34 +26,40 @@ namespace nightClub.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(UserLogin login)
+        public ActionResult Index(UserRegister register)
         {
             if (ModelState.IsValid)
             {
                 var config = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<UserLogin, ULoginData>(); });
+                    cfg.CreateMap<UserRegister, URegisterData>(); });
                 IMapper mapper = config.CreateMapper();
-                var data = mapper.Map<ULoginData>(login); // Mapam Credential si Password
+                var data = mapper.Map<URegisterData>(register);
 
                 data.LoginIp = Request.UserHostAddress;
                 data.LoginDateTime = DateTime.Now;
 
-                var userLogin = _sessionBL.UserLogin(data);
-                if (userLogin.Status)
+                var userRegister = _sessionBL.UserRegister(data);
+                if (userRegister.Status)
                 {
-                    //HttpCookie cookie = _sessionBL.GenCookie(login.Credential);
+                    ULoginData data0 = new ULoginData
+                    {
+                        Credential = register.Username,
+                        Password = register.Password,
+                        LoginIp = Request.UserHostAddress,
+                        LoginDateTime = DateTime.Now
+                    };
+                    //HttpCookie cookie = _sessionBL.GenCookie(register.Username);
                     //ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    ModelState.AddModelError("", userRegister.StatusMsg);
                     return View();
                 }
             }
             return View();
         }
-
     }
 }
