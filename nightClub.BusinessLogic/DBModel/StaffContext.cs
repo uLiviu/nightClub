@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using nightClub.Domain.Entities.Staff;
 
 namespace nightClub.BusinessLogic.DBModel
 {
@@ -14,6 +15,6 @@ namespace nightClub.BusinessLogic.DBModel
         {
 
         }
-
+        public virtual DbSet<SDbTable> Staff { get; set; }
     }
 }

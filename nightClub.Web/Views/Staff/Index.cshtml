@@ -1,0 +1,50 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Staff";
+}
+
+<section>
+    <div class="container" date-aos="fade-up">
+
+        <div class="row">
+            <div class="table ">
+                <div class="section-title">
+                    <h2>Staff List</h2>
+                </div>
+
+                <p><a href="/Staff/Create">Add New Staff Member</a></p>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Shift</th>
+                        <th>Contact Info</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var staff in Model)
+                    {
+                        <tr>
+                            <td>@staff.FirstName</td>
+                            <td>@staff.LastName</td>
+                            <td>@staff.Role</td>
+                            <td>@staff.PayRate</td>
+                            <td>@staff.ContactInfo</td>
+                            <td>
+                                <a href="/Staff/Edit/#">Edit</a> |
+                                <a href="/Staff/Details/#">Details</a> |
+                                <a href="/Staff/Delete/#">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

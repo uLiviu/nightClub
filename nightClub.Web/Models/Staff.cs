@@ -1,18 +1,15 @@
-﻿using System;
+﻿using nightClub.Domain.Enums;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Enums;
+using System.Web;
 
-namespace nightClub.Domain.Entities.Staff
+namespace nightClub.Web.Models
 {
-    public class SDbTable
+    public class Staff 
     {
-        [Key]
-        [Required]
-        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -25,5 +22,7 @@ namespace nightClub.Domain.Entities.Staff
         public string ContactInfo { get; set; }
         [Required]
         public double PayRate { get; set; }
+
+       
     }
 }
