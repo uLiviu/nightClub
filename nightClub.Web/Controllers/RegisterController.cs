@@ -48,8 +48,7 @@ namespace nightClub.Web.Controllers
                         LoginIp = Request.UserHostAddress,
                         LoginDateTime = DateTime.Now
                     };
-                    //HttpCookie cookie = _sessionBL.GenCookie(register.Username);
-                    //ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                    //Generarea Cookies
 
                     return RedirectToAction("Index", "Home");
                 }

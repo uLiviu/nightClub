@@ -43,8 +43,7 @@ namespace nightClub.Web.Controllers
                 var userLogin = _sessionBL.UserLogin(data);
                 if (userLogin.Status)
                 {
-                    //HttpCookie cookie = _sessionBL.GenCookie(login.Credential);
-                    //ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                    //Generarea Cookies
 
                     return RedirectToAction("Index", "Home");
                 }

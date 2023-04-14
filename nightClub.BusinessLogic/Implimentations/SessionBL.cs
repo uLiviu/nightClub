@@ -16,14 +16,5 @@ namespace nightClub.BusinessLogic.Implimentations
             return UserRegisterAction(data);
         }
 
-        //public HttpCookie GenCookie(string loginCredential)
-        //{
-        //    return Cookie(loginCredential);
-        //}
-
-        //public UserMinimal GetUserByCookie(string apiCookieValue)
-        //{
-        //    return UserCookie(apiCookieValue);
-        //}
     }
 }

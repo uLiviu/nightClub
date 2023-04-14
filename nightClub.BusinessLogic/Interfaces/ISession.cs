@@ -7,7 +7,5 @@ namespace nightClub.BusinessLogic.Interfaces
     {
         UResponse UserLogin(ULoginData data);
         UResponse UserRegister(URegisterData data);
-        //HttpCookie GenCookie(string loginCredential);
-        //UserMinimal GetUserByCookie(string apiCookieValue);
     }
 }
