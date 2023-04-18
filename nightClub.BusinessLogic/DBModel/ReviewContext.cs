@@ -14,6 +14,6 @@ namespace nightClub.BusinessLogic.DBModel
             base("name=nightClub")
         { }
 
-        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<ReviewModel> Reviews { get; set; }
     }
 }

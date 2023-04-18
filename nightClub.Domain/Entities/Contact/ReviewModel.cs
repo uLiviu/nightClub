@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace nightClub.Domain.Entities.Contact
 {
-    public class Review
+    public class ReviewModel
     {
         [Required]
         public string Name { get; set; }

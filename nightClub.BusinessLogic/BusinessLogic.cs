@@ -9,5 +9,10 @@ namespace nightClub.BusinessLogic
         {
             return new SessionBL();
         }
+
+        public IContactService GetContactBL()
+        {
+            return new ContactServiceBL();
+        }
     }
 }

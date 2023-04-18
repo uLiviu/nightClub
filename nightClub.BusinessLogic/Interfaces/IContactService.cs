@@ -9,8 +9,8 @@ namespace nightClub.BusinessLogic.Interfaces
 {
     public interface IContactService
     {
-        void AddReview(Review review);
-        List<Review> GetReviews();
+        void AddReview(ReviewModel review);
+        List<ReviewModel> GetReviews();
     }
 }
     

@@ -11,12 +11,12 @@ namespace nightClub.BusinessLogic.Implimentations
 {
     public class ContactServiceBL: UserApi, IContactService
     {
-        public void AddReview(Review review)
+        public void AddReview(ReviewModel review)
         {
             throw new NotImplementedException();
         }
 
-        public List<Review> GetReviews()
+        public List<ReviewModel> GetReviews()
         {
             throw new NotImplementedException();
         }
