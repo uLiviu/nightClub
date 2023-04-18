@@ -6,7 +6,7 @@ using System.Web;
 
 namespace nightClub.Web.Models
 {
-    public class Contact
+    public class Review
     {
         [Required]
         public string Name { get; set; } //defacto o sa citeasca numele de utilizator.
@@ -18,6 +18,5 @@ namespace nightClub.Web.Models
         [Required]
         [StringLength(300, MinimumLength = 30)]
         public string Message { get; set; }
-        public DateTime Date { get; set; }
     }
 }
