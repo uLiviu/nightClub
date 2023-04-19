@@ -3,9 +3,7 @@ using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.User;
 using nightClub.Web.Models;
 using System;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
 namespace nightClub.Web.Controllers
 {
@@ -18,7 +16,7 @@ namespace nightClub.Web.Controllers
             var bl = new BusinessLogic.BusinessLogic();
             _sessionBL = bl.GetSessionBL();
         }
-        
+
 
         // GET: Login
         public ActionResult Index()
@@ -32,8 +30,10 @@ namespace nightClub.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<UserLogin, ULoginData>(); });
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<UserLogin, ULoginData>();
+                });
                 IMapper mapper = config.CreateMapper();
                 var data = mapper.Map<ULoginData>(login); // Mapam Credential si Password
 

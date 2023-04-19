@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
+using nightClub.Domain.Entities.Contact;
 using nightClub.Domain.Entities.User;
+using nightClub.Domain.Enums;
 using nightClub.Helpers;
-using nightClub.BusinessLogic.DBModel;
-using nightClub.Domain.Entities.User;
-using nightClub.Helpers;
-using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using nightClub.Domain.Enums;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -30,7 +27,7 @@ namespace nightClub.BusinessLogic.Core
 
                 if (result == null)
                 {
-                    return new UResponse { Status = false, StatusMsg ="The Username or Password is Incorrect"};
+                    return new UResponse { Status = false, StatusMsg = "The Username or Password is Incorrect" };
                 }
 
                 using (var todo = new UserContext())
@@ -101,6 +98,117 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
+        internal void AddNewReview(ReviewModel review)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ReviewModel, RDbTable>();
+            });
+            IMapper mapper = config.CreateMapper();
+            var result = mapper.Map<RDbTable>(review);
+
+            using (var db = new ReviewContext())
+            {
+                db.Reviews.Add(result);
+                db.SaveChanges();
+            }
+        }
+        internal List<ReviewModel> GetReviewList()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<RDbTable, ReviewModel>();
+            });
+            IMapper mapper = config.CreateMapper();
+
+            using (var db = new ReviewContext())
+            {
+                var result = db.Reviews.ToList();
+                var reviewData = mapper.Map<List<ReviewModel>>(result);
+                return reviewData;
+            }
+        }
+        //internal HttpCookie Cookie(string loginCredential)
+        //{
+        //    var apiCookie = new HttpCookie("X-KEY")
+        //    {
+        //        Value = CookieGenerator.Create(loginCredential)
+        //    };
+
+        //    using (var db = new SessionContext())
+        //    {
+        //        Session curent;
+        //        var validate = new EmailAddressAttribute();
+        //        if (validate.IsValid(loginCredential))
+        //        {
+        //            curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
+        //        }
+        //        else
+        //        {
+        //            curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
+        //        }
+
+        //        if (curent != null) //Update
+        //        {
+        //            curent.CookieString = apiCookie.Value;
+        //            curent.ExpireTime = DateTime.Now.AddMinutes(60);
+        //            using (var todo = new SessionContext())
+        //            {
+        //                todo.Entry(curent).State = EntityState.Modified;
+        //                todo.SaveChanges();
+        //            }
+        //        }
+        //        else //Insert
+        //        {
+        //            db.Sessions.Add(new Session
+        //            {
+        //                Username = loginCredential,
+        //                CookieString = apiCookie.Value,
+        //                ExpireTime = DateTime.Now.AddMinutes(60)
+        //            });
+        //            db.SaveChanges();
+        //        }
+        //    }
+
+        //    return apiCookie;
+        //}
+
+        //internal UserMinimal UserCookie(string cookie)
+        //{
+        //    Session session;
+        //    UDbTable curentUser;
+
+        //    using (var db = new SessionContext())
+        //    {
+        //        session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+        //    }
+
+        //    if (session == null) return null;
+        //    using (var db = new UserContext())
+        //    {
+        //        var validate = new EmailAddressAttribute();
+        //        if (validate.IsValid(session.Username))
+        //        {
+        //            curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
+        //        }
+        //        else
+        //        {
+        //            curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
+        //        }
+        //    }
+
+        //    if (curentUser == null) return null;
+        //    var configure = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
+        //    IMapper mapper = configure.CreateMapper();
+        //    var userMinimal = mapper.Map<UserMinimal>(curentUser);
+
+        //    return userMinimal;
+        //}
+
     }
+    //internal AddNewReview(ReviewModel review)
+    //{
+
+    //}
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 

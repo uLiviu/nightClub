@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+@using System.Web.Optimization
+@model nightClub.Web.Models.Review
 
 <section id="contact" class="contact " >
     <div class="container" data-aos="fade-up">
@@ -40,30 +42,58 @@
             </div>
 
             <div class="col-lg-8 mt-5 mt-lg-0">
-                <h2 align="center">Leave a FeedBack</h2>
-                <form action="../../forms/contact.php" method="post" role="form" class="php-email-form">
+                <h2 align="center">Leave a Review</h2>
+                @Html.ValidationSummary(false)
+                @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @id = "ReviewForm" }))
+                {
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                            @Html.TextBoxFor(m => m.Name, new
+                            {
+                                placeholder = "Your Name",
+                                title = "Please Enter Your Full Name",
+                                name = "name",
+                                id = "name",
+                                @class = "form-control"
+                            })
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                            @Html.TextBoxFor(m => m.Email, new
+                            {
+                                placeholder = "Your Email",
+                                title = "Please Enter Your Email",
+                                name = "email",
+                                id = "email",
+                                @class = "form-control"
+                            })
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        @Html.TextBoxFor(m => m.Subject, new
+                        {
+                            placeholder = "Subject",
+                            title = "Please Enter the Subject",
+                            name = "subject",
+                            id = "subject",
+                            @class = "form-control"
+                        })
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                        @Html.TextAreaFor(m => m.Message, new
+                        {
+                            placeholder = "Review",
+                            title = "Enter your review there",
+                            name = "message",
+                            id = "message",
+                            rows = "5",
+                            @class = "form-control"
+                        })
+                        <span class="help-block small">Min: 30 / Max:500</span>
                     </div>
-                    <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    <div class="text-center">
+                        <button class="btn get-started-btn">Send Review</button>
                     </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
-
+                }
             </div>
 
         </div>
