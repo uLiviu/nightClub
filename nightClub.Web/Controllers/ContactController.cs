@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using AutoMapper;
+using nightClub.BusinessLogic.Core;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Contact;
 using nightClub.Web.Models;
@@ -10,7 +11,6 @@ namespace nightClub.Web.Controllers
     public class ContactController : Controller
     {
         private readonly IContactService _contactBL;
-
         public ContactController()
         {
             var bl = new BusinessLogic.BusinessLogic();
@@ -36,7 +36,7 @@ namespace nightClub.Web.Controllers
                 var data = mapper.Map<ReviewModel>(review);
 
                 data.Date = DateTime.Now;
-
+                
                 _contactBL.AddReview(data);
                 return RedirectToAction("ThankYou");
             }

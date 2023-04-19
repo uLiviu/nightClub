@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using nightClub.Domain.Entities.Contact;
 using nightClub.Domain.Enums;
 
 namespace nightClub.BusinessLogic.Core
@@ -101,6 +102,21 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
+        internal void AddNewReview(ReviewModel review)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ReviewModel, RDbTable>();
+            });
+            IMapper mapper = config.CreateMapper();
+            var result = mapper.Map<RDbTable>(review);
+
+            using (var db = new ReviewContext())
+            {
+                db.Reviews.Add(result);
+                db.SaveChanges();
+            }
+        }
         //internal HttpCookie Cookie(string loginCredential)
         //{
         //    var apiCookie = new HttpCookie("X-KEY")
@@ -179,5 +195,9 @@ namespace nightClub.BusinessLogic.Core
         //}
 
     }
+    //internal AddNewReview(ReviewModel review)
+    //{
+        
+    //}
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 

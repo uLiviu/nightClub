@@ -18,5 +18,7 @@ namespace nightClub.Web.Models
         [Required]
         [StringLength(300, MinimumLength = 30)]
         public string Message { get; set; }
+
+        public object Rating { get; set; }
     }
 }
