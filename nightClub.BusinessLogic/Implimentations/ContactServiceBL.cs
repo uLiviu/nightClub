@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.BusinessLogic.Core;
+﻿using nightClub.BusinessLogic.Core;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Contact;
+using System.Collections.Generic;
 
 namespace nightClub.BusinessLogic.Implimentations
 {
-    public class ContactServiceBL: UserApi, IContactService
+    public class ContactServiceBL : UserApi, IContactService
     {
         public void AddReview(ReviewModel review)
         {
@@ -20,7 +15,7 @@ namespace nightClub.BusinessLogic.Implimentations
 
         public List<ReviewModel> GetReviews()
         {
-            throw new NotImplementedException();
+            return GetReviewList();
         }
     }
 }

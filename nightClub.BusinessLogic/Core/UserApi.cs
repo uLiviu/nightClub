@@ -1,17 +1,13 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
+using nightClub.Domain.Entities.Contact;
 using nightClub.Domain.Entities.User;
+using nightClub.Domain.Enums;
 using nightClub.Helpers;
-using nightClub.BusinessLogic.DBModel;
-using nightClub.Domain.Entities.User;
-using nightClub.Helpers;
-using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using nightClub.Domain.Entities.Contact;
-using nightClub.Domain.Enums;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -31,7 +27,7 @@ namespace nightClub.BusinessLogic.Core
 
                 if (result == null)
                 {
-                    return new UResponse { Status = false, StatusMsg ="The Username or Password is Incorrect"};
+                    return new UResponse { Status = false, StatusMsg = "The Username or Password is Incorrect" };
                 }
 
                 using (var todo = new UserContext())
@@ -117,6 +113,21 @@ namespace nightClub.BusinessLogic.Core
                 db.SaveChanges();
             }
         }
+        internal List<ReviewModel> GetReviewList()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<RDbTable, ReviewModel>();
+            });
+            IMapper mapper = config.CreateMapper();
+
+            using (var db = new ReviewContext())
+            {
+                var result = db.Reviews.ToList();
+                var reviewData = mapper.Map<List<ReviewModel>>(result);
+                return reviewData;
+            }
+        }
         //internal HttpCookie Cookie(string loginCredential)
         //{
         //    var apiCookie = new HttpCookie("X-KEY")
@@ -197,7 +208,7 @@ namespace nightClub.BusinessLogic.Core
     }
     //internal AddNewReview(ReviewModel review)
     //{
-        
+
     //}
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 

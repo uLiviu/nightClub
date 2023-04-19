@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace nightClub.Web.Models
 {
@@ -16,9 +12,8 @@ namespace nightClub.Web.Models
         [StringLength(30, MinimumLength = 8)]
         public string Subject { get; set; }
         [Required]
-        [StringLength(300, MinimumLength = 30)]
+        [StringLength(500, MinimumLength = 30)]
         public string Message { get; set; }
 
-        public object Rating { get; set; }
     }
 }

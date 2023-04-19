@@ -1,11 +1,10 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-
 @using System.Web.Optimization
 @model nightClub.Web.Models.Review
 
-<section id="contact" class="contact ">
+<section id="contact" class="contact " >
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -43,7 +42,7 @@
             </div>
 
             <div class="col-lg-8 mt-5 mt-lg-0">
-                <h2 align="center">Leave a FeedBack</h2>
+                <h2 align="center">Leave a Review</h2>
                 @Html.ValidationSummary(false)
                 @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @id = "ReviewForm" }))
                 {
@@ -52,7 +51,7 @@
                             @Html.TextBoxFor(m => m.Name, new
                             {
                                 placeholder = "Your Name",
-                                title = "Please Enter Your Name",
+                                title = "Please Enter Your Full Name",
                                 name = "name",
                                 id = "name",
                                 @class = "form-control"
@@ -89,14 +88,8 @@
                             rows = "5",
                             @class = "form-control"
                         })
-                        <span class="help-block small">Min: 30 / Max:300</span>
+                        <span class="help-block small">Min: 30 / Max:500</span>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Rating)
-                        <input id="rating-input" type="number" class="rating" min="1" max="5" step="1" data-size="xs" data-stars="5" data-show-caption="false" data-show-clear="false">
-                        @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
-                    </div>
-
                     <div class="text-center">
                         <button class="btn get-started-btn">Send Review</button>
                     </div>
@@ -107,8 +100,3 @@
 
     </div>
 </section>
-<script>
-    $(function () {
-        $("#rating-input").rating();
-    });
-</script>

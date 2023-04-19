@@ -1,9 +1,5 @@
-﻿using System;
+﻿using nightClub.Domain.Entities.Contact;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.Contact;
 
 namespace nightClub.BusinessLogic.Interfaces
 {
@@ -13,4 +9,3 @@ namespace nightClub.BusinessLogic.Interfaces
         List<ReviewModel> GetReviews();
     }
 }
-    
