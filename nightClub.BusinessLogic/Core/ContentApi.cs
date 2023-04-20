@@ -1,6 +1,7 @@
 ﻿using nightClub.Domain.Entities.Staff;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,28 @@ namespace nightClub.BusinessLogic.Core
             {
                 return null;
             }
+        }
+        internal UResponse Update(int id, StaffModel data)
+        {
+            SDbTable result;
+            using (var db = new StaffContext())
+                result = db.Staff.FirstOrDefault(u => u.Id == id);
+            if (result == null)
+                return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<StaffModel, SDbTable>();
+            });
+            IMapper mapper = config.CreateMapper();
+            result = mapper.Map<SDbTable>(data);
+
+            using (var db = new StaffContext())
+            {
+                db.Staff.AddOrUpdate(result);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
         }
 
     }

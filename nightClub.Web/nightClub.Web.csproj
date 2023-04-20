@@ -356,6 +356,7 @@
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Staff\Details.cshtml" />
     <Content Include="Views\Staff\Empty.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
