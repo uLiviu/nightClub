@@ -8,10 +8,10 @@ namespace nightClub.Domain.Enums
 {
     public enum SRole
     {
-        Dj = 0,
-        Bartender,
+        Manager = 0,
         Waiter,
-        Security,
-        Manager
+        Barman,
+        Dancer,
+        Dj
     }
 }

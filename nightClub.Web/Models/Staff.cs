@@ -10,19 +10,20 @@ namespace nightClub.Web.Models
 {
     public class Staff 
     {
-        [Required]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } //
         [Required]
         public string LastName { get; set; }
         [Required]
-        public SRole Role { get; set; }
+        public string ImageUrl { get; set; } //
         [Required]
-        public string ImageUrl { get; set; }
+        public string Address { get; set; }
         [Required]
-        public string ContactInfo { get; set; }
+        public string PhoneNumb { get; set; }
+        [Required]
+        public SRole Role { get; set; } //
         [Required]
         public double PayRate { get; set; }
 
-       
+
     }
 }
