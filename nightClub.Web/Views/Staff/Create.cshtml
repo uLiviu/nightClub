@@ -6,19 +6,21 @@
     <div class="container d-flex justify-content-center" data-aos="fade-up">
         <div class="col-md-8 mt-5">
             <h2>Add an employee</h2>
-            @Html.ValidationSummary(false)
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @using (Html.BeginForm("Create", "Staff", FormMethod.Post, new { @id = "StaffForm " }))
             {
                 <div class="form-group mt-3">
                     @Html.TextBoxFor(m => m.ImageUrl, new
-               {
-                   placeholder = "Profile Image Url",
-                   title = "Select employee's image",
-                   name = "image",
-                   id = "image",
-                   @class = "form-control"
-               })
+                    {
+                        placeholder = "Profile Image Url",
+                        title = "Select employee's image",
+                        name = "image",
+                        id = "image",
+                        @class = "form-control"
+                    })
+                    @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
                 </div>
+
                 <div class="row mt-3">
                     <div class="col-md-6 form-group">
                         @Html.TextBoxFor(m => m.FirstName, new
@@ -29,6 +31,7 @@
                             id = "name",
                             @class = "form-control"
                         })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
                         @Html.TextBoxFor(m => m.LastName, new
@@ -39,6 +42,7 @@
                             id = "name",
                             @class = "form-control"
                         })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group mt-3">
@@ -50,6 +54,7 @@
                         id = "address",
                         @class = "form-control"
                     })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
                     @Html.TextBoxFor(m => m.PhoneNumb, new
@@ -60,6 +65,7 @@
                         id = "phone",
                         @class = "form-control"
                     })
+                    @Html.ValidationMessageFor(m => m.PhoneNumb, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
                     @Html.TextBoxFor(m => m.Role, new
@@ -70,6 +76,7 @@
                         id = "role",
                         @class = "form-control"
                     })
+                    @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
                     @Html.TextBoxFor(m => m.PayRate, new
@@ -80,6 +87,7 @@
                         id = "salary",
                         @class = "form-control"
                     })
+                    @Html.ValidationMessageFor(m => m.PayRate, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
                     <input type="submit" value="Create" class="btn btn-golden float-end" />

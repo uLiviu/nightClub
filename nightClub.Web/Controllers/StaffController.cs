@@ -51,7 +51,7 @@ namespace nightClub.Web.Controllers
                 var employeeAdded = _staffBL.AddEmployee(data);
                 if (employeeAdded.Status)
                 {
-                    RedirectToAction("Index");
+                    return RedirectToAction("Index");
                 }
                 else
                 {
