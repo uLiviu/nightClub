@@ -10,6 +10,7 @@ namespace nightClub.Web.Models
 {
     public class Staff 
     {
+        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; } //
         [Required]

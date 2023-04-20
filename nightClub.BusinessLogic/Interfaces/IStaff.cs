@@ -12,5 +12,6 @@ namespace nightClub.BusinessLogic.Interfaces
     {
         List<StaffModel> GetStaff();
         UResponse AddEmployee(StaffModel data);
+        StaffModel GetStaffById(int id);
     }
 }

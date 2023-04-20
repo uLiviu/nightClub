@@ -61,5 +61,25 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+
+        // GET: Staff/Details/1
+        public ActionResult Details(int id)
+        {
+            var empDetails = _staffBL.GetStaffById(id);
+            if (empDetails != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, Staff>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Staff>(empDetails);
+                return View(data);
+            }
+
+            return View("Empty");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

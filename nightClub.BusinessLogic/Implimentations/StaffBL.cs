@@ -22,5 +22,11 @@ namespace nightClub.BusinessLogic.Implimentations
             return AddNewEmployee(data);
         }
 
+        public StaffModel GetStaffById(int id)
+        {
+            return GetById(id);
+        }
+
+        
     }
 }

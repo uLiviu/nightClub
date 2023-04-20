@@ -50,5 +50,25 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
+        internal StaffModel GetById(int id)
+        {
+            SDbTable result;
+            using (var db = new StaffContext())
+                result = db.Staff.FirstOrDefault(u => u.Id == id);
+            if (result != null)
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<SDbTable, StaffModel>();
+                });
+                IMapper mapper = config.CreateMapper();
+                return mapper.Map<StaffModel>(result);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

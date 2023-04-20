@@ -10,6 +10,7 @@ namespace nightClub.Domain.Entities.Staff
 {
     public class StaffModel
     {
+        public int Id { get; set; }
         public string FirstName { get; set; } //
         [Required]
         public string LastName { get; set; }
