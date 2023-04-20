@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
+using nightClub.Domain.Entities.Staff;
 using nightClub.Domain.Enums;
 using nightClub.Web.Models;
 
@@ -22,7 +24,14 @@ namespace nightClub.Web.Controllers
         //GET: Staff
         public ActionResult Index()
         {
-            return View();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<StaffModel, Staff>();
+            });
+            IMapper mapper = config.CreateMapper();
+            
+            var staff = mapper.Map<List<Staff>>(_staffBL.GetStaff());
+            return View(staff);
         }
     }
 }
