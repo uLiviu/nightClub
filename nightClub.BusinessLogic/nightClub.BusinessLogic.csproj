@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
-    <Compile Include="Core\StaffApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\StaffContext.cs" />
