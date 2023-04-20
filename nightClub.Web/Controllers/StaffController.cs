@@ -33,8 +33,32 @@ namespace nightClub.Web.Controllers
             var staff = mapper.Map<List<Staff>>(_staffBL.GetStaff());
             return View(staff);
         }
+        // GET: Staff/Create
         public ActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Staff employee)
+        {
+            if (ModelState.IsValid)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Staff, StaffModel>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<StaffModel>(employee);
+
+                var employeeAdded = _staffBL.AddEmployee(data);
+                if (employeeAdded.Status)
+                {
+                    RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", employeeAdded.StatusMsg);
+                    return View();
+                }
+            }
             return View();
         }
     }

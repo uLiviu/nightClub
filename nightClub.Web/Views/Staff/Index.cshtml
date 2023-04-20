@@ -11,13 +11,13 @@
         </div>
         <p><a href=@Url.Action("Create")>Add New Staff Member</a></p>
         <div class="row">
-            @*@foreach (var staff in Model)*@
-            @for (int i = 0; i < 5; i++)
+
+            @foreach (var staff in Model)
             {
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                     <div class="member" data-aos="fade-up" data-aos-delay="100">
                         <div class="member-img">
-                            <img src="~/Content/themes/base/images/team1.jpg" class="img-fluid" alt="">
+                            <img src="@staff.ImageUrl" class="img-fluid" alt="">
                             <div class="social">
                                 <a href=""><i class="bi bi-twitter"></i></a>
                                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -26,10 +26,10 @@
                             </div>
                         </div>
                         <div class="member-info">
-                            <h4>@*@staff.*@FirstName @*@staff.*@LastName</h4>
-                            <span>@*@staff.*@Role</span>
+                            <h4>@staff.FirstName @staff.LastName</h4>
+                            <span>@staff.Role</span>
                         </div>
-                        @if (true)// modificare pentru rol
+                        @if (true) // modificare pentru rol
                         {
 
                             <td class="align-middle">
