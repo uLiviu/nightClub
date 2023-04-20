@@ -33,5 +33,9 @@ namespace nightClub.Web.Controllers
             var staff = mapper.Map<List<Staff>>(_staffBL.GetStaff());
             return View(staff);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

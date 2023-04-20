@@ -25,5 +25,6 @@ namespace nightClub.BusinessLogic.Core
                 return staffData;
             }
         }
+
     }
 }

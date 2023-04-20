@@ -9,7 +9,7 @@
         <div class="section-title">
             <h2>Staff List</h2>
         </div>
-        <p><a href="#">Add New Staff Member</a></p>
+        <p><a href=@Url.Action("Create")>Add New Staff Member</a></p>
         <div class="row">
             @*@foreach (var staff in Model)*@
             @for (int i = 0; i < 5; i++)
@@ -29,45 +29,19 @@
                             <h4>@*@staff.*@FirstName @*@staff.*@LastName</h4>
                             <span>@*@staff.*@Role</span>
                         </div>
+                        @if (true)// modificare pentru rol
+                        {
+
+                            <td class="align-middle">
+                                <a class="btn btn-outline-primary"><i class="bi bi-pencil-square">Edit</i></a>
+                                <a class="btn btn-outline-danger"><i class="bi bi-trash">Delete</i></a>
+                            </td>
+                        }
                     </div>
                 </div>
             }
         </div>
 
-        @*
-                <div class="table ">
-                    <p><a href="#">Add New Staff Member</a></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Picture</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>PayRate</th>
-                            <th>Contact Info</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach (var staff in Model)
-                        {
-                            <tr>
-                                <td><img src=@staff.ImageUrl alt="Profile Image" width="50" height="50"/></td>
-                                <td>@staff.FirstName @staff.LastName</td>
-                                <td>@staff.Role</td>
-                                <td>@staff.PayRate</td>
-                                <td>@staff.ContactInfo</td>
-                                <td>
-                                    <a href="#edit">Edit</a> |
-                                    <a href="#details">Details</a> |
-                                    <a href="#delete">Delete</a>
-                                </td>
-                            </tr>
-                        }
-                        </tbody>
-                    </table>
-                </div>
-            </div>*@
     </div>
 </section>
 

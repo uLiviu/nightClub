@@ -13,7 +13,8 @@ namespace nightClub.BusinessLogic.Implimentations
     {
         public List<StaffModel> GetStaff()
         {
-            throw new NotImplementedException();
+            return GetStaffList();
         }
+
     }
 }

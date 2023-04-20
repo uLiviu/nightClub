@@ -353,6 +353,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Blanck.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

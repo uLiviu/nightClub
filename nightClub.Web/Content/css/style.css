@@ -33,7 +33,10 @@ h5,
 h6 {
   font-family: "Raleway", sans-serif;
 }
-
+main {
+    position: relative;
+    min-height: 100vh;
+}
 /*--------------------------------------------------------------
 # Background
 --------------------------------------------------------------*/
@@ -537,7 +540,7 @@ section {
         margin: 0 0 5px 0;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: #ffde9e;
+        color: #ffbb38;
         font-family: "Poppins", sans-serif;
     }
 
@@ -546,7 +549,7 @@ section {
   width: 120px;
   height: 1px;
   display: inline-block;
-  background: #ffde9e;
+  background: #ffbb38;
   margin: 4px 10px;
 }
 
@@ -1225,6 +1228,23 @@ section {
 .staff .member:hover .social {
   opacity: 1;
   bottom: 15px;
+}
+
+.btn-golden {
+    --bs-btn-color: #ffbb38;
+    --bs-btn-border-color: #ffbb38;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #ffbb38;
+    --bs-btn-hover-border-color: #ffbb38;
+    --bs-btn-focus-shadow-rgb: 255, 222, 158;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ffbb38;
+    --bs-btn-active-border-color: #ffbb38;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #ffbb38;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #ffbb38;
+    --bs-gradient: none;
 }
 
 /*--------------------------------------------------------------
