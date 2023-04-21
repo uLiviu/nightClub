@@ -20,6 +20,7 @@ namespace nightClub.Web.Models
         [Required]
         public string Address { get; set; }
         [Required]
+        [Phone]
         public string PhoneNumb { get; set; }
         [Required]
         public SRole Role { get; set; } //

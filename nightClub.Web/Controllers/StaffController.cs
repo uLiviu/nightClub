@@ -74,7 +74,7 @@ namespace nightClub.Web.Controllers
                 return View(data);
             }
 
-            return View("Empty");
+            return View("NotFound");
         }
         // GET: Staff/Edit/1
         public ActionResult Edit(int id)
@@ -88,7 +88,7 @@ namespace nightClub.Web.Controllers
                 return View(data);
             }
 
-            return View("Empty");
+            return View("NotFound");
         }
         [HttpPost]
         public ActionResult Edit(int id, Staff employee)
@@ -125,14 +125,14 @@ namespace nightClub.Web.Controllers
                 return View(data);
             }
 
-            return View("Empty");
+            return View("NotFound");
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             var empDetails = _staffBL.GetStaffById(id);
-            if (empDetails == null) return View("Empty");
+            if (empDetails == null) return View("NotFound");
             _staffBL.DeleteEmployee(id);
             return RedirectToAction("Index");
         }

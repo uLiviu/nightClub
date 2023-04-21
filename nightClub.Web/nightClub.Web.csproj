@@ -355,7 +355,7 @@
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Staff\Details.cshtml" />
-    <Content Include="Views\Staff\Empty.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Staff\Edit.cshtml" />
     <Content Include="Views\Staff\Delete.cshtml" />
     <None Include="Web.Debug.config">
