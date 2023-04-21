@@ -93,5 +93,19 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
+        internal void Delete(int id)
+        {
+            using (var db = new StaffContext())
+            {
+                var entityToDelete = db.Staff.FirstOrDefault(u => u.Id == id);
+                if (entityToDelete != null)
+                {
+                    db.Staff.Remove(entityToDelete);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+
     }
 }

@@ -76,7 +76,7 @@ namespace nightClub.Web.Controllers
 
             return View("Empty");
         }
-
+        // GET: Staff/Edit/1
         public ActionResult Edit(int id)
         {
             var empDetails = _staffBL.GetStaffById(id);
@@ -111,6 +111,30 @@ namespace nightClub.Web.Controllers
                 }
             }
             return View();
+        }
+
+        // GET: Staff/Delete/1
+        public ActionResult Delete(int id)
+        {
+            var empDetails = _staffBL.GetStaffById(id);
+            if (empDetails != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, Staff>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Staff>(empDetails);
+                return View(data);
+            }
+
+            return View("Empty");
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var empDetails = _staffBL.GetStaffById(id);
+            if (empDetails == null) return View("Empty");
+            _staffBL.DeleteEmployee(id);
+            return RedirectToAction("Index");
         }
     }
 }

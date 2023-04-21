@@ -39,7 +39,9 @@
                                 <a class="btn btn-outline-info" href=@Url.Action("Details", "Staff", new {id = staff.Id})>
                                     <i class="bi bi-eye">Details</i>
                                 </a>
-                                <a class="btn btn-outline-danger float-end"><i class="bi bi-trash">Delete</i></a>
+                                <a class="btn btn-outline-danger float-end" href=@Url.Action("Delete", "Staff", new {id = staff.Id})>
+                                    <i class="bi bi-trash">Delete</i>
+                                </a>
                             </td>
                         }
                     </div>

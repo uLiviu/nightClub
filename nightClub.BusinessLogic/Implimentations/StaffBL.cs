@@ -32,5 +32,10 @@ namespace nightClub.BusinessLogic.Implimentations
             return Update(id, data);
         }
 
+        public void DeleteEmployee(int id)
+        {
+            Delete(id);
+        }
+
     }
 }
