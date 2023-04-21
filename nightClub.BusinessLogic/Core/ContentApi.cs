@@ -13,7 +13,7 @@ namespace nightClub.BusinessLogic.Core
 {
     public class ContentApi
     {
-        internal List<StaffModel> GetStaffList()
+        internal List<StaffModel> GetList()
         {
             var config = new MapperConfiguration(cfg =>
             {
@@ -23,12 +23,12 @@ namespace nightClub.BusinessLogic.Core
             using (var db = new StaffContext())
             {
                 var result = db.Staff.ToList();
-                var staffData = mapper.Map<List<StaffModel>>(result);
-                return staffData;
+                var data = mapper.Map<List<StaffModel>>(result);
+                return data;
             }
         }
 
-        internal UResponse AddNewEmployee(StaffModel data)
+        internal UResponse AddNewEntity(StaffModel data)
         {
             SDbTable result;
             using (var db = new StaffContext())

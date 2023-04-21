@@ -14,12 +14,12 @@ namespace nightClub.BusinessLogic.Implimentations
     {
         public List<StaffModel> GetStaff()
         {
-            return GetStaffList();
+            return GetList();
         }
 
         public UResponse AddEmployee(StaffModel data)
         {
-            return AddNewEmployee(data);
+            return AddNewEntity(data);
         }
 
         public StaffModel GetStaffById(int id)
