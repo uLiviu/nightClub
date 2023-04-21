@@ -14,5 +14,10 @@ namespace nightClub.BusinessLogic
         {
             return new ContactServiceBL();
         }
+
+        public IStaff GetStaffBL()
+        {
+            return new StaffBL();
+        }
     }
 }

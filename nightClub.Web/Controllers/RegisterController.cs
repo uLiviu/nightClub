@@ -40,6 +40,7 @@ namespace nightClub.Web.Controllers
                 data.LoginDateTime = DateTime.Now;
 
                 var userRegister = _sessionBL.UserRegister(data);
+
                 if (userRegister.Status)
                 {
                     ULoginData data0 = new ULoginData
