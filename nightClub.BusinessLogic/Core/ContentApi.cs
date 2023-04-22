@@ -55,9 +55,9 @@ namespace nightClub.BusinessLogic.Core
 
             return context != null ? mapper.Map<StaffModel>(context) : null;
         }
-        internal UResponse Update(int id, StaffModel data)
+        internal UResponse Update(StaffModel data)
         {
-            if (GetById(id) == null)
+            if (GetById(data.Id) == null)
                 return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
 
             IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, SDbTable>()).CreateMapper();

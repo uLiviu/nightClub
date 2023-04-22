@@ -91,7 +91,7 @@ namespace nightClub.Web.Controllers
             return View("NotFound");
         }
         [HttpPost]
-        public ActionResult Edit(int id, Staff employee)
+        public ActionResult Edit(Staff employee)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace nightClub.Web.Controllers
                 IMapper mapper = config.CreateMapper();
                 var data = mapper.Map<StaffModel>(employee);
 
-                var employeeAdded = _staffBL.UpdateEmployee(id, data);
+                var employeeAdded = _staffBL.UpdateEmployee(data);
                 if (employeeAdded.Status)
                 {
                     return RedirectToAction("Index");

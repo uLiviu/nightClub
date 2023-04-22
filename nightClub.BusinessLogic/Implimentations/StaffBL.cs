@@ -27,9 +27,9 @@ namespace nightClub.BusinessLogic.Implimentations
             return GetById(id);
         }
 
-        public UResponse UpdateEmployee(int id, StaffModel data)
+        public UResponse UpdateEmployee(StaffModel data)
         {
-            return Update(id, data);
+            return Update(data);
         }
 
         public void DeleteEmployee(int id)

@@ -13,7 +13,7 @@ namespace nightClub.BusinessLogic.Interfaces
         List<StaffModel> GetStaff();
         UResponse AddEmployee(StaffModel data);
         StaffModel GetStaffById(int id);
-        UResponse UpdateEmployee(int id, StaffModel data);
+        UResponse UpdateEmployee(StaffModel data);
         void DeleteEmployee(int id);
     }
 }
