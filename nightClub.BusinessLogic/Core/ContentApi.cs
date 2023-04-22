@@ -15,75 +15,53 @@ namespace nightClub.BusinessLogic.Core
     {
         internal List<StaffModel> GetList()
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<SDbTable, StaffModel>();
-            });
-            IMapper mapper = config.CreateMapper();
+            List<SDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<SDbTable, StaffModel>()).CreateMapper(); 
             using (var db = new StaffContext())
             {
-                var result = db.Staff.ToList();
-                var data = mapper.Map<List<StaffModel>>(result);
-                return data;
+                context = db.Staff.ToList();
             }
+            return mapper.Map<List<StaffModel>>(context);
         }
 
         internal UResponse AddNewEntity(StaffModel data)
         {
-            SDbTable result;
+            SDbTable context;
+
             using (var db = new StaffContext())
-                result = db.Staff.FirstOrDefault(u => u.PhoneNumb == data.PhoneNumb);
-            if (result != null)
+                context = db.Staff.FirstOrDefault(u => u.PhoneNumb == data.PhoneNumb);
+            if (context != null)
                 return new UResponse { Status = false, StatusMsg = "Employee already added!" };
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<StaffModel, SDbTable>();
-            });
-            IMapper mapper = config.CreateMapper();
-            result = mapper.Map<SDbTable>(data);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, SDbTable>()).CreateMapper();
+            context = mapper.Map<SDbTable>(data);
 
             using (var db = new StaffContext())
             {
-                db.Staff.Add(result);
+                db.Staff.Add(context);
                 db.SaveChanges();
             }
             return new UResponse { Status = true };
         }
 
+            
         internal StaffModel GetById(int id)
         {
-            SDbTable result;
+            SDbTable context;
             using (var db = new StaffContext())
-                result = db.Staff.FirstOrDefault(u => u.Id == id);
-            if (result != null)
-            {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<SDbTable, StaffModel>();
-                });
-                IMapper mapper = config.CreateMapper();
-                return mapper.Map<StaffModel>(result);
-            }
-            else
-            {
-                return null;
-            }
+                context = db.Staff.FirstOrDefault(u => u.Id == id);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<SDbTable, StaffModel>()).CreateMapper();
+
+            return context != null ? mapper.Map<StaffModel>(context) : null;
         }
         internal UResponse Update(int id, StaffModel data)
         {
-            SDbTable result;
-            using (var db = new StaffContext())
-                result = db.Staff.FirstOrDefault(u => u.Id == id);
-            if (result == null)
+            if (GetById(id) == null)
                 return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<StaffModel, SDbTable>();
-            });
-            IMapper mapper = config.CreateMapper();
-            result = mapper.Map<SDbTable>(data);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, SDbTable>()).CreateMapper();
+            SDbTable result = mapper.Map<SDbTable>(data);
 
             using (var db = new StaffContext())
             {
@@ -97,15 +75,13 @@ namespace nightClub.BusinessLogic.Core
         {
             using (var db = new StaffContext())
             {
-                var entityToDelete = db.Staff.FirstOrDefault(u => u.Id == id);
-                if (entityToDelete != null)
+                var staff = db.Staff.FirstOrDefault(u => u.Id == id);
+                if (staff != null)
                 {
-                    db.Staff.Remove(entityToDelete);
+                    db.Staff.Remove(staff);
                     db.SaveChanges();
                 }
             }
         }
-
-
     }
 }
