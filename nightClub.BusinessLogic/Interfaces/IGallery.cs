@@ -14,5 +14,7 @@ namespace nightClub.BusinessLogic.Interfaces
         PhotoModel GetById(int id);
 
         UResponse Add(PhotoModel newPhoto);
+        UResponse Update(PhotoModel data);
+        void Delete(int id);
     }
 }

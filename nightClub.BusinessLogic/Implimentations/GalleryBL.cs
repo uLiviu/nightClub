@@ -27,5 +27,16 @@ namespace nightClub.BusinessLogic.Implimentations
             return AddEntity(photo);
         }
 
+        public UResponse Update(PhotoModel data)
+        {
+            return UpdatePhoto(data);
+        }
+
+        public void Delete(int id)
+        {
+            DeletePhoto(id);
+        }
+
+
     }
 }

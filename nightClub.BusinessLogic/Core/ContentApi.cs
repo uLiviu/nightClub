@@ -14,11 +14,12 @@ namespace nightClub.BusinessLogic.Core
 {
     public class ContentApi
     {
+        //Get List
         internal List<StaffModel> GetList()
         {
             List<SDbTable> context;
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<SDbTable, StaffModel>()).CreateMapper(); 
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<SDbTable, StaffModel>()).CreateMapper();
             using (var db = new StaffContext())
             {
                 context = db.Staff.ToList();
@@ -36,7 +37,7 @@ namespace nightClub.BusinessLogic.Core
             }
             return mapper.Map<List<PhotoModel>>(context);
         }
-
+        //AddNewEntity
         internal UResponse AddNewEntity(StaffModel data)
         {
             SDbTable context;
@@ -71,7 +72,7 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
-
+        //AddById
         internal StaffModel GetById(int id)
         {
             SDbTable context;
@@ -90,13 +91,15 @@ namespace nightClub.BusinessLogic.Core
 
             return context != null ? mapper.Map<PhotoModel>(context) : null;
         }
+
+        //Update
         internal UResponse Update(StaffModel data)
         {
             if (GetById(data.Id) == null)
                 return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
 
             IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, SDbTable>()).CreateMapper();
-            SDbTable result = mapper.Map<SDbTable>(data);
+            var result = mapper.Map<SDbTable>(data);
 
             using (var db = new StaffContext())
             {
@@ -105,7 +108,24 @@ namespace nightClub.BusinessLogic.Core
             }
             return new UResponse { Status = true };
         }
+        internal UResponse UpdatePhoto(PhotoModel data)
+        {
+            if (GetPhotoById(data.Id) == null)
+                return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
 
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, PDbTable>()).CreateMapper();
+            var result = mapper.Map<PDbTable>(data);
+            result.Date = DateTime.Now;
+
+            using (var db = new GalleryContext())
+            {
+                db.Photos.AddOrUpdate(result);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
+
+        //Delete
         internal void Delete(int id)
         {
             using (var db = new StaffContext())
@@ -118,5 +138,18 @@ namespace nightClub.BusinessLogic.Core
                 }
             }
         }
+        internal void DeletePhoto(int id)
+        {
+            using (var db = new GalleryContext())
+            {
+                var photo = db.Photos.FirstOrDefault(p => p.Id == id);
+                if (photo != null)
+                {
+                    db.Photos.Remove(photo);
+                    db.SaveChanges();
+                }
+            }
+        }
+
     }
 }

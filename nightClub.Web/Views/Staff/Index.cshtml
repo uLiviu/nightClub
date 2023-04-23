@@ -17,13 +17,8 @@
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                     <div class="member" data-aos="fade-up" data-aos-delay="100">
                         <div class="member-img">
-                            <img src="@staff.ImageUrl" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href="#twitter"><i class="bi bi-twitter"></i></a>
-                                <a href="#facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="#instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="#likedin"><i class="bi bi-linkedin"></i></a>
-                            </div>
+                            <a href="@Url.Action("EmployeeDetail", "Staff", new {id = staff.Id})" title="More Details"><img src="@staff.ImageUrl" class="img-fluid" alt=""></a>
+
                         </div>
                         <div class="member-info">
                             <h4>@staff.FirstName @staff.LastName</h4>

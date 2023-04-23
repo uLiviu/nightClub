@@ -27,6 +27,6 @@ namespace nightClub.Web.Models
         [Required]
         public double PayRate { get; set; }
 
-
+      //  public string Description { get; set; }
     }
 }

@@ -57,7 +57,8 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
-        // GET: Staff/Details/1
+
+        // GET: Gallery/Details/1
         public ActionResult Details(int id)
         {
             var photo = _galleryBL.GetById(id);
@@ -72,5 +73,63 @@ namespace nightClub.Web.Controllers
             return View("NotFound");
         }
 
+        public ActionResult Edit(int id)
+        {
+            var photo = _galleryBL.GetById(id);
+            if (photo != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, Photo>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Photo>(photo);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+        [HttpPost]
+        public ActionResult Edit(Photo photo)
+        {
+            if (ModelState.IsValid)
+            {
+                IMapper mappeer = new MapperConfiguration(cfg =>
+                    cfg.CreateMap<Photo, PhotoModel>()).CreateMapper();
+                var data = mappeer.Map<PhotoModel>(photo);
+
+                var uPhoto = _galleryBL.Update(data);
+                if (uPhoto.Status)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", uPhoto.StatusMsg);
+                    return View();
+                }
+            }
+            return View();
+        }
+        // GET: Gallery/Delete/1
+        public ActionResult Delete(int id)
+        {
+            var photo = _galleryBL.GetById(id);
+            if (photo != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, Photo>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Photo>(photo);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var empDetails = _galleryBL.GetById(id);
+            if (empDetails == null) return View("NotFound");
+            _galleryBL.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
