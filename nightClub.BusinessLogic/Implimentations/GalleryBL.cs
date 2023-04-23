@@ -19,12 +19,13 @@ namespace nightClub.BusinessLogic.Implimentations
 
         public PhotoModel GetById(int id)
         {
-            throw new NotImplementedException();
+            return GetPhotoById(id);
         }
 
         public UResponse Add(PhotoModel photo)
         {
             return AddEntity(photo);
         }
+
     }
 }

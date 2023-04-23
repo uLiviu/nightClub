@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using nightClub.BusinessLogic.Implimentations;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Gallery;
+using nightClub.Domain.Entities.Staff;
 using nightClub.Web.Models;
 
 namespace nightClub.Web.Controllers
@@ -55,5 +57,20 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+        // GET: Staff/Details/1
+        public ActionResult Details(int id)
+        {
+            var photo = _galleryBL.GetById(id);
+            if (photo != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, Photo>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Photo>(photo);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+
     }
 }

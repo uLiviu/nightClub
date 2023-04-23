@@ -81,6 +81,15 @@ namespace nightClub.BusinessLogic.Core
 
             return context != null ? mapper.Map<StaffModel>(context) : null;
         }
+        internal PhotoModel GetPhotoById(int id)
+        {
+            PDbTable context;
+            using (var db = new GalleryContext())
+                context = db.Photos.FirstOrDefault(u => u.Id == id);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PDbTable, PhotoModel>()).CreateMapper();
+
+            return context != null ? mapper.Map<PhotoModel>(context) : null;
+        }
         internal UResponse Update(StaffModel data)
         {
             if (GetById(data.Id) == null)
