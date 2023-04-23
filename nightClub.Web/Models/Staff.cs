@@ -26,7 +26,7 @@ namespace nightClub.Web.Models
         public SRole Role { get; set; } //
         [Required]
         public double PayRate { get; set; }
-
-      //  public string Description { get; set; }
+        [StringLength(200)]
+        public string Description { get; set; }
     }
 }

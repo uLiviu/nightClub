@@ -27,7 +27,7 @@ namespace nightClub.Domain.Entities.Staff
         public SRole Role { get; set; } //
         [Required]
         public double PayRate { get; set; }
-       // public string Description { get; set; }
+        public string Description { get; set; }
 
 
 
