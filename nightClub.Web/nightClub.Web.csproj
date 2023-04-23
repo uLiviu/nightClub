@@ -278,6 +278,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -360,6 +361,7 @@
     <Content Include="Views\Staff\Delete.cshtml" />
     <Content Include="Views\Contact\ThankYou.cshtml" />
     <Content Include="Views\Contact\Reviews.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
