@@ -362,6 +362,7 @@
     <Content Include="Views\Contact\ThankYou.cshtml" />
     <Content Include="Views\Contact\Reviews.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Gallery\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

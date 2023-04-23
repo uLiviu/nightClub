@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
+using nightClub.Domain.Entities.Gallery;
 using nightClub.Domain.Entities.User;
 
 namespace nightClub.BusinessLogic.Core
@@ -23,6 +24,17 @@ namespace nightClub.BusinessLogic.Core
                 context = db.Staff.ToList();
             }
             return mapper.Map<List<StaffModel>>(context);
+        }
+        internal List<PhotoModel> GetAllPhoto()
+        {
+            List<PDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PDbTable, PhotoModel>()).CreateMapper();
+            using (var db = new GalleryContext())
+            {
+                context = db.Photos.ToList();
+            }
+            return mapper.Map<List<PhotoModel>>(context);
         }
 
         internal UResponse AddNewEntity(StaffModel data)
@@ -45,7 +57,21 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
-            
+        internal UResponse AddEntity(PhotoModel photo)
+        {
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, PDbTable>()).CreateMapper();
+            PDbTable context = mapper.Map<PDbTable>(photo);
+
+            context.Date = DateTime.Now;
+            using (var db = new GalleryContext())
+            {
+                db.Photos.Add(context);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
+
+
         internal StaffModel GetById(int id)
         {
             SDbTable context;

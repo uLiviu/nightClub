@@ -19,5 +19,10 @@ namespace nightClub.BusinessLogic
         {
             return new StaffBL();
         }
+
+        public IGallery GetGalleryBL()
+        {
+            return new GalleryBL();
+        }
     }
 }
