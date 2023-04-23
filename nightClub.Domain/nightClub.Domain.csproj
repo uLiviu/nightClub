@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Gallery\PDbTable.cs" />
+    <Compile Include="Entities\Gallery\PhotoModel.cs" />
     <Compile Include="Entities\Staff\SDbTable.cs" />
     <Compile Include="Entities\Staff\StaffModel.cs" />
     <Compile Include="Entities\Contact\RDbTable.cs" />

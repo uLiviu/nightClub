@@ -58,6 +58,7 @@
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="Core\ContentApi.cs" />
     <Compile Include="Core\UserApi.cs" />
+    <Compile Include="DBModel\GalleryContext.cs" />
     <Compile Include="DBModel\ReviewContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\StaffContext.cs" />
