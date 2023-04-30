@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using nightClub.Domain.Entities.User;
 
 namespace nightClub.Web.Controllers
 {
@@ -21,6 +22,7 @@ namespace nightClub.Web.Controllers
 
         public void SessionStatus()
         {
+            UserMinimal user = new UserMinimal();
             var apiCookie = Request.Cookies["X-KEY"];
             if (apiCookie != null)
             {
@@ -29,6 +31,9 @@ namespace nightClub.Web.Controllers
                 {
                     System.Web.HttpContext.Current.SetMySessionObject(profile);
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
+                    user = System.Web.HttpContext.Current.GetMySessionObject();
+                    ViewBag.Username = user.Username;
+                    ViewBag.Level = user.Level;
                 }
                 else
                 {

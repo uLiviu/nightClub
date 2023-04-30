@@ -10,10 +10,6 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            if (System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-            {
-                return RedirectToAction("Index", "Login");
-            }
             return View();
         }
     }

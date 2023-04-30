@@ -1,15 +1,27 @@
-﻿@model dynamic
+﻿@using nightClub.Domain.Enums
+@using nightClub.Web.Extension
+@model dynamic
 
 @{
     ViewBag.Title = "Staff";
 }
 
+@*@{
+    if (System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
+    {
+        var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+    }
+}*@
 <section id="staff" class="staff">
     <div class="container" date-aos="fade-up">
         <div class="section-title">
             <h2>Staff List</h2>
         </div>
-        <p><a href=@Url.Action("Create")>Add New Staff Member</a></p>
+        @if (ViewBag.Level == URole.Admin)
+        {
+            <a href=@Url.Action("Create")>Add New Staff Member</a>
+        }
         <div class="row">
 
             @foreach (var staff in Model)
@@ -24,7 +36,7 @@
                             <h4>@staff.FirstName @staff.LastName</h4>
                             <span>@staff.Role</span>
                         </div>
-                        @if (true) // modificare pentru rol
+                        @if (ViewBag.Level == URole.Admin) // modificare pentru rol
                         {
 
                             <td class="align-middle">

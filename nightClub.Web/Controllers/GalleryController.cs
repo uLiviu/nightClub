@@ -12,7 +12,7 @@ using nightClub.Web.Models;
 
 namespace nightClub.Web.Controllers
 {
-    public class GalleryController : Controller
+    public class GalleryController : BaseController
     {
         public readonly IGallery _galleryBL;
 
@@ -25,6 +25,7 @@ namespace nightClub.Web.Controllers
         // GET: Gallery
         public ActionResult Index()
         {
+            SessionStatus();
             IMapper mappeer = new MapperConfiguration(cfg =>
                 cfg.CreateMap<PhotoModel, Photo>()).CreateMapper();
             var photo = mappeer.Map<List<Photo>>(_galleryBL.GetAll());

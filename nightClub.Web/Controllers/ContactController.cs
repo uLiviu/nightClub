@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseController
     {
         private readonly IContactService _contactBL;
         public ContactController()
@@ -19,6 +19,7 @@ namespace nightClub.Web.Controllers
         // GET: Contact
         public ActionResult Index()
         {
+            SessionStatus();
             return View();
         }
 
@@ -49,6 +50,7 @@ namespace nightClub.Web.Controllers
 
         public ActionResult Reviews()
         {
+            SessionStatus();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<ReviewModel, Review>();

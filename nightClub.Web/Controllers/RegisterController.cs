@@ -50,7 +50,6 @@ namespace nightClub.Web.Controllers
                         LoginIp = Request.UserHostAddress,
                         LoginDateTime = DateTime.Now
                     };
-                    //Generarea Cookies
 
                     return RedirectToAction("Index", "Home");
                 }

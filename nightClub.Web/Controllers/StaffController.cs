@@ -11,7 +11,7 @@ using nightClub.Web.Models;
 
 namespace nightClub.Web.Controllers
 {
-    public class StaffController : Controller
+    public class StaffController : BaseController
     {
         private readonly IStaff _staffBL;
 
@@ -24,6 +24,7 @@ namespace nightClub.Web.Controllers
         //GET: Staff
         public ActionResult Index()
         {
+            SessionStatus();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<StaffModel, Staff>();
@@ -79,6 +80,7 @@ namespace nightClub.Web.Controllers
         // GET: Staff/EmployeeDetail/1
         public ActionResult EmployeeDetail(int id)
         {
+            SessionStatus();
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
