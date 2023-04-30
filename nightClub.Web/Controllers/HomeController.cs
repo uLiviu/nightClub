@@ -14,13 +14,7 @@ namespace nightClub.Web.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
-            var user = System.Web.HttpContext.Current.GetMySessionObject();
-            UserData u = new UserData
-            {
-                Username = user.Username
-            };
-            return View(u);
+            return View();
         }
     }
 }

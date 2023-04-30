@@ -44,7 +44,7 @@
     </nav><!-- .navbar -->
     @if (System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
     {
-        <a href="@Url.Action("Index", "Login")">
+        <a href="@Url.Action("Index", "User")">
             <span class="profile-address">Account</span>
         </a>
     }

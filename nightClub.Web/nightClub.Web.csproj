@@ -296,6 +296,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -381,6 +382,7 @@
     <Content Include="Views\Gallery\Edit.cshtml" />
     <Content Include="Views\Gallery\Delete.cshtml" />
     <Content Include="Views\Staff\EmployeeDetail.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
