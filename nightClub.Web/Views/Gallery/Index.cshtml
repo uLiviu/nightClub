@@ -9,7 +9,7 @@
         <div class="section-title">
             <h2>Gallery</h2>
         </div>
-        @if (ViewBag.Level != URole.Visitor)
+        @if (ViewBag.CurrentUser.Level != URole.Visitor)
         {
             <a href=@Url.Action("Create")>Add a new Photo</a>
         }
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (ViewBag.Level == URole.Admin) // modificare pentru rol
+                    @if (ViewBag.CurrentUser.Level == URole.Admin) // modificare pentru rol
                     {
 
                         <td class="align-middle">
@@ -45,7 +45,6 @@
                     }
                 </div>
             }
-
         </div>
 
     </div>

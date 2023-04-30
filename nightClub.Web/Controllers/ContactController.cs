@@ -4,6 +4,7 @@ using nightClub.Domain.Entities.Contact;
 using nightClub.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
@@ -20,12 +21,25 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            return View();
+            Review model = new Review();
+            if (System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
+            {
+                model.Name = ViewBag.CurrentUser.Username;
+                model.Email = ViewBag.CurrentUser.Email;
+            }
+            else
+            {
+                model.Name = null;
+                model.Email = null;
+            }
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Index(Review review)
         {
+            SessionStatus();
+
             if (ModelState.IsValid)
             {
                 var config = new MapperConfiguration(cfg =>

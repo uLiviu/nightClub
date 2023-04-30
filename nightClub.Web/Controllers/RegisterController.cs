@@ -51,7 +51,7 @@ namespace nightClub.Web.Controllers
                         LoginDateTime = DateTime.Now
                     };
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Login");
                 }
                 else
                 {

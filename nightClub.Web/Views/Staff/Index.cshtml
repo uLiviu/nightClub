@@ -18,7 +18,7 @@
         <div class="section-title">
             <h2>Staff List</h2>
         </div>
-        @if (ViewBag.Level == URole.Admin)
+        @if (ViewBag.CurrentUser.Level == URole.Admin)
         {
             <a href=@Url.Action("Create")>Add New Staff Member</a>
         }
@@ -36,7 +36,7 @@
                             <h4>@staff.FirstName @staff.LastName</h4>
                             <span>@staff.Role</span>
                         </div>
-                        @if (ViewBag.Level == URole.Admin) // modificare pentru rol
+                        @if (ViewBag.CurrentUser.Level == URole.Admin) // modificare pentru rol
                         {
 
                             <td class="align-middle">

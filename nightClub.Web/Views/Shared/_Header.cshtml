@@ -45,7 +45,7 @@
     @if (System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
     {
         <a href="@Url.Action("Index", "User")">
-            <span class="profile-address">@ViewBag.Username</span>
+            <span class="profile-address">@ViewBag.CurrentUser.Username</span>
         </a>
     }
     else

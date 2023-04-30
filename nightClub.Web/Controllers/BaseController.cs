@@ -32,8 +32,7 @@ namespace nightClub.Web.Controllers
                     System.Web.HttpContext.Current.SetMySessionObject(profile);
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
                     user = System.Web.HttpContext.Current.GetMySessionObject();
-                    ViewBag.Username = user.Username;
-                    ViewBag.Level = user.Level;
+                    ViewBag.CurrentUser = user;
                 }
                 else
                 {

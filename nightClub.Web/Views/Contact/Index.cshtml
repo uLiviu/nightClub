@@ -49,13 +49,13 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             @Html.TextBoxFor(m => m.Name, new
-                            {
-                                placeholder = "Your Name",
-                                title = "Please Enter Your Full Name",
-                                name = "name",
-                                id = "name",
-                                @class = "form-control"
-                            })
+                       {
+                           placeholder ="Enter Your Name",
+                           title = "Please Enter Your Full Name",
+                           name = "name",
+                           id = "name",
+                           @class = "form-control",
+                       })
                             @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
@@ -65,7 +65,7 @@
                                 title = "Please Enter Your Email",
                                 name = "email",
                                 id = "email",
-                                @class = "form-control"
+                                @class = "form-control",
                             })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
