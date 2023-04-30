@@ -34,11 +34,13 @@ namespace nightClub.Web.Controllers
 
         public ActionResult Create()
         {
+            SessionStatus();
             return View();
         }
         [HttpPost]
         public ActionResult Create(Photo photo)
         {
+            SessionStatus();
             if (ModelState.IsValid)
             {
                 IMapper mappeer = new MapperConfiguration(cfg =>
@@ -62,6 +64,7 @@ namespace nightClub.Web.Controllers
         // GET: Gallery/Details/1
         public ActionResult Details(int id)
         {
+            SessionStatus();
             var photo = _galleryBL.GetById(id);
             if (photo != null)
             {
@@ -76,6 +79,7 @@ namespace nightClub.Web.Controllers
 
         public ActionResult Edit(int id)
         {
+            SessionStatus();
             var photo = _galleryBL.GetById(id);
             if (photo != null)
             {
@@ -90,6 +94,7 @@ namespace nightClub.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Photo photo)
         {
+            SessionStatus();
             if (ModelState.IsValid)
             {
                 IMapper mappeer = new MapperConfiguration(cfg =>
@@ -112,6 +117,7 @@ namespace nightClub.Web.Controllers
         // GET: Gallery/Delete/1
         public ActionResult Delete(int id)
         {
+            SessionStatus();
             var photo = _galleryBL.GetById(id);
             if (photo != null)
             {

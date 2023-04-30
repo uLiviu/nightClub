@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using nightClub.Domain.Entities.User;
+using nightClub.Domain.Enums;
 
 namespace nightClub.Web.Controllers
 {
@@ -22,7 +23,12 @@ namespace nightClub.Web.Controllers
 
         public void SessionStatus()
         {
-            UserMinimal user = new UserMinimal();
+            UserMinimal user = new UserMinimal
+            {
+                Username = "Guest",
+                Email = "",
+                Level = 0
+            };
             var apiCookie = Request.Cookies["X-KEY"];
             if (apiCookie != null)
             {
@@ -48,11 +54,13 @@ namespace nightClub.Web.Controllers
                     }
 
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
+                    ViewBag.CurrentUser = user;
                 }
             }
             else
             {
                 System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
+                ViewBag.CurrentUser = user;
             }
         }
     }

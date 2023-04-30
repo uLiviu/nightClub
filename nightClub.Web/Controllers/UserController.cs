@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using AutoMapper;
 using nightClub.Domain.Entities.User;
 using System.Web.UI.WebControls;
+using System.Web.Security;
+using nightClub.Domain.Enums;
 
 namespace nightClub.Web.Controllers
 {
@@ -32,6 +34,22 @@ namespace nightClub.Web.Controllers
             var data = mapper.Map<UserData>(user);
 
             return View(data);
+        }
+
+        public ActionResult Logout()
+        {
+            System.Web.HttpContext.Current.Session.Clear();
+            if (ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("X-KEY"))
+            {
+                var cookie = ControllerContext.HttpContext.Request.Cookies["X-KEY"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-1);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                }
+            }
+            System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
+            return RedirectToAction("Index", "Home");
         }
     }
 }

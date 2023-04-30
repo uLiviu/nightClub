@@ -37,12 +37,14 @@ namespace nightClub.Web.Controllers
         // GET: Staff/Create
         public ActionResult Create()
         {
+            SessionStatus();
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(Staff employee)
         {
+            SessionStatus();
             if (ModelState.IsValid)
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Staff, StaffModel>());
@@ -66,6 +68,7 @@ namespace nightClub.Web.Controllers
         // GET: Staff/Details/1
         public ActionResult Details(int id)
         {
+            SessionStatus();
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
@@ -96,6 +99,7 @@ namespace nightClub.Web.Controllers
         // GET: Staff/Edit/1
         public ActionResult Edit(int id)
         {
+            SessionStatus();
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
@@ -110,6 +114,7 @@ namespace nightClub.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Staff employee)
         {
+            SessionStatus();
             if (ModelState.IsValid)
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Staff, StaffModel>());
@@ -133,6 +138,7 @@ namespace nightClub.Web.Controllers
         // GET: Staff/Delete/1
         public ActionResult Delete(int id)
         {
+            SessionStatus();
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
