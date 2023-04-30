@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.Contact;
 using nightClub.Domain.Entities.User;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -128,87 +130,83 @@ namespace nightClub.BusinessLogic.Core
                 return reviewData;
             }
         }
-        //internal HttpCookie Cookie(string loginCredential)
-        //{
-        //    var apiCookie = new HttpCookie("X-KEY")
-        //    {
-        //        Value = CookieGenerator.Create(loginCredential)
-        //    };
+        internal HttpCookie Cookie(string loginCredential)
+        {
+            var apiCookie = new HttpCookie("X-KEY")
+            {
+                Value = CookieGenerator.Create(loginCredential)
+            };
 
-        //    using (var db = new SessionContext())
-        //    {
-        //        Session curent;
-        //        var validate = new EmailAddressAttribute();
-        //        if (validate.IsValid(loginCredential))
-        //        {
-        //            curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
-        //        }
-        //        else
-        //        {
-        //            curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
-        //        }
+            using (var db = new SessionContext())
+            {
+                Session curent;
+                var validate = new EmailAddressAttribute();
+                if (validate.IsValid(loginCredential))
+                {
+                    curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
+                }
+                else
+                {
+                    curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
+                }
 
-        //        if (curent != null) //Update
-        //        {
-        //            curent.CookieString = apiCookie.Value;
-        //            curent.ExpireTime = DateTime.Now.AddMinutes(60);
-        //            using (var todo = new SessionContext())
-        //            {
-        //                todo.Entry(curent).State = EntityState.Modified;
-        //                todo.SaveChanges();
-        //            }
-        //        }
-        //        else //Insert
-        //        {
-        //            db.Sessions.Add(new Session
-        //            {
-        //                Username = loginCredential,
-        //                CookieString = apiCookie.Value,
-        //                ExpireTime = DateTime.Now.AddMinutes(60)
-        //            });
-        //            db.SaveChanges();
-        //        }
-        //    }
+                if (curent != null) //Update
+                {
+                    curent.CookieString = apiCookie.Value;
+                    curent.ExpireTime = DateTime.Now.AddMinutes(60);
+                    using (var todo = new SessionContext())
+                    {
+                        todo.Entry(curent).State = EntityState.Modified;
+                        todo.SaveChanges();
+                    }
+                }
+                else //Insert
+                {
+                    db.Sessions.Add(new Session
+                    {
+                        Username = loginCredential,
+                        CookieString = apiCookie.Value,
+                        ExpireTime = DateTime.Now.AddMinutes(60)
+                    });
+                    db.SaveChanges();
+                }
+            }
 
-        //    return apiCookie;
-        //}
+            return apiCookie;
+        }
 
-        //internal UserMinimal UserCookie(string cookie)
-        //{
-        //    Session session;
-        //    UDbTable curentUser;
+        internal UserMinimal UserCookie(string cookie)
+        {
+            Session session;
+            UDbTable curentUser;
 
-        //    using (var db = new SessionContext())
-        //    {
-        //        session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
-        //    }
+            using (var db = new SessionContext())
+            {
+                session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+            }
 
-        //    if (session == null) return null;
-        //    using (var db = new UserContext())
-        //    {
-        //        var validate = new EmailAddressAttribute();
-        //        if (validate.IsValid(session.Username))
-        //        {
-        //            curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
-        //        }
-        //        else
-        //        {
-        //            curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
-        //        }
-        //    }
+            if (session == null) return null;
+            using (var db = new UserContext())
+            {
+                var validate = new EmailAddressAttribute();
+                if (validate.IsValid(session.Username))
+                {
+                    curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
+                }
+                else
+                {
+                    curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
+                }
+            }
 
-        //    if (curentUser == null) return null;
-        //    var configure = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
-        //    IMapper mapper = configure.CreateMapper();
-        //    var userMinimal = mapper.Map<UserMinimal>(curentUser);
+            if (curentUser == null) return null;
+            var configure = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
+            IMapper mapper = configure.CreateMapper();
+            var userMinimal = mapper.Map<UserMinimal>(curentUser);
 
-        //    return userMinimal;
-        //}
+            return userMinimal;
+        }
 
     }
-    //internal AddNewReview(ReviewModel review)
-    //{
-
-    //}
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 

@@ -1,4 +1,5 @@
-﻿using nightClub.BusinessLogic.Core;
+﻿using System.Web;
+using nightClub.BusinessLogic.Core;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.User;
 
@@ -15,5 +16,14 @@ namespace nightClub.BusinessLogic.Implimentations
             return UserRegisterAction(data);
         }
 
+        public HttpCookie GenCookie(string loginCredential)
+        {
+            return Cookie(loginCredential);
+        }
+
+        public UserMinimal GetUserByCookie(string apiCookieValue)
+        {
+            return UserCookie(apiCookieValue);
+        }
     }
 }
