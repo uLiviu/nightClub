@@ -73,7 +73,7 @@ namespace nightClub.BusinessLogic.Core
         }
 
         //AddById
-        internal StaffModel GetById(int id)
+        internal StaffModel GetEmployee(int id)
         {
             SDbTable context;
             using (var db = new StaffContext())
@@ -95,7 +95,7 @@ namespace nightClub.BusinessLogic.Core
         //Update
         internal UResponse Update(StaffModel data)
         {
-            if (GetById(data.Id) == null)
+            if (GetEmployee(data.Id) == null)
                 return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
 
             IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, SDbTable>()).CreateMapper();
@@ -126,7 +126,7 @@ namespace nightClub.BusinessLogic.Core
         }
 
         //Delete
-        internal void Delete(int id)
+        internal void DeleteStaff(int id)
         {
             using (var db = new StaffContext())
             {

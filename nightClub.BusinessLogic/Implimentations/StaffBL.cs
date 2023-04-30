@@ -24,7 +24,7 @@ namespace nightClub.BusinessLogic.Implimentations
 
         public StaffModel GetStaffById(int id)
         {
-            return GetById(id);
+            return GetEmployee(id);
         }
 
         public UResponse UpdateEmployee(StaffModel data)
@@ -34,7 +34,7 @@ namespace nightClub.BusinessLogic.Implimentations
 
         public void DeleteEmployee(int id)
         {
-            Delete(id);
+            DeleteStaff(id);
         }
 
     }
