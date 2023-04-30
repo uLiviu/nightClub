@@ -3,7 +3,9 @@ using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.User;
 using nightClub.Web.Models;
 using System;
+using System.Web;
 using System.Web.Mvc;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace nightClub.Web.Controllers
 {
@@ -43,7 +45,8 @@ namespace nightClub.Web.Controllers
                 var userLogin = _sessionBL.UserLogin(data);
                 if (userLogin.Status)
                 {
-                    //Generarea Cookies
+                    HttpCookie cookie = _sessionBL.GenCookie(login.Credential);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                     return RedirectToAction("Index", "Home");
                 }

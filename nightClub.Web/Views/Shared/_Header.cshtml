@@ -1,4 +1,6 @@
-﻿<div class="container d-flex align-items-center justify-content-lg-between">
+﻿@model dynamic
+
+<div class="container d-flex align-items-center justify-content-lg-between">
 
     <h1 class="logo me-auto me-lg-0"><a href="@Url.Action("Index", "Home")">nightClub<span>.</span></a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
@@ -40,7 +42,15 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
-
-    <a href="@Url.Action("Index", "Login")" class="get-started-btn ">Get Started</a>
+    @if (System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
+    {
+        <a href="@Url.Action("Index", "Login")">
+            <span class="profile-address">Account</span>
+        </a>
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "Login")" class="get-started-btn ">Get Started</a>
+    }
 
 </div>

@@ -303,6 +303,7 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
