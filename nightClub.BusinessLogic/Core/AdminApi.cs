@@ -3,6 +3,7 @@ using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.User;
 using System.Collections.Generic;
 using System.Linq;
+using nightClub.Domain.Enums;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -32,15 +33,33 @@ namespace nightClub.BusinessLogic.Core
         }
         internal void DeleteUser(int id)
         {
+            UDbTable user;
+            bool confDel = false;
             using (var db = new UserContext())
             {
-                var photo = db.Users.FirstOrDefault(p => p.Id == id);
-                if (photo != null)
+                user = db.Users.FirstOrDefault(p => p.Id == id);
+                if (user != null && user.Level != URole.Admin)
                 {
-                    db.Users.Remove(photo);
+                    db.Users.Remove(user);
                     db.SaveChanges();
+                    confDel = true;
                 }
             }
+
+            if (confDel)
+            {
+                using (var db = new SessionContext())
+                {
+                    var session =
+                        db.Sessions.FirstOrDefault(s => s.Username == user.Username || s.Username == user.Email);
+                    if (session != null)
+                    {
+                        db.Sessions.Remove(session);
+                        db.SaveChanges();
+                    }
+                }
+            }
+
         }
     }
 }
