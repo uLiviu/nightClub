@@ -1,14 +1,9 @@
 ﻿using nightClub.Domain.Enums;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace nightClub.Web.Models
 {
-    public class Staff 
+    public class Staff
     {
         public int Id { get; set; }
         [Required]

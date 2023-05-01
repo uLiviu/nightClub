@@ -1,14 +1,12 @@
-﻿using nightClub.Domain.Entities.Staff;
+﻿using AutoMapper;
+using nightClub.BusinessLogic.DBModel;
+using nightClub.Domain.Entities.Gallery;
+using nightClub.Domain.Entities.Staff;
+using nightClub.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using nightClub.BusinessLogic.DBModel;
-using nightClub.Domain.Entities.Gallery;
-using nightClub.Domain.Entities.User;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -72,7 +70,7 @@ namespace nightClub.BusinessLogic.Core
             return new UResponse { Status = true };
         }
 
-        //AddById
+        //GetById
         internal StaffModel GetEmployee(int id)
         {
             SDbTable context;

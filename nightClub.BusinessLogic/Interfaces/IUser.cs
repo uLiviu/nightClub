@@ -1,14 +1,12 @@
-﻿using System;
+﻿using nightClub.Domain.Entities.User;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.User;
 
 namespace nightClub.BusinessLogic.Interfaces
 {
     public interface IUser
     {
         List<UserMinimal> GetList();
+        UserMinimal GetById(int id);
+        void Delete(int id);
     }
 }

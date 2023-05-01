@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using nightClub.Domain.Entities.Staff;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.Staff;
 
 namespace nightClub.BusinessLogic.DBModel
 {

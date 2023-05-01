@@ -4,7 +4,6 @@ using nightClub.Domain.Entities.Contact;
 using nightClub.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers

@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.User;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -24,6 +21,26 @@ namespace nightClub.BusinessLogic.Core
             return mapper.Map<List<UserMinimal>>(users);
         }
 
+        internal UserMinimal GetUserById(int id)
+        {
+            UDbTable user;
+            using (var db = new UserContext())
+                user = db.Users.FirstOrDefault(u => u.Id == id);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>()).CreateMapper();
 
+            return user != null ? mapper.Map<UserMinimal>(user) : null;
+        }
+        internal void DeleteUser(int id)
+        {
+            using (var db = new UserContext())
+            {
+                var photo = db.Users.FirstOrDefault(p => p.Id == id);
+                if (photo != null)
+                {
+                    db.Users.Remove(photo);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

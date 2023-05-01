@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using nightClub.BusinessLogic.Interfaces;
+using nightClub.Domain.Enums;
+using nightClub.Web.Extension;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using nightClub.BusinessLogic.Interfaces;
-using nightClub.Domain.Entities.User;
-using nightClub.Domain.Enums;
-using nightClub.Web.Extension;
 
 namespace nightClub.Web.Filters
 {

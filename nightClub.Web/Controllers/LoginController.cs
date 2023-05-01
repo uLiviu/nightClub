@@ -5,7 +5,6 @@ using nightClub.Web.Models;
 using System;
 using System.Web;
 using System.Web.Mvc;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace nightClub.Web.Controllers
 {

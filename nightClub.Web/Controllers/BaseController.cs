@@ -1,13 +1,9 @@
 ﻿using nightClub.BusinessLogic.Interfaces;
-using nightClub.BusinessLogic;
+using nightClub.Domain.Entities.User;
 using nightClub.Web.Extension;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using nightClub.Domain.Entities.User;
-using nightClub.Domain.Enums;
 
 namespace nightClub.Web.Controllers
 {

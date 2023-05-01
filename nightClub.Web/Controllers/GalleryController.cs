@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper;
-using nightClub.BusinessLogic.Implimentations;
+﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Gallery;
-using nightClub.Domain.Entities.Staff;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {
@@ -49,7 +44,7 @@ namespace nightClub.Web.Controllers
                 IMapper mappeer = new MapperConfiguration(cfg =>
                     cfg.CreateMap<Photo, PhotoModel>()).CreateMapper();
                 var data = mappeer.Map<PhotoModel>(photo);
-                
+
                 var newPhoto = _galleryBL.Add(data);
                 if (newPhoto.Status)
                 {

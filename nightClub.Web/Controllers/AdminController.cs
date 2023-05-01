@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper;
+﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.User;
+using nightClub.Web.Filters;
 using nightClub.Web.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {
+    [AdminMod]
     public class AdminController : BaseController
     {
         private readonly IUser _userBL;
@@ -22,7 +21,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            var configure = new MapperConfiguration(cfg => 
+            var configure = new MapperConfiguration(cfg =>
                 cfg.CreateMap<UserMinimal, UserData>());
             IMapper mapper = configure.CreateMapper();
 
@@ -30,6 +29,14 @@ namespace nightClub.Web.Controllers
             return View(users);
         }
 
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var user = _userBL.GetById(id);
+            if (user == null) return View("NotFound");
+            _userBL.Delete(id);
+            return RedirectToAction("Index");
+        }
 
     }
 }

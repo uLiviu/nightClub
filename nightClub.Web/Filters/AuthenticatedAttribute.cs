@@ -1,16 +1,13 @@
 ﻿using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Enums;
 using nightClub.Web.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace nightClub.Web.Filters
 {
-    public class AuthenticatedAttribute: ActionFilterAttribute
+    public class AuthenticatedAttribute : ActionFilterAttribute
     {
         private readonly ISession _session;
         public AuthenticatedAttribute()

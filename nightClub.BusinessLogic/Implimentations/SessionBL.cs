@@ -1,7 +1,7 @@
-﻿using System.Web;
-using nightClub.BusinessLogic.Core;
+﻿using nightClub.BusinessLogic.Core;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.User;
+using System.Web;
 
 namespace nightClub.BusinessLogic.Implimentations
 {

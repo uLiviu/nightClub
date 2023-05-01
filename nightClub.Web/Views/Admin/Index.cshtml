@@ -41,13 +41,7 @@
                             }
                         }
                         <td>
-                            @using (Html.BeginForm("Index", "Admin", new { id = user.Id }, FormMethod.Post)) //Action Edit
-                            {
-                                <button type="submit" data-bs-togle="modal" data-bs-target="#IdModal" class="btn btn-info float-start" data-toggle="tooltip" title="Edit User" id="@user.Id">
-                                    Edit
-                                </button>
-                            }
-                            @using (Html.BeginForm("Index", "Admin", new { id = user.Id }, FormMethod.Post))//Action Delete
+                            @using (Html.BeginForm("Delete", "Admin", new { id = user.Id }, FormMethod.Post))//Action Delete
                             {
                                 <button type="submit" data-bs-togle="modal" data-bs-target="#IdModal" class="btn btn-danger float-end" data-toggle="tooltip" title="Delete User" id="@user.Id">
                                     Delete

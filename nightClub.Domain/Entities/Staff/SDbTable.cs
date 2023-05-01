@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using nightClub.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Enums;
 
 namespace nightClub.Domain.Entities.Staff
 {
@@ -23,7 +18,7 @@ namespace nightClub.Domain.Entities.Staff
         public string Address { get; set; }
         [Required]
         public string PhoneNumb { get; set; }
-        [Required] 
+        [Required]
         public SRole Role { get; set; } //
         [Required]
         public double PayRate { get; set; }

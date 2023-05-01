@@ -1,16 +1,11 @@
-﻿using nightClub.Web.Extension;
+﻿using AutoMapper;
+using nightClub.Domain.Entities.User;
+using nightClub.Web.Extension;
+using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
-using nightClub.Domain.Entities.User;
-using System.Web.UI.WebControls;
-using System.Web.Security;
-using nightClub.Domain.Enums;
-using nightClub.Web.Filters;
 
 namespace nightClub.Web.Controllers
 {

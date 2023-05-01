@@ -1,8 +1,5 @@
 ﻿using nightClub.Domain.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace nightClub.Web.Models
 {
@@ -14,7 +11,7 @@ namespace nightClub.Web.Models
         public URole Level { get; set; }
         public DateTime LastLogin { get; set; }
         public string PhoneNumb { get; set; }
-        
+
 
     }
 }

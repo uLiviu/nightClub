@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper;
+﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Staff;
-using nightClub.Domain.Enums;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {
@@ -21,7 +17,7 @@ namespace nightClub.Web.Controllers
             var bl = new BusinessLogic.BusinessLogic();
             _staffBL = bl.GetStaffBL();
         }
-        
+
         //GET: Staff
         public ActionResult Index()
         {
@@ -31,7 +27,7 @@ namespace nightClub.Web.Controllers
                 cfg.CreateMap<StaffModel, Staff>();
             });
             IMapper mapper = config.CreateMapper();
-            
+
             var staff = mapper.Map<List<Staff>>(_staffBL.GetStaff());
             return View(staff);
         }

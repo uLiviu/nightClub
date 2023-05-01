@@ -1,10 +1,10 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.Contact;
 using nightClub.Domain.Entities.User;
 using nightClub.Domain.Enums;
 using nightClub.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -206,7 +206,7 @@ namespace nightClub.BusinessLogic.Core
 
             return userMinimal;
         }
-        
+
     }
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 
