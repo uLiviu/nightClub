@@ -24,5 +24,10 @@ namespace nightClub.BusinessLogic
         {
             return new GalleryBL();
         }
+
+        public IUser GetUserBL()
+        {
+            return new UserBL();
+        }
     }
 }

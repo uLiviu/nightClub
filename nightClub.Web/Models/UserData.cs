@@ -12,6 +12,9 @@ namespace nightClub.Web.Models
         public string Email { get; set; }
         public int Id { get; set; }
         public URole Level { get; set; }
+        public DateTime LastLogin { get; set; }
+        public string PhoneNumb { get; set; }
+        
 
     }
 }

@@ -206,7 +206,7 @@ namespace nightClub.BusinessLogic.Core
 
             return userMinimal;
         }
-
+        
     }
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 

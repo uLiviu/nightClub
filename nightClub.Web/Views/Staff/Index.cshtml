@@ -1,18 +1,10 @@
 ﻿@using nightClub.Domain.Enums
-@using nightClub.Web.Extension
 @model dynamic
-
 @{
     ViewBag.Title = "Staff";
 }
 
-@*@{
-    if (System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
-    {
-        var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-    }
-}*@
 <section id="staff" class="staff">
     <div class="container" date-aos="fade-up">
         <div class="section-title">
@@ -36,7 +28,7 @@
                             <h4>@staff.FirstName @staff.LastName</h4>
                             <span>@staff.Role</span>
                         </div>
-                        @if (ViewBag.CurrentUser.Level == URole.Admin) // modificare pentru rol
+                        @if (ViewBag.CurrentUser.Level == URole.Admin) 
                         {
 
                             <td class="align-middle">
