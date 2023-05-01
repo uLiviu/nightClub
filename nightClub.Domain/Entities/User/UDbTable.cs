@@ -33,6 +33,8 @@ namespace nightClub.Domain.Entities.User
         public string LasIp { get; set; }
 
         public URole Level { get; set; }
+        [Phone]
+        [Display(Name = "Phone number")]
         public string PhoneNumb { get; set; }
 
     }

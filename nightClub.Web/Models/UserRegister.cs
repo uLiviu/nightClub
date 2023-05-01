@@ -28,6 +28,10 @@ namespace nightClub.Web.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
+        [Phone]
+        [Display(Name = "Phone number")]
+        public string PhoneNumb { get; set; }
+
         public URole Level { get; set; }
     }
 }
