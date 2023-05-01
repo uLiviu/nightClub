@@ -298,6 +298,8 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
+    <Compile Include="Filters\AdminModAttribute.cs" />
+    <Compile Include="Filters\AuthenticatedAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using nightClub.Domain.Enums
+@model dynamic
 
 <div class="container d-flex align-items-center justify-content-lg-between">
 
@@ -9,7 +10,10 @@
     <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
             <li><a class="nav-link @(ViewBag.Title == "Home" ? "active" : "")" href="@Url.Action("Index", "Home")">Home</a></li>
-            <li><a class="nav-link @(ViewBag.Title == "About" ? "active" : "")" href="@Url.Action("Index", "About")">About</a></li>
+            @if (ViewBag.CurrentUser.Level != URole.Visitor)
+            {
+                <li><a class="nav-link @(ViewBag.Title == "About" ? "active" : "")" href="@Url.Action("Index", "About")">About</a></li>
+            }
             <li><a class="nav-link @(ViewBag.Title == "Services" ? "active" : "")" href="#services">Services</a></li>
             <li><a class="nav-link @(ViewBag.Title == "Gallery" ? "active" : "")" href="@Url.Action("Index","Gallery")">Gallery</a></li>
             <li><a class="nav-link @(ViewBag.Title == "Staff" ? "active" : "")" href=@Url.Action("Index", "Staff")>Staff</a></li>
@@ -19,26 +23,28 @@
                     <li><a href=@Url.Action("Reviews","Contact")>Reviews</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                    <li><a href="#">Drop Down 1</a></li>
-                    <li class="dropdown">
-                        <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                        <ul>
-                            <li><a href="#">Deep Drop Down 1</a></li>
-                            <li><a href="#">Deep Drop Down 2</a></li>
-                            <li><a href="#">Deep Drop Down 3</a></li>
-                            <li><a href="#">Deep Drop Down 4</a></li>
-                            <li><a href="#">Deep Drop Down 5</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Drop Down 2</a></li>
-                    <li><a href="#">Drop Down 3</a></li>
-                    <li><a href="#">Drop Down 4</a></li>
-                </ul>
-            </li>
-
+            @if (ViewBag.CurrentUser.Level == URole.Admin)
+            {
+                <li class="dropdown">
+                    <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">Drop Down 1</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a href="#">Deep Drop Down 1</a></li>
+                                <li><a href="#">Deep Drop Down 2</a></li>
+                                <li><a href="#">Deep Drop Down 3</a></li>
+                                <li><a href="#">Deep Drop Down 4</a></li>
+                                <li><a href="#">Deep Drop Down 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Drop Down 2</a></li>
+                        <li><a href="#">Drop Down 3</a></li>
+                        <li><a href="#">Drop Down 4</a></li>
+                    </ul>
+                </li>
+            }
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

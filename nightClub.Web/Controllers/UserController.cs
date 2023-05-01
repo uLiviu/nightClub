@@ -10,9 +10,11 @@ using nightClub.Domain.Entities.User;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using nightClub.Domain.Enums;
+using nightClub.Web.Filters;
 
 namespace nightClub.Web.Controllers
 {
+    [Authenticated]
     public class UserController : BaseController
     {
         // GET: User
@@ -38,6 +40,7 @@ namespace nightClub.Web.Controllers
 
         public ActionResult Logout()
         {
+            Session.Abandon();
             System.Web.HttpContext.Current.Session.Clear();
             if (ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("X-KEY"))
             {

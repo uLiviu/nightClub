@@ -1,7 +1,9 @@
 ﻿using System.Web.Mvc;
+using nightClub.Web.Filters;
 
 namespace nightClub.Web.Controllers
 {
+    [Authenticated]
     public class AboutController : BaseController
     {
         // GET: About

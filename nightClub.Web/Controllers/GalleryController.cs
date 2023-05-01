@@ -8,6 +8,7 @@ using nightClub.BusinessLogic.Implimentations;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Gallery;
 using nightClub.Domain.Entities.Staff;
+using nightClub.Web.Filters;
 using nightClub.Web.Models;
 
 namespace nightClub.Web.Controllers
@@ -31,12 +32,14 @@ namespace nightClub.Web.Controllers
             var photo = mappeer.Map<List<Photo>>(_galleryBL.GetAll());
             return View(photo);
         }
-
+        [Authenticated]
         public ActionResult Create()
         {
             SessionStatus();
             return View();
         }
+
+        [Authenticated]
         [HttpPost]
         public ActionResult Create(Photo photo)
         {
@@ -62,6 +65,7 @@ namespace nightClub.Web.Controllers
         }
 
         // GET: Gallery/Details/1
+        [AdminMod]
         public ActionResult Details(int id)
         {
             SessionStatus();
@@ -77,6 +81,7 @@ namespace nightClub.Web.Controllers
             return View("NotFound");
         }
 
+        [AdminMod]
         public ActionResult Edit(int id)
         {
             SessionStatus();
@@ -91,6 +96,8 @@ namespace nightClub.Web.Controllers
 
             return View("NotFound");
         }
+
+        [AdminMod]
         [HttpPost]
         public ActionResult Edit(Photo photo)
         {
@@ -115,6 +122,7 @@ namespace nightClub.Web.Controllers
             return View();
         }
         // GET: Gallery/Delete/1
+        [AdminMod]
         public ActionResult Delete(int id)
         {
             SessionStatus();
@@ -130,6 +138,7 @@ namespace nightClub.Web.Controllers
             return View("NotFound");
         }
 
+        [AdminMod]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

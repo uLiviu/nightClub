@@ -7,6 +7,7 @@ using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Staff;
 using nightClub.Domain.Enums;
+using nightClub.Web.Filters;
 using nightClub.Web.Models;
 
 namespace nightClub.Web.Controllers
@@ -35,12 +36,14 @@ namespace nightClub.Web.Controllers
             return View(staff);
         }
         // GET: Staff/Create
+        [AdminMod]
         public ActionResult Create()
         {
             SessionStatus();
             return View();
         }
 
+        [AdminMod]
         [HttpPost]
         public ActionResult Create(Staff employee)
         {
@@ -66,6 +69,7 @@ namespace nightClub.Web.Controllers
         }
 
         // GET: Staff/Details/1
+        [AdminMod]
         public ActionResult Details(int id)
         {
             SessionStatus();
@@ -79,7 +83,8 @@ namespace nightClub.Web.Controllers
             }
 
             return View("NotFound");
-        }   
+        }
+        [Authenticated]
         // GET: Staff/EmployeeDetail/1
         public ActionResult EmployeeDetail(int id)
         {
@@ -95,8 +100,9 @@ namespace nightClub.Web.Controllers
 
             return View("NotFound");
         }
-        
+
         // GET: Staff/Edit/1
+        [AdminMod]
         public ActionResult Edit(int id)
         {
             SessionStatus();
@@ -111,6 +117,8 @@ namespace nightClub.Web.Controllers
 
             return View("NotFound");
         }
+
+        [AdminMod]
         [HttpPost]
         public ActionResult Edit(Staff employee)
         {
@@ -136,6 +144,7 @@ namespace nightClub.Web.Controllers
         }
 
         // GET: Staff/Delete/1
+        [AdminMod]
         public ActionResult Delete(int id)
         {
             SessionStatus();
@@ -151,6 +160,7 @@ namespace nightClub.Web.Controllers
             return View("NotFound");
         }
 
+        [AdminMod]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
