@@ -137,26 +137,18 @@ namespace nightClub.BusinessLogic.Core
                 Value = CookieGenerator.Create(loginCredential)
             };
 
+            Session currentSession;
             using (var db = new SessionContext())
             {
-                Session curent;
-                var validate = new EmailAddressAttribute();
-                if (validate.IsValid(loginCredential))
-                {
-                    curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
-                }
-                else
-                {
-                    curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
-                }
+                currentSession = db.Sessions.FirstOrDefault(s => s.Username == loginCredential);
 
-                if (curent != null) //Update
+                if (currentSession != null) //Update
                 {
-                    curent.CookieString = apiCookie.Value;
-                    curent.ExpireTime = DateTime.Now.AddMinutes(60);
+                    currentSession.CookieString = apiCookie.Value;
+                    currentSession.ExpireTime = DateTime.Now.AddMinutes(60);
                     using (var todo = new SessionContext())
                     {
-                        todo.Entry(curent).State = EntityState.Modified;
+                        todo.Entry(currentSession).State = EntityState.Modified;
                         todo.SaveChanges();
                     }
                 }
@@ -178,31 +170,23 @@ namespace nightClub.BusinessLogic.Core
         internal UserMinimal UserCookie(string cookie)
         {
             Session session;
-            UDbTable curentUser;
 
             using (var db = new SessionContext())
             {
                 session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
             }
 
+            UDbTable currentUser;
             if (session == null) return null;
             using (var db = new UserContext())
             {
-                var validate = new EmailAddressAttribute();
-                if (validate.IsValid(session.Username))
-                {
-                    curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
-                }
-                else
-                {
-                    curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
-                }
+                currentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
             }
 
-            if (curentUser == null) return null;
+            if (currentUser == null) return null;
             var configure = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
             IMapper mapper = configure.CreateMapper();
-            var userMinimal = mapper.Map<UserMinimal>(curentUser);
+            var userMinimal = mapper.Map<UserMinimal>(currentUser);
 
             return userMinimal;
         }
