@@ -68,14 +68,21 @@
                     @Html.ValidationMessageFor(m => m.PhoneNumb, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
-                    @Html.TextBoxFor(m => m.Role, new
-                    {
-                        placeholder = "Role",
-                        title = "Select employee's role: Manager, Waiter, Barman, Dancer or Dj",
-                        name = "role",
-                        id = "role",
-                        @class = "form-control"
-                    })
+                    @Html.LabelFor(m => m.Role, new { @class = "control-label" })
+                    <div class="radio">
+                        <label>
+                            @Html.RadioButtonFor(m => m.Role, "Manager") Male
+                        </label>
+                        <label>
+                            @Html.RadioButtonFor(m => m.Role, "Waiter") Waiter
+                        </label>  <label>
+                            @Html.RadioButtonFor(m => m.Role, "Barman") Barman
+                        </label>  <label>
+                            @Html.RadioButtonFor(m => m.Role, "Dancer") Dancer
+                        </label>  <label>
+                            @Html.RadioButtonFor(m => m.Role, "Dj") DJ
+                        </label>
+                    </div>
                     @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
@@ -96,10 +103,10 @@
                         title = "Enter employee's information",
                         name = "description",
                         id = "description",
-                        @rows ="5",
+                        @rows = "5",
                         @class = "form-control"
                     })
-                    @Html.ValidationMessageFor(m => m.Description, "" , new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group mt-3">
                     <input type="submit" value="Create" class="btn btn-golden float-end" />

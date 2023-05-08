@@ -22,7 +22,6 @@ namespace nightClub.Web.Controllers
             UserMinimal user = new UserMinimal
             {
                 Username = "Guest",
-                Email = "",
                 Level = 0
             };
             var apiCookie = Request.Cookies["X-KEY"];
@@ -34,7 +33,6 @@ namespace nightClub.Web.Controllers
                     System.Web.HttpContext.Current.SetMySessionObject(profile);
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
                     user = System.Web.HttpContext.Current.GetMySessionObject();
-                    ViewBag.CurrentUser = user;
                 }
                 else
                 {
@@ -50,14 +48,13 @@ namespace nightClub.Web.Controllers
                     }
 
                     System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
-                    ViewBag.CurrentUser = user;
                 }
             }
             else
             {
                 System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
-                ViewBag.CurrentUser = user;
             }
+                ViewBag.CurrentUser = user;
         }
     }
 }
