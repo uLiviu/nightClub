@@ -83,7 +83,6 @@ namespace nightClub.BusinessLogic.Core
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<URegisterData, UDbTable>()
-                    .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id este generat automat in baza de date si nu trebuie mapat
                     .ForMember(dest => dest.LastLogin, opt => opt.MapFrom(src => src.LoginDateTime)) // Mapam proprietatea LoginDateTime catre LastLogin
                     .ForMember(dest => dest.LasIp, opt => opt.MapFrom(src => src.LoginIp)) // Mapam proprietatea LoginIp catre LasIp
                     .ForMember(dest => dest.Password, opt => opt.MapFrom(src => LoginHelper.HashGen(src.Password))); //Mapam proprietatea Password  utilizând LoginHelper.HashGen() pe valoarea din câmpul Password din URegisterData.
