@@ -26,7 +26,7 @@
             @if (ViewBag.CurrentUser.Level == URole.Admin)
             {
                 <li class="dropdown">
-                    <a><span>UserManagement</span> <i class="bi bi-chevron-down"></i></a>
+                    <a><span>AdminPanel</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href=@Url.Action("Index", "Admin")>Users List</a></li>
                         <li class="dropdown">
