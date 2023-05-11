@@ -29,5 +29,34 @@ namespace nightClub.Web.Controllers
             var eventsList = mapper.Map<List<Event>>(_eventBl.GetAll());
             return View(eventsList);
         }
+        //GET: Event/Create
+        public ActionResult Create()
+        {
+            SessionStatus();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Event newEvent)
+        {
+            SessionStatus();
+            if (ModelState.IsValid)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Event, EventModel>());
+                IMapper mapper = config.CreateMapper();
+
+                var eventAdded = _eventBl.Add(mapper.Map<EventModel>(newEvent));
+                if (eventAdded.Status)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", eventAdded.StatusMsg);
+                    return View();
+                }
+            }
+            return View();
+        }
     }
 }

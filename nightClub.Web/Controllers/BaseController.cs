@@ -54,7 +54,7 @@ namespace nightClub.Web.Controllers
             {
                 System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
             }
-                ViewBag.CurrentUser = user;
+            ViewBag.CurrentUser = user;
         }
     }
 }
