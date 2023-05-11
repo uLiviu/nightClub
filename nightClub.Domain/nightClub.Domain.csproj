@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Event\EDbTable.cs" />
+    <Compile Include="Entities\Event\EventModel.cs" />
     <Compile Include="Entities\Gallery\PDbTable.cs" />
     <Compile Include="Entities\Gallery\PhotoModel.cs" />
     <Compile Include="Entities\Staff\SDbTable.cs" />
