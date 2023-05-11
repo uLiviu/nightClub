@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Event;
 using nightClub.Web.Filters;
+using System.Net.Sockets;
 
 namespace nightClub.Web.Controllers
 {
@@ -140,5 +141,28 @@ namespace nightClub.Web.Controllers
             _eventBl.Delete(id);
             return RedirectToAction("Index");
         }
+
+        //GET: Event/BookTicket/1
+        public ActionResult BookTicket(int id)
+        {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<EventModel, EDbTable>());
+            IMapper mapper = config.CreateMapper();
+
+            var evDetails = _eventBl.GetById(id);
+            ViewBag.Event = evDetails;
+            if (evDetails != null)
+            {
+                //Completarea unui bilet
+
+                return View(/*ticket*/);
+            }
+            return View("NotFound");
+        }
+
     }
 }
