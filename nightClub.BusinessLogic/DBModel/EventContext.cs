@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using nightClub.Domain.Entities.Ticket;
 
 namespace nightClub.BusinessLogic.DBModel
 {
@@ -14,5 +15,6 @@ namespace nightClub.BusinessLogic.DBModel
         {
         }
         public virtual DbSet<EDbTable> Events { get; set; }
+        public virtual DbSet<TDbTable> Tickets { get; set; }
     }
 }
