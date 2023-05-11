@@ -21,6 +21,7 @@ namespace nightClub.Web.Controllers
             var bl = new BusinessLogic.BusinessLogic();
             _eventBl = bl.GetEventBL();
         }
+
         // GET: Event
         public ActionResult Index()
         {
@@ -31,6 +32,7 @@ namespace nightClub.Web.Controllers
             var eventsList = mapper.Map<List<Event>>(_eventBl.GetAll());
             return View(eventsList);
         }
+
         //GET: Event/Create
         public ActionResult Create()
         {
@@ -58,6 +60,7 @@ namespace nightClub.Web.Controllers
                     return View();
                 }
             }
+
             return View();
         }
 
@@ -77,6 +80,7 @@ namespace nightClub.Web.Controllers
 
             return View("NotFound");
         }
+
         //Pagina de detalii pt Utilizatori
         // GET: Event/EventDetail/1 
         public ActionResult EventDetail(int id)
@@ -130,6 +134,7 @@ namespace nightClub.Web.Controllers
                     return View();
                 }
             }
+
             return View();
         }
 
@@ -150,6 +155,7 @@ namespace nightClub.Web.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+
             var config = new MapperConfiguration(cfg => cfg.CreateMap<EventModel, EDbTable>());
             IMapper mapper = config.CreateMapper();
 
@@ -157,12 +163,34 @@ namespace nightClub.Web.Controllers
             ViewBag.Event = evDetails;
             if (evDetails != null)
             {
-                //Completarea unui bilet
-
-                return View(/*ticket*/);
+                var ticket = new Ticket
+                {
+                    UserId = ViewBag.CurrentUser.Id,
+                    FullName = ViewBag.CurrentUser.Username,
+                    Email = ViewBag.CurrentUser.Email,
+                    Quantity = 1,
+                    EventId = evDetails.Id,
+                };
+                return View(ticket);
             }
+
             return View("NotFound");
         }
 
+        [HttpPost]
+        public ActionResult BookTicket(Ticket ticket)
+        {
+            SessionStatus();
+            var eventDetail = _eventBl.GetById(ticket.EventId);
+            ViewBag.Event = eventDetail;
+
+            if (ModelState.IsValid)
+            {
+                if (eventDetail == null) return View("NotFound");
+
+                //Conectarea cu business logica
+            }
+            return View(ticket);
+        }
     }
 }
