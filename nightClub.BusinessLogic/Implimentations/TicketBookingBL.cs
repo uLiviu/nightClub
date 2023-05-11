@@ -28,13 +28,15 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return GetTicketById(id);
         }
+        public TicketModel GetByUserId(int userId)
+        {
+            return GetTicketUserById(userId);
+        }
 
         //Delete
         public void Delete(int id)
         {
             DeleteTicket(id);
         }
-
-       
     }
 }

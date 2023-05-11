@@ -115,6 +115,10 @@ namespace nightClub.BusinessLogic.Core
         {
             throw new NotImplementedException();
         }
+        internal TicketModel GetTicketUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
         //Update
         internal UResponse Update(StaffModel data)
         {
