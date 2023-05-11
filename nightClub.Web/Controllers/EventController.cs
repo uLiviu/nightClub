@@ -15,11 +15,13 @@ namespace nightClub.Web.Controllers
     public class EventController : BaseController
     {
         private readonly IEvent _eventBl;
+        private readonly ITicketBooking _tBookingBL;
 
         public EventController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _eventBl = bl.GetEventBL();
+            _tBookingBL = bl.GetTicketBookingBL();
         }
 
         // GET: Event

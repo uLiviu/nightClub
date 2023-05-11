@@ -70,10 +70,12 @@
     <Compile Include="Implimentations\GalleryBL.cs" />
     <Compile Include="Implimentations\SessionBL.cs" />
     <Compile Include="Implimentations\StaffBL.cs" />
+    <Compile Include="Implimentations\TicketBookingBL.cs" />
     <Compile Include="Implimentations\UserBL.cs" />
     <Compile Include="Interfaces\IContactService.cs" />
     <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Interfaces\IGallery.cs" />
+    <Compile Include="Interfaces\ITicketBooking.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Interfaces\IStaff.cs" />
