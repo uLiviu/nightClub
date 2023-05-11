@@ -59,6 +59,7 @@
     <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\ContentApi.cs" />
     <Compile Include="Core\UserApi.cs" />
+    <Compile Include="DBModel\EventContext.cs" />
     <Compile Include="DBModel\GalleryContext.cs" />
     <Compile Include="DBModel\ReviewContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
