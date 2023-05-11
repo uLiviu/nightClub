@@ -394,6 +394,7 @@
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\EventDetail.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

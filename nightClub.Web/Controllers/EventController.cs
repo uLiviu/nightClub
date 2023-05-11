@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Event;
+using nightClub.Web.Filters;
 
 namespace nightClub.Web.Controllers
 {
@@ -90,6 +91,54 @@ namespace nightClub.Web.Controllers
             }
 
             return View("NotFound");
+        }
+
+        // GET: Event/Edit/1 
+        public ActionResult Edit(int id)
+        {
+            SessionStatus();
+            var evDetails = _eventBl.GetById(id);
+            if (evDetails != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventModel, Event>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Event>(evDetails);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Event newEvent)
+        {
+            SessionStatus();
+            if (ModelState.IsValid)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Event, EventModel>());
+                IMapper mapper = config.CreateMapper();
+
+                var eventAdded = _eventBl.Update(mapper.Map<EventModel>(newEvent));
+                if (eventAdded.Status)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", eventAdded.StatusMsg);
+                    return View();
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var eventDetail = _eventBl.GetById(id);
+            if (eventDetail == null) return View("NotFound");
+            _eventBl.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
