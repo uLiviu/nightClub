@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
+using nightClub.Domain.Entities.Event;
 using nightClub.Domain.Entities.Gallery;
 using nightClub.Domain.Entities.Staff;
+using nightClub.Domain.Entities.Ticket;
 using nightClub.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -34,6 +36,14 @@ namespace nightClub.BusinessLogic.Core
                 context = db.Photos.ToList();
             }
             return mapper.Map<List<PhotoModel>>(context);
+        }
+        internal List<EventModel> GetAllEvents()
+        {
+            throw new NotImplementedException();
+        }
+        internal List<TicketModel> GetAllTicketBookings()
+        {
+            throw new NotImplementedException();
         }
         //AddNewEntity
         internal UResponse AddNewEntity(StaffModel data)
@@ -69,6 +79,14 @@ namespace nightClub.BusinessLogic.Core
             }
             return new UResponse { Status = true };
         }
+        internal UResponse AddEvent(EventModel newEvent)
+        {
+            throw new NotImplementedException();
+        }
+        internal UResponse BookTicket(int ticketEventId, TicketModel ticketModel)
+        {
+            throw new NotImplementedException();
+        }
 
         //GetById
         internal StaffModel GetEmployee(int id)
@@ -89,7 +107,18 @@ namespace nightClub.BusinessLogic.Core
 
             return context != null ? mapper.Map<PhotoModel>(context) : null;
         }
-
+        internal EventModel GetEventById(int id)
+        {
+            throw new NotImplementedException();
+        }
+        internal TicketModel GetTicketById(int id)
+        {
+            throw new NotImplementedException();
+        }
+        internal TicketModel GetTicketUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
         //Update
         internal UResponse Update(StaffModel data)
         {
@@ -122,6 +151,10 @@ namespace nightClub.BusinessLogic.Core
             }
             return new UResponse { Status = true };
         }
+        internal UResponse UpdateEvent(EventModel data)
+        {
+            throw new NotImplementedException();
+        }
 
         //Delete
         internal void DeleteStaff(int id)
@@ -148,6 +181,14 @@ namespace nightClub.BusinessLogic.Core
                 }
             }
         }
+        internal void DeleteEvent(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        internal void DeleteTicket(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

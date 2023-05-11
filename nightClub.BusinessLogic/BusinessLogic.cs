@@ -29,5 +29,13 @@ namespace nightClub.BusinessLogic
         {
             return new UserBL();
         }
+        public IEvent GetEventBL()
+        {
+            return new EventBL();
+        }
+        public ITicketBooking GetTicketBookingBL()
+        {
+            return new TicketBookingBL();
+        }
     }
 }

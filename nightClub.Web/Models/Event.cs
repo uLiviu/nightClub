@@ -1,27 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.Staff;
+using System.Web;
 
-namespace nightClub.Domain.Entities.Event
+namespace nightClub.Web.Models
 {
-    public class EDbTable
+    public class Event
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public double TicketPrice { get; set; }
+        [Required]
         public int TotalTicketsNumber { get; set; }
         public int TicketsLeft { get; set; }
+        [Required]
         public string ImageUrl { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+
+        [Required] public DateTime StartDate { get; set; }
+
+        [Required] public DateTime EndDate { get; set; }
+
+        [Required]
         public string SpecialGuest { get; set; }
     }
 }
