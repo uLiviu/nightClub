@@ -58,5 +58,38 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+
+        //Pagina de detalii pt Admin
+        // GET: Event/Details/1      
+        public ActionResult Details(int id)
+        {
+            SessionStatus();
+            var evDetails = _eventBl.GetById(id);
+            if (evDetails != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventModel, Event>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Event>(evDetails);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+        //Pagina de detalii pt Utilizatori
+        // GET: Event/EventDetail/1 
+        public ActionResult EventDetail(int id)
+        {
+            SessionStatus();
+            var evDetails = _eventBl.GetById(id);
+            if (evDetails != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<EventModel, Event>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Event>(evDetails);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
     }
 }
