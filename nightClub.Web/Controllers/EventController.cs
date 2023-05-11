@@ -9,19 +9,20 @@ using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Event;
 using nightClub.Web.Filters;
 using System.Net.Sockets;
+using nightClub.Domain.Entities.Ticket;
 
 namespace nightClub.Web.Controllers
 {
     public class EventController : BaseController
     {
         private readonly IEvent _eventBl;
-        private readonly ITicketBooking _tBookingBL;
+        private readonly ITicketBooking _tBookingBl;
 
         public EventController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _eventBl = bl.GetEventBL();
-            _tBookingBL = bl.GetTicketBookingBL();
+            _tBookingBl = bl.GetTicketBookingBL();
         }
 
         // GET: Event
@@ -190,7 +191,22 @@ namespace nightClub.Web.Controllers
             {
                 if (eventDetail == null) return View("NotFound");
 
-                //Conectarea cu business logica
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Ticket, TicketModel>());
+                IMapper mapper = config.CreateMapper();
+                var ticketModel = mapper.Map<TicketModel>(ticket);
+
+                var bookingResult = _tBookingBl.Book(ticket.EventId, ticketModel);
+
+                if (bookingResult.Status)
+                {
+                    TempData["successMsg"] = bookingResult.StatusMsg;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", bookingResult.StatusMsg);
+                    return View(ticket);
+                }
             }
             return View(ticket);
         }

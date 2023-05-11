@@ -3,6 +3,7 @@ using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.Event;
 using nightClub.Domain.Entities.Gallery;
 using nightClub.Domain.Entities.Staff;
+using nightClub.Domain.Entities.Ticket;
 using nightClub.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,10 @@ namespace nightClub.BusinessLogic.Core
             return mapper.Map<List<PhotoModel>>(context);
         }
         internal List<EventModel> GetAllEvents()
+        {
+            throw new NotImplementedException();
+        }
+        internal List<TicketModel> GetAllTicketBookings()
         {
             throw new NotImplementedException();
         }
@@ -78,6 +83,10 @@ namespace nightClub.BusinessLogic.Core
         {
             throw new NotImplementedException();
         }
+        internal UResponse BookTicket(int ticketEventId, TicketModel ticketModel)
+        {
+            throw new NotImplementedException();
+        }
 
         //GetById
         internal StaffModel GetEmployee(int id)
@@ -99,6 +108,10 @@ namespace nightClub.BusinessLogic.Core
             return context != null ? mapper.Map<PhotoModel>(context) : null;
         }
         internal EventModel GetEventById(int id)
+        {
+            throw new NotImplementedException();
+        }
+        internal TicketModel GetTicketById(int id)
         {
             throw new NotImplementedException();
         }
@@ -169,5 +182,9 @@ namespace nightClub.BusinessLogic.Core
             throw new NotImplementedException();
         }
 
+        internal void DeleteTicket(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
