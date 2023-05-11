@@ -29,5 +29,9 @@ namespace nightClub.BusinessLogic
         {
             return new UserBL();
         }
+        public IEvent GetEventBL()
+        {
+            return new EventBL();
+        }
     }
 }
