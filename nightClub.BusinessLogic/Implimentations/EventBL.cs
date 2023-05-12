@@ -27,7 +27,7 @@ namespace nightClub.BusinessLogic.Implimentations
             return AddEvent(newEvent);
         }
 
-        public UResponse Update(EventModel data)
+        public UResponse Update(Event data)
         {
             return UpdateEvent(data);
         }

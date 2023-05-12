@@ -13,7 +13,7 @@ namespace nightClub.BusinessLogic.Interfaces
         List<EventModel> GetAll();
         EventModel GetById(int id);
         UResponse Add(EventModel newPhoto);
-        UResponse Update(EventModel data);
+        UResponse Update(Event data);
         void Delete(int id);
     }
 }
