@@ -11,9 +11,9 @@ namespace nightClub.BusinessLogic.Interfaces
     public interface ITicketBooking
     {
         UResponse Book(int ticketEventId, TicketModel ticketModel);
-        List<TicketModel> GetTicketsList();
+        List<TicketModel> GetTicketsList(string searchCriteria);
         TicketModel GetById(int id);
-        List<TicketModel> GetByUserId(int userId);
+        List<TicketModel> GetByUserId(int userId, int? eventId);
         void Delete(int id);
 
     }

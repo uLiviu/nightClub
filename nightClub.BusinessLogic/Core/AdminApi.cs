@@ -1,15 +1,17 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.User;
 using System.Collections.Generic;
 using System.Linq;
 using nightClub.Domain.Enums;
+using System.Runtime.Remoting.Contexts;
 
 namespace nightClub.BusinessLogic.Core
 {
     public class AdminApi
     {
-        internal List<UserMinimal> GetUsers()
+        internal List<UserMinimal> GetUsers(string searchCriteria)
         {
             List<UDbTable> users;
             var configure = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
@@ -17,7 +19,23 @@ namespace nightClub.BusinessLogic.Core
 
             using (var db = new UserContext())
             {
-                users = db.Users.ToList();
+                if (!string.IsNullOrEmpty(searchCriteria))
+                {
+                    if (Enum.TryParse(searchCriteria, out URole searchInt))
+                    {
+                        // Search by integer if the search criteria is a valid integer
+                        users = db.Users.Where(e => e.Level == searchInt).ToList();
+                    }
+                    else
+                    {
+                        // Search by string if the search criteria is not a valid integer
+                        users = db.Users.Where(u => u.Username.Contains(searchCriteria)).ToList();
+                    }
+                }
+                else
+                {
+                    users = db.Users.ToList();
+                }
             }
             return mapper.Map<List<UserMinimal>>(users);
         }

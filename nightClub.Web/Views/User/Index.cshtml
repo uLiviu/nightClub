@@ -11,6 +11,6 @@
         <p>Email: @Html.DisplayFor(u => u.Email)</p>
         <p>Status: @Html.DisplayFor(u => u.Level)</p>
         <a class="get-started-btn scrollto" href="@Url.Action("Logout", "User")">Logout</a>
-        <a class="get-started-btn scrollto" href="@Url.Action("TicketBookings", "User", new {id = Model.Id})">Bookings</a>
+        <a class="get-started-btn scrollto" href="@Url.Action("TicketBookings", "User", new {userId = Model.Id})">Bookings</a>
     </div>
 </section>

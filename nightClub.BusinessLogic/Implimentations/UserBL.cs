@@ -7,9 +7,9 @@ namespace nightClub.BusinessLogic.Implimentations
 {
     public class UserBL : AdminApi, IUser
     {
-        public List<UserMinimal> GetList()
+        public List<UserMinimal> GetList(string searchCriteria)
         {
-            return GetUsers();
+            return GetUsers(searchCriteria);
         }
 
         public UserMinimal GetById(int id)

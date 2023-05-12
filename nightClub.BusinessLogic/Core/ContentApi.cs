@@ -51,14 +51,30 @@ namespace nightClub.BusinessLogic.Core
             }
             return mapper.Map<List<EventModel>>(context);
         }
-        internal List<TicketModel> GetAllTicketBookings()
+        internal List<TicketModel> GetAllTicketBookings(string searchCriteria)
         {
             List<TDbTable> context;
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<TDbTable, TicketModel>()).CreateMapper();
             using (var db = new EventContext())
             {
-                context = db.Tickets.ToList();
+                if (!string.IsNullOrEmpty(searchCriteria))
+                {
+                    if (int.TryParse(searchCriteria, out int searchInt))
+                    {
+                        // Search by integer if the search criteria is a valid integer
+                        context = db.Tickets.Where(e => e.EventId == searchInt).ToList();
+                    }
+                    else
+                    {
+                        // Search by string if the search criteria is not a valid integer
+                        context = db.Tickets.Where(e => e.FullName.Contains(searchCriteria)).ToList();
+                    }
+                }
+                else
+                {
+                     context = db.Tickets.ToList();
+                }
             }
             return mapper.Map<List<TicketModel>>(context);
         }
@@ -177,12 +193,19 @@ namespace nightClub.BusinessLogic.Core
 
             return context != null ? mapper.Map<TicketModel>(context) : null;
         }
-        internal List<TicketModel> GetTicketUserById(int id)
+        internal List<TicketModel> GetTicketUserById(int userId , int? eventId )
         {
             List<TDbTable> context;
             using (var db = new EventContext())
             {
-                context = db.Tickets.Where(b => b.UserId == id).ToList();
+                if (eventId.HasValue)
+                {
+                    context= db.Tickets.Where(t=>(t.UserId==userId && t.EventId == eventId)).ToList();
+                }
+                else
+                {
+                    context = db.Tickets.Where(b => b.UserId == userId).ToList();
+                }
             }
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<TDbTable, TicketModel>()).CreateMapper();
             return mapper.Map<List<TicketModel>>(context);

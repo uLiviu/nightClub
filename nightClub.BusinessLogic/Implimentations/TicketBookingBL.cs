@@ -19,18 +19,18 @@ namespace nightClub.BusinessLogic.Implimentations
         }
 
         //Read
-        public List<TicketModel> GetTicketsList()
+        public List<TicketModel> GetTicketsList(string searchCriteria)
         {
-            return GetAllTicketBookings();
+            return GetAllTicketBookings(searchCriteria);
         }
 
         public TicketModel GetById(int id)
         {
             return GetTicketById(id);
         }
-        public List<TicketModel> GetByUserId(int userId)
+        public List<TicketModel> GetByUserId(int userId, int? eventId)
         {
-            return GetTicketUserById(userId);
+            return GetTicketUserById(userId, eventId);
         }
 
         //Delete

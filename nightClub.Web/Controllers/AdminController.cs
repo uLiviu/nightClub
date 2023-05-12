@@ -21,14 +21,14 @@ namespace nightClub.Web.Controllers
             _ticketBL = bl.GetTicketBookingBL();
         }
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(string searchCriteria)
         {
             SessionStatus();
             var configure = new MapperConfiguration(cfg =>
                 cfg.CreateMap<UserMinimal, UserData>());
             IMapper mapper = configure.CreateMapper();
 
-            var users = mapper.Map<List<UserData>>(_userBL.GetList());
+            var users = mapper.Map<List<UserData>>(_userBL.GetList(searchCriteria));
             return View(users);
         }
 
@@ -40,14 +40,14 @@ namespace nightClub.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Bookings()
+        public ActionResult Bookings(string searchCriteria)
         {
             SessionStatus();
             var configure = new MapperConfiguration(cfg =>
                 cfg.CreateMap<TicketModel, Ticket>());
             IMapper mapper = configure.CreateMapper();
 
-            var tickets = mapper.Map<List<Ticket>>(_ticketBL.GetTicketsList());
+            var tickets = mapper.Map<List<Ticket>>(_ticketBL.GetTicketsList(searchCriteria));
             return View(tickets);
         }
 

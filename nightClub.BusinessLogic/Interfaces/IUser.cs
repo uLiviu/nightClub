@@ -5,7 +5,7 @@ namespace nightClub.BusinessLogic.Interfaces
 {
     public interface IUser
     {
-        List<UserMinimal> GetList();
+        List<UserMinimal> GetList(string searchCriteria);
         UserMinimal GetById(int id);
         void Delete(int id);
     }

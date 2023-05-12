@@ -61,14 +61,14 @@ namespace nightClub.Web.Controllers
         }
 
         [Authenticated]
-        public ActionResult TicketBookings(int id)
+        public ActionResult TicketBookings(int userId, int? eventId)
         {
             SessionStatus();
             var configure = new MapperConfiguration(cfg =>
                 cfg.CreateMap<TicketModel, Ticket>());
             IMapper mapper = configure.CreateMapper();
 
-            var bookings = mapper.Map<List<Ticket>>(_ticketBL.GetByUserId(id));
+            var bookings = mapper.Map<List<Ticket>>(_ticketBL.GetByUserId(userId, eventId));
             return View(bookings);
 
         }
@@ -81,7 +81,7 @@ namespace nightClub.Web.Controllers
             _ticketBL.Delete(id);
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            return RedirectToAction("TicketBookings", new { id = user.Id });
+            return RedirectToAction("TicketBookings", new { userid = user.Id });
         }
     }
 }
