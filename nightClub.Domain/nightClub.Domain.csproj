@@ -44,12 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Event\EDbTable.cs" />
+    <Compile Include="Entities\Event\EventModel.cs" />
     <Compile Include="Entities\Gallery\PDbTable.cs" />
     <Compile Include="Entities\Gallery\PhotoModel.cs" />
     <Compile Include="Entities\Staff\SDbTable.cs" />
     <Compile Include="Entities\Staff\StaffModel.cs" />
     <Compile Include="Entities\Contact\RDbTable.cs" />
     <Compile Include="Entities\Contact\ReviewModel.cs" />
+    <Compile Include="Entities\Ticket\TDbTable.cs" />
+    <Compile Include="Entities\Ticket\TicketModel.cs" />
     <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
