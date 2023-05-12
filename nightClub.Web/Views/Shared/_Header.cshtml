@@ -10,15 +10,19 @@
     <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
             <li><a class="nav-link @(ViewBag.Title == "Home" ? "active" : "")" href="@Url.Action("Index", "Home")">Home</a></li>
-            @if (ViewBag.CurrentUser.Level != URole.Visitor)
-            {
-                <li><a class="nav-link @(ViewBag.Title == "About" ? "active" : "")" href="@Url.Action("Index", "About")">About</a></li>
-            }
-            <li><a class="nav-link @(ViewBag.Title == "Services" ? "active" : "")" href="#services">Services</a></li>
-            <li><a class="nav-link @(ViewBag.Title == "Gallery" ? "active" : "")" href="@Url.Action("Index","Gallery")">Gallery</a></li>
-            <li><a class="nav-link @(ViewBag.Title == "Staff" ? "active" : "")" href=@Url.Action("Index", "Staff")>Staff</a></li>
+            <li><a class="nav-link @(ViewBag.Title == "About" ? "active" : "")" href="@Url.Action("Index", "About")">About</a></li>
             <li class="dropdown">
-                <a class="nav-link @(ViewBag.Title == "Contact" ? "active" : "")" href="@Url.Action("Index", "Contact")">Contact<i class="bi bi-chevron-down"></i></a>
+                <a class="nav-link @(ViewBag.Title == "Services" ? "active" : "")">Services<i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href=@Url.Action("Index","Event")>Events</a></li>
+                    <li><a href=#@Url.Action("Index","Event")>Reservation</a></li>
+                    <li><a href=#@Url.Action("Index","Event")>Bar</a></li>
+                </ul>
+            </li>
+            <li><a class="nav-link @(ViewBag.Title == " Gallery" ? "active" : "" )" href="@Url.Action("Index","Gallery")">Gallery</a></li>
+            <li><a class="nav-link @(ViewBag.Title == " Staff" ? "active" : "" )" href=@Url.Action("Index", "Staff" )>Staff</a></li>
+            <li class="dropdown">
+                <a class="nav-link @(ViewBag.Title == " Contact" ? "active" : "" )" href="@Url.Action("Index", "Contact" )">Contact<i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href=@Url.Action("Reviews","Contact")>Reviews</a></li>
                 </ul>
@@ -28,7 +32,7 @@
                 <li class="dropdown">
                     <a><span>AdminPanel</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href=@Url.Action("Index", "Admin")>Users List</a></li>
+                        <li><a href=@Url.Action("Index", "Admin" )>Users List</a></li>
                         <li class="dropdown">
                             <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                             <ul>

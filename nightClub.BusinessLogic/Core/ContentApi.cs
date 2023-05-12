@@ -219,21 +219,25 @@ namespace nightClub.BusinessLogic.Core
             }
             return new UResponse { Status = true };
         }
-        internal UResponse UpdateEvent(EventModel currentEvent)
+        internal UResponse UpdateEvent(EventModel data)
         {
+            EventModel currentEvent = GetEventById(data.Id);
+            if (currentEvent == null)
+                return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
+
             int bookedTickets = currentEvent.TotalTicketsNumber - currentEvent.TicketsLeft;
-            if (currentEvent.TotalTicketsNumber < bookedTickets)
+            if (data.TotalTicketsNumber < bookedTickets)
             {
                 return new UResponse { Status = false, StatusMsg = $"This amount of tickets is allready booked. {bookedTickets} tickets!" };
             }
 
             IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<EventModel, EDbTable>()).CreateMapper();
-            var eventEF = mapper.Map<EDbTable>(currentEvent);
+            var result = mapper.Map<EDbTable>(data);
 
             using (var db = new EventContext())
             {
-                eventEF.TicketsLeft = eventEF.TotalTicketsNumber - bookedTickets;
-                db.Entry(eventEF).State = EntityState.Modified;
+                result.TicketsLeft = result.TotalTicketsNumber - bookedTickets;
+                db.Entry(result).State = EntityState.Modified;
                 db.SaveChanges();
             }
             return new UResponse { Status = true };
