@@ -146,7 +146,6 @@ namespace nightClub.Web.Controllers
             return View();
         }
 
-        [HttpPost]
         [AdminMod]
         public ActionResult Delete(int id)
         {

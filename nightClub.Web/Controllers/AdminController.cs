@@ -32,7 +32,6 @@ namespace nightClub.Web.Controllers
             return View(users);
         }
 
-        [HttpPost]
         public ActionResult Delete(int id)
         {
             var user = _userBL.GetById(id);
@@ -52,7 +51,6 @@ namespace nightClub.Web.Controllers
             return View(tickets);
         }
 
-        [HttpPost]
         public ActionResult DeleteTicketBooking(int id)
         {
             var ticket = _ticketBL.GetById(id);

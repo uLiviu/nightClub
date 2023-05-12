@@ -74,7 +74,6 @@ namespace nightClub.Web.Controllers
         }
 
         [Authenticated]
-        [HttpPost]
         public ActionResult CancelBooking(int id)
         {
             var booking = _ticketBL.GetById(id);

@@ -28,7 +28,7 @@
                     <td>@booking.TotalPrice.ToString("C")</td>
 
                     <td>
-                        @using (Html.BeginForm("CancelBooking", "User", new { id = booking.Id }, FormMethod.Post))
+                        @using (Html.BeginForm("CancelBooking", "User", new { id = booking.Id }))
                         {
                             <button type="submit" data-bs-togle="modal" data-bs-target="#IdModal" class="btn btn-danger float-end" data-toggle="tooltip" title="Delete booking" id="@booking.Id">
                                 Cancel
