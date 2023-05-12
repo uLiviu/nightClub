@@ -51,7 +51,7 @@
                                         <a class="btn btn-outline-info " href=@Url.Action("Details", "Event", new {id = events.Id})>
                                             <i class="bi bi-eye">Details</i>
                                         </a>
-                                        @using (Html.BeginForm("Delete", "Event", FormMethod.Post))
+                                        @using (Html.BeginForm("Delete", "Event"))
                                         {
                                             @Html.Hidden("id", events.Id)
                                             <input type="submit" value="Delete" class="btn btn-outline-danger float-end" style="margin-top: -6%;" />

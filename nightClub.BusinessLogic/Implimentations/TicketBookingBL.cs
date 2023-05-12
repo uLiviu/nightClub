@@ -28,7 +28,7 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return GetTicketById(id);
         }
-        public TicketModel GetByUserId(int userId)
+        public List<TicketModel> GetByUserId(int userId)
         {
             return GetTicketUserById(userId);
         }

@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using nightClub.BusinessLogic.Interfaces;
+using nightClub.Domain.Entities.Ticket;
 using nightClub.Domain.Entities.User;
 using nightClub.Web.Extension;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -12,6 +15,12 @@ namespace nightClub.Web.Controllers
     [Authenticated]
     public class UserController : BaseController
     {
+        private readonly ITicketBooking _ticketBL;
+        public UserController()
+        {
+            var bl = new BusinessLogic.BusinessLogic();
+            _ticketBL = bl.GetTicketBookingBL();
+        }
         // GET: User
         public ActionResult Index()
         {
@@ -33,6 +42,7 @@ namespace nightClub.Web.Controllers
             return View(data);
         }
 
+        [Authenticated]
         public ActionResult Logout()
         {
             Session.Abandon();
@@ -48,6 +58,30 @@ namespace nightClub.Web.Controllers
             }
             System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authenticated]
+        public ActionResult TicketBookings(int id)
+        {
+            SessionStatus();
+            var configure = new MapperConfiguration(cfg =>
+                cfg.CreateMap<TicketModel, Ticket>());
+            IMapper mapper = configure.CreateMapper();
+
+            var bookings = mapper.Map<List<Ticket>>(_ticketBL.GetByUserId(id));
+            return View(bookings);
+
+        }
+
+        [Authenticated]
+        public ActionResult CancelBooking(int id)
+        {
+            var booking = _ticketBL.GetById(id);
+            if (booking == null) return View("NotFound");
+            _ticketBL.Delete(id);
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            return RedirectToAction("TicketBookings", new { id = user.Id });
         }
     }
 }

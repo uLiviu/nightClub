@@ -13,7 +13,7 @@ namespace nightClub.BusinessLogic.Interfaces
         UResponse Book(int ticketEventId, TicketModel ticketModel);
         List<TicketModel> GetTicketsList();
         TicketModel GetById(int id);
-        TicketModel GetByUserId(int userId);
+        List<TicketModel> GetByUserId(int userId);
         void Delete(int id);
 
     }
