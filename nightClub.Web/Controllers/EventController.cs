@@ -37,12 +37,14 @@ namespace nightClub.Web.Controllers
         }
 
         //GET: Event/Create
+        [AdminMod]
         public ActionResult Create()
         {
             SessionStatus();
             return View();
         }
 
+        [AdminMod]
         [HttpPost]
         public ActionResult Create(Event newEvent)
         {
@@ -69,6 +71,7 @@ namespace nightClub.Web.Controllers
 
         //Pagina de detalii pt Admin
         // GET: Event/Details/1      
+        [AdminMod]
         public ActionResult Details(int id)
         {
             SessionStatus();
@@ -102,6 +105,7 @@ namespace nightClub.Web.Controllers
         }
 
         // GET: Event/Edit/1 
+        [AdminMod]
         public ActionResult Edit(int id)
         {
             SessionStatus();
@@ -118,6 +122,7 @@ namespace nightClub.Web.Controllers
         }
 
         [HttpPost]
+        [AdminMod]
         public ActionResult Edit(Event newEvent)
         {
             SessionStatus();
@@ -142,6 +147,7 @@ namespace nightClub.Web.Controllers
         }
 
         [HttpPost]
+        [AdminMod]
         public ActionResult Delete(int id)
         {
             var eventDetail = _eventBl.GetById(id);
@@ -180,6 +186,7 @@ namespace nightClub.Web.Controllers
             return View("NotFound");
         }
 
+        [Authenticated]
         [HttpPost]
         public ActionResult BookTicket(Ticket ticket)
         {

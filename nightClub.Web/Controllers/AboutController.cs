@@ -3,7 +3,6 @@ using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {
-    [Authenticated]
     public class AboutController : BaseController
     {
         // GET: About
