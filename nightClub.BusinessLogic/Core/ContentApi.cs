@@ -291,14 +291,19 @@ namespace nightClub.BusinessLogic.Core
                 }
             }
         }
-        //Trebuie de modificat ca la stergerea evenimentului sa fie sterse toate rezervarile
         internal void DeleteEvent(int id)
         {
             using (var db = new EventContext())
             {
-                var photo = db.Events.FirstOrDefault(p => p.Id == id);
-                if (photo == null) return;
-                db.Events.Remove(photo);
+                var entity = db.Events.FirstOrDefault(p => p.Id == id);
+                if (entity == null) return;
+
+                //Sterge toate rezervarile la acest eveniment
+                var tickets = db.Tickets.Where(p => p.EventId == id).ToList();
+                db.Tickets.RemoveRange(tickets);
+
+                //Sterge evenimentul
+                db.Events.Remove(entity);
                 db.SaveChanges();
             }
         }

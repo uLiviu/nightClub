@@ -49,6 +49,7 @@ namespace nightClub.BusinessLogic.Core
 
             return user != null ? mapper.Map<UserMinimal>(user) : null;
         }
+
         internal void DeleteUser(int id)
         {
             UDbTable user;
@@ -63,7 +64,6 @@ namespace nightClub.BusinessLogic.Core
                     confDel = true;
                 }
             }
-
             if (confDel)
             {
                 using (var db = new SessionContext())
@@ -76,8 +76,13 @@ namespace nightClub.BusinessLogic.Core
                         db.SaveChanges();
                     }
                 }
+                using (var db = new EventContext())
+                {
+                    var tickets = db.Tickets.Where(t => t.UserId == id).ToList();
+                    db.Tickets.RemoveRange(tickets);
+                    db.SaveChanges();
+                }
             }
-
         }
     }
 }
