@@ -43,13 +43,13 @@ namespace nightClub.Web.Controllers
 
                 if (userRegister.Status)
                 {
-                    ULoginData data0 = new ULoginData
-                    {
-                        Credential = register.Username,
-                        Password = register.Password,
-                        LoginIp = Request.UserHostAddress,
-                        LoginDateTime = DateTime.Now
-                    };
+                    //ULoginData data0 = new ULoginData
+                    //{
+                    //    Credential = register.Username,
+                    //    Password = register.Password,
+                    //    LoginIp = Request.UserHostAddress,
+                    //    LoginDateTime = DateTime.Now
+                    //};
 
                     return RedirectToAction("Index", "Login");
                 }

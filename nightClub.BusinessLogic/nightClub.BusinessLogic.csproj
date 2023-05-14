@@ -62,6 +62,10 @@
     <Compile Include="DBModel\EventContext.cs" />
     <Compile Include="DBModel\GalleryContext.cs" />
     <Compile Include="DBModel\ReviewContext.cs" />
+    <Compile Include="DBModel\Seed\EventDbInitializer.cs" />
+    <Compile Include="DBModel\Seed\GalleryDbInitializer.cs" />
+    <Compile Include="DBModel\Seed\StaffDbInitializer.cs" />
+    <Compile Include="DBModel\Seed\UserDbInitializer.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\StaffContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
@@ -91,9 +95,7 @@
       <Name>nightClub.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DBModel\Seed\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
