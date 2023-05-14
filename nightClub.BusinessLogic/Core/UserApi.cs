@@ -15,7 +15,7 @@ namespace nightClub.BusinessLogic.Core
 {
     public class UserApi
     {
-        internal UResponse UserLoginAction(ULoginData data)
+        internal UResponse  UserLoginAction(ULoginData data)
         {
             UDbTable result;
             var validate = new EmailAddressAttribute();
@@ -131,6 +131,17 @@ namespace nightClub.BusinessLogic.Core
         }
         internal HttpCookie Cookie(string loginCredential)
         {
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(loginCredential))
+            {
+                UDbTable user;
+                using (var db = new UserContext())
+                {
+                    user = db.Users.FirstOrDefault(u => u.Email ==loginCredential);
+                }
+                if (user != null) loginCredential = user.Username;
+            }
+
             var apiCookie = new HttpCookie("X-KEY")
             {
                 Value = CookieGenerator.Create(loginCredential)
