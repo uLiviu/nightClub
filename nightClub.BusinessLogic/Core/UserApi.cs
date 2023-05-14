@@ -15,56 +15,33 @@ namespace nightClub.BusinessLogic.Core
 {
     public class UserApi
     {
-        internal UResponse  UserLoginAction(ULoginData data)
+        internal UResponse UserLoginAction(ULoginData data)
         {
             UDbTable result;
-            var validate = new EmailAddressAttribute();
-            if (validate.IsValid(data.Credential))
+            var pass = LoginHelper.HashGen(data.Password);
+
+            using (var db = new UserContext())
             {
-                var pass = LoginHelper.HashGen(data.Password);
-                using (var db = new UserContext())
-                {
-                    result = db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass);
-                }
-
-                if (result == null)
-                {
-                    return new UResponse { Status = false, StatusMsg = "The Username or Password is Incorrect" };
-                }
-
-                using (var todo = new UserContext())
-                {
-                    result.LasIp = data.LoginIp;
-                    result.LastLogin = data.LoginDateTime;
-                    todo.Entry(result).State = EntityState.Modified;
-                    todo.SaveChanges();
-                }
-
-                return new UResponse { Status = true };
+                result = new EmailAddressAttribute().IsValid(data.Credential)
+                    ? db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass) 
+                    : db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == pass);
             }
-            else
+
+            if (result == null)
             {
-                var pass = LoginHelper.HashGen(data.Password);
-                using (var db = new UserContext())
-                {
-                    result = db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == pass);
-                }
-
-                if (result == null)
-                {
-                    return new UResponse { Status = false, StatusMsg = "The Username or Password is Incorrect" };
-                }
-
-                using (var todo = new UserContext())// cand facem schimbari la un context din baza de date
-                {
-                    result.LasIp = data.LoginIp;
-                    result.LastLogin = data.LoginDateTime;
-                    todo.Entry(result).State = EntityState.Modified;
-                    todo.SaveChanges();
-                }
-
-                return new UResponse { Status = true };
+                return new UResponse { Status = false, StatusMsg = "The Username or Password is Incorrect" };
             }
+
+            using (var todo = new UserContext())// cand facem schimbari la un context din baza de date
+            {
+                result.LasIp = data.LoginIp;
+                result.LastLogin = data.LoginDateTime;
+                todo.Entry(result).State = EntityState.Modified;
+                todo.SaveChanges();
+            }
+
+            return new UResponse { Status = true };
+
         }
         internal UResponse UserRegisterAction(URegisterData data)
         {
@@ -137,7 +114,7 @@ namespace nightClub.BusinessLogic.Core
                 UDbTable user;
                 using (var db = new UserContext())
                 {
-                    user = db.Users.FirstOrDefault(u => u.Email ==loginCredential);
+                    user = db.Users.FirstOrDefault(u => u.Email == loginCredential);
                 }
                 if (user != null) loginCredential = user.Username;
             }
