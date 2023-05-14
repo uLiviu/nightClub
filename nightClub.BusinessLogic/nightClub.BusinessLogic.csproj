@@ -64,6 +64,7 @@
     <Compile Include="DBModel\ReviewContext.cs" />
     <Compile Include="DBModel\Seed\EventDbInitializer.cs" />
     <Compile Include="DBModel\Seed\GalleryDbInitializer.cs" />
+    <Compile Include="DBModel\Seed\Seed.cs" />
     <Compile Include="DBModel\Seed\StaffDbInitializer.cs" />
     <Compile Include="DBModel\Seed\UserDbInitializer.cs" />
     <Compile Include="DBModel\SessionContext.cs" />

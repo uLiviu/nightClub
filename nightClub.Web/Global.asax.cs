@@ -13,10 +13,7 @@ namespace nightClub.Web
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
-            System.Data.Entity.Database.SetInitializer(new GalleryDbInitializer());
-            System.Data.Entity.Database.SetInitializer(new StaffDbInitializer());
-            System.Data.Entity.Database.SetInitializer(new UserDbInitializer());
-            System.Data.Entity.Database.SetInitializer(new EventDbInitializer());
+            Seed.InitializeDataBase();
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
