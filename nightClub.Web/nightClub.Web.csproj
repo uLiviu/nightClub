@@ -298,6 +298,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Filters\AdminModAttribute.cs" />
@@ -399,6 +400,7 @@
     <Content Include="Views\Event\BookTicket.cshtml" />
     <Content Include="Views\Admin\Bookings.cshtml" />
     <Content Include="Views\User\TicketBookings.cshtml" />
+    <Content Include="Views\Table\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
