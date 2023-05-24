@@ -5,6 +5,7 @@ using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -22,9 +23,8 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            IMapper mappeer = new MapperConfiguration(cfg =>
-                cfg.CreateMap<PhotoModel, Photo>()).CreateMapper();
-            var photo = mappeer.Map<List<Photo>>(_galleryBL.GetAll());
+            IMapper mapper =MappingHelper.Configure<PhotoModel, Photo>();
+            var photo = mapper.Map<List<Photo>>(_galleryBL.GetAll());
             return View(photo);
         }
         [Authenticated]
@@ -41,9 +41,8 @@ namespace nightClub.Web.Controllers
             SessionStatus();
             if (ModelState.IsValid)
             {
-                IMapper mappeer = new MapperConfiguration(cfg =>
-                    cfg.CreateMap<Photo, PhotoModel>()).CreateMapper();
-                var data = mappeer.Map<PhotoModel>(photo);
+                IMapper mapper = MappingHelper.Configure<Photo, PhotoModel>();
+                var data = mapper.Map<PhotoModel>(photo);
 
                 var newPhoto = _galleryBL.Add(data);
                 if (newPhoto.Status)
@@ -67,8 +66,7 @@ namespace nightClub.Web.Controllers
             var photo = _galleryBL.GetById(id);
             if (photo != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, Photo>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<PhotoModel, Photo>();
                 var data = mapper.Map<Photo>(photo);
                 return View(data);
             }
@@ -83,8 +81,7 @@ namespace nightClub.Web.Controllers
             var photo = _galleryBL.GetById(id);
             if (photo != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, Photo>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<PhotoModel, Photo>();
                 var data = mapper.Map<Photo>(photo);
                 return View(data);
             }
@@ -99,9 +96,8 @@ namespace nightClub.Web.Controllers
             SessionStatus();
             if (ModelState.IsValid)
             {
-                IMapper mappeer = new MapperConfiguration(cfg =>
-                    cfg.CreateMap<Photo, PhotoModel>()).CreateMapper();
-                var data = mappeer.Map<PhotoModel>(photo);
+                IMapper mapper = MappingHelper.Configure<Photo, PhotoModel>();
+                var data = mapper.Map<PhotoModel>(photo);
 
                 var uPhoto = _galleryBL.Update(data);
                 if (uPhoto.Status)
@@ -124,12 +120,10 @@ namespace nightClub.Web.Controllers
             var photo = _galleryBL.GetById(id);
             if (photo != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoModel, Photo>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<PhotoModel, Photo>();
                 var data = mapper.Map<Photo>(photo);
                 return View(data);
             }
-
             return View("NotFound");
         }
 

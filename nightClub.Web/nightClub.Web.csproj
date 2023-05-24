@@ -421,6 +421,10 @@
       <Project>{68c0ff49-343f-473c-8b2e-92671bd613a8}</Project>
       <Name>nightClub.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\nightClub.Helpers\nightClub.Helpers.csproj">
+      <Project>{6AA17C58-4F34-4058-BBC5-8927A1CA826D}</Project>
+      <Name>nightClub.Helpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

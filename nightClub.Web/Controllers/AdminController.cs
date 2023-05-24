@@ -6,6 +6,7 @@ using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -24,9 +25,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Index(string searchCriteria)
         {
             SessionStatus();
-            var configure = new MapperConfiguration(cfg =>
-                cfg.CreateMap<UserMinimal, UserData>());
-            IMapper mapper = configure.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<UserMinimal, UserData>();
 
             var users = mapper.Map<List<UserData>>(_userBL.GetList(searchCriteria));
             return View(users);
@@ -43,9 +42,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Bookings(string searchCriteria)
         {
             SessionStatus();
-            var configure = new MapperConfiguration(cfg =>
-                cfg.CreateMap<TicketModel, Ticket>());
-            IMapper mapper = configure.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<TicketModel, Ticket>();
 
             var tickets = mapper.Map<List<Ticket>>(_ticketBL.GetTicketsList(searchCriteria));
             return View(tickets);

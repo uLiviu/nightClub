@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using nightClub.Domain.Enums;
 using System.Runtime.Remoting.Contexts;
+using nightClub.Helpers;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -14,8 +15,7 @@ namespace nightClub.BusinessLogic.Core
         internal List<UserMinimal> GetUsers(string searchCriteria)
         {
             List<UDbTable> users;
-            var configure = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
-            IMapper mapper = configure.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<UDbTable, UserMinimal>();
 
             using (var db = new UserContext())
             {
@@ -45,7 +45,7 @@ namespace nightClub.BusinessLogic.Core
             UDbTable user;
             using (var db = new UserContext())
                 user = db.Users.FirstOrDefault(u => u.Id == id);
-            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<UDbTable, UserMinimal>()).CreateMapper();
+            IMapper mapper = MappingHelper.Configure<UDbTable, UserMinimal>();
 
             return user != null ? mapper.Map<UserMinimal>(user) : null;
         }

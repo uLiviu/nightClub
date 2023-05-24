@@ -5,6 +5,7 @@ using nightClub.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -41,11 +42,7 @@ namespace nightClub.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<Review, ReviewModel>();
-                });
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<Review, ReviewModel>();
                 var data = mapper.Map<ReviewModel>(review);
 
                 data.Date = DateTime.Now;
@@ -64,11 +61,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Reviews()
         {
             SessionStatus();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<ReviewModel, Review>();
-            });
-            IMapper mapper = config.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<ReviewModel, Review>();
 
             var reviews = mapper.Map<List<Review>>(_contactBL.GetReviews());
             return View(reviews);

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
+using nightClub.Domain.Entities.Staff;
 using nightClub.Domain.Entities.Ticket;
 using nightClub.Domain.Entities.User;
+using nightClub.Helpers;
 using nightClub.Web.Extension;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
@@ -32,11 +34,7 @@ namespace nightClub.Web.Controllers
 
             var user = System.Web.HttpContext.Current.GetMySessionObject();
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<UserMinimal, UserData>();
-            });
-            IMapper mapper = config.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<UserMinimal, UserData>();
             var data = mapper.Map<UserData>(user);
 
             return View(data);
@@ -64,9 +62,7 @@ namespace nightClub.Web.Controllers
         public ActionResult TicketBookings(int userId, int? eventId)
         {
             SessionStatus();
-            var configure = new MapperConfiguration(cfg =>
-                cfg.CreateMap<TicketModel, Ticket>());
-            IMapper mapper = configure.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<TicketModel, Ticket>();
 
             var bookings = mapper.Map<List<Ticket>>(_ticketBL.GetByUserId(userId, eventId));
             return View(bookings);

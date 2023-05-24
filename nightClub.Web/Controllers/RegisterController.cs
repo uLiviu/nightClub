@@ -4,6 +4,7 @@ using nightClub.Domain.Entities.User;
 using nightClub.Web.Models;
 using System;
 using System.Web.Mvc;
+using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -29,11 +30,7 @@ namespace nightClub.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<UserRegister, URegisterData>();
-                });
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<UserRegister, URegisterData>();
                 var data = mapper.Map<URegisterData>(register);
 
                 data.LoginIp = Request.UserHostAddress;
@@ -43,21 +40,10 @@ namespace nightClub.Web.Controllers
 
                 if (userRegister.Status)
                 {
-                    //ULoginData data0 = new ULoginData
-                    //{
-                    //    Credential = register.Username,
-                    //    Password = register.Password,
-                    //    LoginIp = Request.UserHostAddress,
-                    //    LoginDateTime = DateTime.Now
-                    //};
-
                     return RedirectToAction("Index", "Login");
                 }
-                else
-                {
-                    ModelState.AddModelError("", userRegister.StatusMsg);
-                    return View();
-                }
+                ModelState.AddModelError("", userRegister.StatusMsg);
+                return View();
             }
             return View();
         }

@@ -20,7 +20,7 @@ namespace nightClub.BusinessLogic.Implimentations
 
         public UResponse Add(PhotoModel photo)
         {
-            return AddEntity(photo);
+            return AddPhoto(photo);
         }
 
         public UResponse Update(PhotoModel data)

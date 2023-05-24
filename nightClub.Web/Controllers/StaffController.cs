@@ -5,6 +5,7 @@ using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -22,11 +23,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<StaffModel, Staff>();
-            });
-            IMapper mapper = config.CreateMapper();
+            IMapper mapper = MappingHelper.Configure<StaffModel, Staff>();
 
             var staff = mapper.Map<List<Staff>>(_staffBL.GetStaff());
             return View(staff);
@@ -46,8 +43,8 @@ namespace nightClub.Web.Controllers
             SessionStatus();
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Staff, StaffModel>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<Staff, StaffModel>();
+
                 var data = mapper.Map<StaffModel>(employee);
 
                 var employeeAdded = _staffBL.AddEmployee(data);
@@ -72,8 +69,7 @@ namespace nightClub.Web.Controllers
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, Staff>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<StaffModel, Staff>();
                 var data = mapper.Map<Staff>(empDetails);
                 return View(data);
             }
@@ -88,8 +84,7 @@ namespace nightClub.Web.Controllers
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, Staff>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<StaffModel, Staff>();
                 var data = mapper.Map<Staff>(empDetails);
                 return View(data);
             }
@@ -105,8 +100,7 @@ namespace nightClub.Web.Controllers
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, Staff>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<StaffModel, Staff>();
                 var data = mapper.Map<Staff>(empDetails);
                 return View(data);
             }
@@ -121,11 +115,10 @@ namespace nightClub.Web.Controllers
             SessionStatus();
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Staff, StaffModel>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<Staff, StaffModel>();
                 var data = mapper.Map<StaffModel>(employee);
 
-                var employeeAdded = _staffBL.UpdateEmployee(data);
+                var employeeAdded = _staffBL.Update(data);
                 if (employeeAdded.Status)
                 {
                     return RedirectToAction("Index");
@@ -147,8 +140,7 @@ namespace nightClub.Web.Controllers
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<StaffModel, Staff>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<StaffModel, Staff>();
                 var data = mapper.Map<Staff>(empDetails);
                 return View(data);
             }
@@ -162,7 +154,7 @@ namespace nightClub.Web.Controllers
         {
             var empDetails = _staffBL.GetStaffById(id);
             if (empDetails == null) return View("NotFound");
-            _staffBL.DeleteEmployee(id);
+            _staffBL.Delete(id);
             return RedirectToAction("Index");
         }
     }
