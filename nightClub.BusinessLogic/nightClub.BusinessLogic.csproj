@@ -69,6 +69,7 @@
     <Compile Include="DBModel\Seed\UserDbInitializer.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\StaffContext.cs" />
+    <Compile Include="DBModel\TableReservationContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
     <Compile Include="Implimentations\ContactServiceBL.cs" />
     <Compile Include="Implimentations\EventBL.cs" />
