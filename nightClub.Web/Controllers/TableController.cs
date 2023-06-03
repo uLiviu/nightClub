@@ -73,5 +73,12 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+        public ActionResult Delete(int id)
+        {
+            var ticket = _tableBL.GetById(id);
+            if (ticket == null) return View("NotFound");
+            _tableBL.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
