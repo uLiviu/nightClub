@@ -310,6 +310,7 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -401,6 +402,8 @@
     <Content Include="Views\Admin\Bookings.cshtml" />
     <Content Include="Views\User\TicketBookings.cshtml" />
     <Content Include="Views\Table\Index.cshtml" />
+    <Content Include="Views\Table\Reservation.cshtml" />
+    <Content Include="Views\Table\Confirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

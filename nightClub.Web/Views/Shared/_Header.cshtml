@@ -15,7 +15,7 @@
                 <a class="nav-link @(ViewBag.Title == "Services" ? "active" : "")">Services<i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href=@Url.Action("Index","Event")>Events</a></li>
-                    <li><a href=#@Url.Action("Index","Event")>Reservation</a></li>
+                    <li><a href=@Url.Action("Reservation","Table")>Reservation</a></li>
                     <li><a href=#@Url.Action("Index","Event")>Bar</a></li>
                 </ul>
             </li>
@@ -34,6 +34,7 @@
                     <ul>
                         <li><a href=@Url.Action("Index", "Admin" )>Users List</a></li>
                         <li><a href=@Url.Action("Bookings", "Admin")>Bookings</a></li>
+                        <li><a href=@Url.Action("Index", "Table")>Table Reservations</a></li>
                         <li class="dropdown">
                             <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                             <ul>
