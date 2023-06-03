@@ -14,11 +14,28 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net.Sockets;
 using nightClub.Helpers;
+using nightClub.Domain.Entities.Table;
 
 namespace nightClub.BusinessLogic.Core
 {
     public class ContentApi
     {
+        internal List<TableModel> GetReservationList(string searchCriteria)
+        {
+            throw new NotImplementedException();
+        }
+        internal UResponse AddTableReservation(TableModel tableModel)
+        {
+            throw new NotImplementedException();
+        }
+        internal void DeleteTableReservation(int id)
+        {
+            throw new NotImplementedException();
+        }
+        internal TableModel GetTableReservationById(int id)
+        {
+            throw new NotImplementedException();
+        }
         //Get List
         internal List<ReviewModel> GetReviewList()
         {

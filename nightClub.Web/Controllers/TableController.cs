@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using nightClub.BusinessLogic.Interfaces;
 
 namespace nightClub.Web.Controllers
 {
