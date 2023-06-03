@@ -7,6 +7,7 @@ using AutoMapper;
 using nightClub.BusinessLogic.Implimentations;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Table;
+using nightClub.Helpers;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
 
@@ -22,14 +23,14 @@ namespace nightClub.Web.Controllers
             _tableBL = bl.GetTableBL();
         }
         // GET: Table
+        [AdminMod]
         public ActionResult Index(string searchCriteria)
         {
             SessionStatus();
-            var configure = new MapperConfiguration(cfg =>
-                cfg.CreateMap<TableModel, Table>());
-            IMapper mapper = configure.CreateMapper();
 
+            var mapper = MappingHelper.Configure<TableModel, Table>();
             var table = mapper.Map<List<Table>>(_tableBL.GetList(searchCriteria));
+
             return View(table);
         }
 
@@ -49,18 +50,16 @@ namespace nightClub.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [Authenticated]
         public ActionResult Reservation(Table table)
         {
             SessionStatus();
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg =>
-                    cfg.CreateMap<Table, TableModel>());
-                IMapper mapper = config.CreateMapper();
+                var mapper = MappingHelper.Configure<Table, TableModel>();
                 var tableModel = mapper.Map<TableModel>(table);
 
                 var createReservation = _tableBL.Add(tableModel);
-
                 if (createReservation.Status)
                 {
                     return View("Confirmation", table);
@@ -73,6 +72,8 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+
+        [AdminMod]
         public ActionResult Delete(int id)
         {
             var ticket = _tableBL.GetById(id);

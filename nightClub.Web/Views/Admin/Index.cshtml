@@ -40,7 +40,7 @@
                         <td>@user.Username</td>
                         <td>@user.Email</td>
                         <td>@user.PhoneNumb</td>
-                        <td>@user.LastLogin</td>
+                        <td>@user.LastLogin.Date.ToString("F")</td>
 
                         @{
                             if (user.Level == URole.User)

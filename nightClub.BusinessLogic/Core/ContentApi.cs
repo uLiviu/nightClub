@@ -15,27 +15,12 @@ using System.Linq;
 using System.Net.Sockets;
 using nightClub.Helpers;
 using nightClub.Domain.Entities.Table;
+using nightClub.Domain.Enums;
 
 namespace nightClub.BusinessLogic.Core
 {
     public class ContentApi
     {
-        internal List<TableModel> GetReservationList(string searchCriteria)
-        {
-            throw new NotImplementedException();
-        }
-        internal UResponse AddTableReservation(TableModel tableModel)
-        {
-            throw new NotImplementedException();
-        }
-        internal void DeleteTableReservation(int id)
-        {
-            throw new NotImplementedException();
-        }
-        internal TableModel GetTableReservationById(int id)
-        {
-            throw new NotImplementedException();
-        }
         //Get List
         internal List<ReviewModel> GetReviewList()
         {
@@ -51,7 +36,7 @@ namespace nightClub.BusinessLogic.Core
             return reviewModel;
         }
 
-        internal List<StaffModel> GetList()
+        internal List<StaffModel> GetStaffList()
         {
             List<SDbTable> context;
 
@@ -111,6 +96,33 @@ namespace nightClub.BusinessLogic.Core
             }
             return mapper.Map<List<TicketModel>>(context);
         }
+        internal List<TableModel> GetReservationList(string searchCriteria)
+        {
+            List<TRDbTable> reservations;
+            var mapper = MappingHelper.Configure<TRDbTable, TableModel>();
+            using (var db = new TableReservationContext())
+            {
+                if (!string.IsNullOrEmpty(searchCriteria))
+                {
+                    if (Enum.TryParse(searchCriteria, out RType searchInt))
+                    {
+                        // Search by integer if the search criteria is a valid integer
+                        reservations = db.Reservations.Where(e => e.ReservationType == searchInt).ToList();
+                    }
+                    else
+                    {
+                        // Search by string if the search criteria is not a valid integer
+                        reservations = db.Reservations.Where(u => u.Username.Contains(searchCriteria)).ToList();
+                    }
+                }
+                else
+                {
+                    reservations = db.Reservations.ToList();
+                }
+            }
+            return mapper.Map<List<TableModel>>(reservations);
+        }
+
         //AddNewEntity
         internal void AddNewReview(ReviewModel review)
         {
@@ -127,7 +139,7 @@ namespace nightClub.BusinessLogic.Core
                 db.SaveChanges();
             }
         }
-        internal UResponse AddStaff(StaffModel data)
+        internal UResponse AddNewEmployee(StaffModel data)
         {
             SDbTable context;
 
@@ -202,6 +214,28 @@ namespace nightClub.BusinessLogic.Core
 
             return new UResponse { Status = true };
         }
+        internal UResponse AddTableReservation(TableModel tableModel)
+        {
+            TRDbTable context;
+            using (var db = new TableReservationContext())
+            {
+                context = db.Reservations.FirstOrDefault(t => t.Username == tableModel.Username && t.Reservation == tableModel.Reservation);
+            }
+
+            if (context != null)
+            {
+                return new UResponse { Status = false, StatusMsg = "You already have a reservation on this date!" };
+            }
+
+            var mapper = MappingHelper.Configure<TableModel, TRDbTable>();
+            context = mapper.Map<TRDbTable>(tableModel);
+            using (var db = new TableReservationContext())
+            {
+                db.Reservations.Add(context);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
 
         //GetById
         internal StaffModel GetEmployee(int id)
@@ -257,6 +291,15 @@ namespace nightClub.BusinessLogic.Core
             var mapper =MappingHelper.Configure<TDbTable, TicketModel>();
             return mapper.Map<List<TicketModel>>(context);
         }
+        internal TableModel GetTableReservationById(int id)
+        {
+            TRDbTable context;
+            using (var db = new TableReservationContext())
+                context = db.Reservations.FirstOrDefault(u => u.Id == id);
+            var mapper = MappingHelper.Configure<TRDbTable, TableModel>();
+            return context != null ? mapper.Map<TableModel>(context) : null;
+        }
+
         //Update
         internal UResponse UpdateEmployee(StaffModel data)
         {
@@ -371,5 +414,18 @@ namespace nightClub.BusinessLogic.Core
                 db.SaveChanges();
             }
         }
+        internal void DeleteTableReservation(int id)
+        {
+            using (var db = new TableReservationContext())
+            {
+                var reservation = db.Reservations.FirstOrDefault(p => p.Id == id);
+                if (reservation != null)
+                {
+                    db.Reservations.Remove(reservation);
+                    db.SaveChanges();
+                }
+            }
+        }
+
     }
 }
