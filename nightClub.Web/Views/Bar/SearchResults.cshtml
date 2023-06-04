@@ -10,8 +10,11 @@
             <h2>Bar</h2>
         </div>
         <div class="sort-container">
-            <a href="@Url.Action("Create", "Bar")" class="add-product">Add a new Product</a>
-                <div class="menu">
+            @if (ViewBag.CurrentUser.Level == URole.Admin)
+            {
+                <a href="@Url.Action("Create", "Bar")" class="add-product">Add a new Product</a>
+            }
+            <div class="menu">
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li class="dropdown">
@@ -52,7 +55,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="portfolio-buttons">
+
+                            @if (ViewBag.CurrentUser.Level == URole.Admin)
+                            {
+                                <div class="portfolio-buttons">
                                     <a href="@Url.Action("Edit", "Bar", new { id = bar.Id })" class="btn btn-outline-secondary btn-sm">
                                         <i class="bi bi-pencil"></i> Edit
                                     </a>
@@ -63,6 +69,7 @@
                                         <i class="bi bi-trash"></i> Delete
                                     </a>
                                 </div>
+                            }
                             <div class="portfolio-info">
                                 <h4>@bar.Title</h4>
                                 <div class="price-alcohol-container">
