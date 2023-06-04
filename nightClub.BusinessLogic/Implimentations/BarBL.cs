@@ -32,5 +32,9 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return UpdateBarPhoto(data);
         }
+        public void DeleteBar(int id)
+        {
+            DeleteBarPhoto(id);
+        }
     }
 }

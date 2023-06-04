@@ -109,5 +109,29 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+
+        public ActionResult Delete(int id)
+        {
+            SessionStatus();
+            var bar = _barBL.GetBarById(id);
+            if (bar != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, Bar>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Bar>(bar);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var empDetails = _barBL.GetBarById(id);
+            if (empDetails == null) return View("NotFound");
+            _barBL.DeleteBar(id);
+            return RedirectToAction("Index");
+        }
     }
 }

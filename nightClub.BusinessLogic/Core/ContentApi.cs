@@ -478,5 +478,17 @@ namespace nightClub.BusinessLogic.Core
             }
             return new UResponse { Status = true };
         }
+        internal void DeleteBarPhoto(int id)
+        {
+            using (var db = new BarContext())
+            {
+                var photo = db.Bars.FirstOrDefault(p => p.Id == id);
+                if (photo != null)
+                {
+                    db.Bars.Remove(photo);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
