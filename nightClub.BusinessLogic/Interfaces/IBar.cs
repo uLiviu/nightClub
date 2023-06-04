@@ -16,5 +16,6 @@ namespace nightClub.BusinessLogic.Interfaces
         UResponse Add(PhotoBar newPhoto);
         UResponse Update(PhotoBar data);
         void DeleteBar(int id);
+        List<PhotoBar> GetBarsByCategory();
     }
 }

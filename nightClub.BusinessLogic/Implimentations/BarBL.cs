@@ -36,5 +36,9 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             DeleteBarPhoto(id);
         }
+        public List<PhotoBar> GetBarsByCategory()
+        {
+            return GetBarsPhotoByCategory();
+        }
     }
 }

@@ -133,5 +133,15 @@ namespace nightClub.Web.Controllers
             _barBL.DeleteBar(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult SortByCategory()
+        {
+
+            SessionStatus();
+            IMapper mappeer = new MapperConfiguration(cfg =>
+                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
+            var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByCategory());
+            return View(bar);
+        }
     }
 }
