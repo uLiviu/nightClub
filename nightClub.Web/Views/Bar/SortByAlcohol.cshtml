@@ -28,6 +28,11 @@
                 </nav>
             </div>
         </div>
+        <form action="@Url.Action("Search", "Bar")" method="get">
+            <input type="text" name="searchQuery" placeholder="Introduceți informația căutată" />
+            <button type="submit">Caută</button>
+            <a href="@Url.Action("Index", "Bar")" class="btn btn-primary">Pagina principală Bar</a>
+        </form>
         <div class="row portfolio-container mt-3" data-aos="fade-up" data-aos-delay="200">
             @foreach (var bar in Model)
             {

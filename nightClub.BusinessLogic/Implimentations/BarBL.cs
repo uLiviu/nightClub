@@ -52,5 +52,10 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return GetBarsPhotoByAlcohol();
         }
+        public List<PhotoBar> SearchProducts(string search)
+        {
+            return SearchBarProducts(search);
+        }
     }
 }
+

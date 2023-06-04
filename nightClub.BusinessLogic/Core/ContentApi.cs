@@ -523,5 +523,26 @@ namespace nightClub.BusinessLogic.Core
             }
             return mapper.Map<List<PhotoBar>>(context);
         }
+        internal List<PhotoBar> SearchBarProducts(string search)
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                if (!string.IsNullOrEmpty(search))
+                {
+                    context = db.Bars.Where(e =>
+                        e.Title.Contains(search) ||
+                        e.Category.Contains(search) ||
+                        e.Description.Contains(search)).ToList();
+                }
+                else
+                {
+                    context = db.Bars.ToList();
+                }
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
     }
 }

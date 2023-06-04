@@ -19,5 +19,6 @@ namespace nightClub.BusinessLogic.Interfaces
         List<PhotoBar> GetBarsByCategory();
         List<PhotoBar> GetBarsByPrice();
         List<PhotoBar> GetBarsByAlcohol();
+        List<PhotoBar> SearchProducts(string search);
     }
 }
