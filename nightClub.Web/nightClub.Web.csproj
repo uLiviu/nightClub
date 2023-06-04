@@ -408,6 +408,8 @@
     <Content Include="Views\Table\Confirmation.cshtml" />
     <Content Include="Views\Bar\Index.cshtml" />
     <Content Include="Views\Bar\Create.cshtml" />
+    <Content Include="Views\Bar\Details.cshtml" />
+    <Content Include="Views\Bar\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

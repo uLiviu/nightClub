@@ -452,5 +452,31 @@ namespace nightClub.BusinessLogic.Core
             }
             return new UResponse { Status = true };
         }
+        internal PhotoBar GetBarPhotoById(int id)
+        {
+            BarDbTable context;
+            using (var db = new BarContext())
+                context = db.Bars.FirstOrDefault(u => u.Id == id);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+
+            return context != null ? mapper.Map<PhotoBar>(context) : null;
+        }
+
+        internal UResponse UpdateBarPhoto(PhotoBar data)
+        {
+            if (GetBarPhotoById(data.Id) == null)
+                return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
+
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, BarDbTable>()).CreateMapper();
+            var result = mapper.Map<BarDbTable>(data);
+            result.Date = DateTime.Now;
+
+            using (var db = new BarContext())
+            {
+                db.Bars.AddOrUpdate(result);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
     }
 }

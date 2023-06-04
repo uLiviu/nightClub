@@ -56,5 +56,58 @@ namespace nightClub.Web.Controllers
             }
             return View();
         }
+        public ActionResult Details(int id)
+        {
+            SessionStatus();
+            var bar = _barBL.GetBarById(id);
+            if (bar != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, Bar>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Bar>(bar);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            SessionStatus();
+            var bar = _barBL.GetBarById(id);
+            if (bar != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, Bar>());
+                IMapper mapper = config.CreateMapper();
+                var data = mapper.Map<Bar>(bar);
+                return View(data);
+            }
+
+            return View("NotFound");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Bar bar)
+        {
+            SessionStatus();
+            if (ModelState.IsValid)
+            {
+                IMapper mappeer = new MapperConfiguration(cfg =>
+                    cfg.CreateMap<Bar, PhotoBar>()).CreateMapper();
+                var data = mappeer.Map<PhotoBar>(bar);
+
+                var uBar = _barBL.Update(data);
+                if (uBar.Status)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", uBar.StatusMsg);
+                    return View();
+                }
+            }
+            return View();
+        }
     }
 }

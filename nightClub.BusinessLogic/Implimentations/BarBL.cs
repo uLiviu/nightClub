@@ -18,10 +18,19 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return GetBarsPhoto();
         }
+        public PhotoBar GetBarById(int id)
+        {
+            return GetBarPhotoById(id);
+        }
 
         public UResponse Add(PhotoBar photo)
         {
             return AddBarEntity(photo);
+        }
+
+        public UResponse Update(PhotoBar data)
+        {
+            return UpdateBarPhoto(data);
         }
     }
 }
