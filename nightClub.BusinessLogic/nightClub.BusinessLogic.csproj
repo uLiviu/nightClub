@@ -72,6 +72,7 @@
     <Compile Include="DBModel\StaffContext.cs" />
     <Compile Include="DBModel\TableReservationContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
+    <Compile Include="Implimentations\BarBL.cs" />
     <Compile Include="Implimentations\ContactServiceBL.cs" />
     <Compile Include="Implimentations\EventBL.cs" />
     <Compile Include="Implimentations\GalleryBL.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Implimentations\TableBL.cs" />
     <Compile Include="Implimentations\TicketBookingBL.cs" />
     <Compile Include="Implimentations\UserBL.cs" />
+    <Compile Include="Interfaces\IBar.cs" />
     <Compile Include="Interfaces\IContactService.cs" />
     <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Interfaces\IGallery.cs" />

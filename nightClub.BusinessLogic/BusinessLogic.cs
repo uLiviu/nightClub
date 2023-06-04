@@ -41,5 +41,9 @@ namespace nightClub.BusinessLogic
         {
             return new TableBL();
         }
+        public IBar GetBarBL()
+        {
+            return new BarBL();
+        }
     }
 }

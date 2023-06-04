@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using nightClub.Helpers;
 using nightClub.Domain.Entities.Table;
 using nightClub.Domain.Enums;
+using nightClub.Domain.Entities.Bar;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -426,6 +427,30 @@ namespace nightClub.BusinessLogic.Core
                 }
             }
         }
+        //Bar
+        internal List<PhotoBar> GetBarsPhoto()
+        {
+            List<BarDbTable> context;
 
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
+        internal UResponse AddBarEntity(PhotoBar photo)
+        {
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, BarDbTable>()).CreateMapper();
+            BarDbTable context = mapper.Map<BarDbTable>(photo);
+
+            context.Date = DateTime.Now;
+            using (var db = new BarContext())
+            {
+                db.Bars.Add(context);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
     }
 }

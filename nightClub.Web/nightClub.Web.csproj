@@ -290,6 +290,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BarController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -405,6 +406,8 @@
     <Content Include="Views\Table\Index.cshtml" />
     <Content Include="Views\Table\Reservation.cshtml" />
     <Content Include="Views\Table\Confirmation.cshtml" />
+    <Content Include="Views\Bar\Index.cshtml" />
+    <Content Include="Views\Bar\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
