@@ -412,6 +412,8 @@
     <Content Include="Views\Bar\Edit.cshtml" />
     <Content Include="Views\Bar\Delete.cshtml" />
     <Content Include="Views\Bar\SortByCategory.cshtml" />
+    <Content Include="Views\Bar\SortByAlcohol.cshtml" />
+    <Content Include="Views\Bar\SortByPrice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

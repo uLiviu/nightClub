@@ -501,5 +501,27 @@ namespace nightClub.BusinessLogic.Core
             }
             return mapper.Map<List<PhotoBar>>(context);
         }
+        internal List<PhotoBar> GetBarsPhotoByPrice()
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.OrderBy(p => p.Price).ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
+        internal List<PhotoBar> GetBarsPhotoByAlcohol()
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.OrderBy(p => p.Alcohol).ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
     }
 }

@@ -143,5 +143,23 @@ namespace nightClub.Web.Controllers
             var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByCategory());
             return View(bar);
         }
+        public ActionResult SortByAlcohol()
+        {
+
+            SessionStatus();
+            IMapper mappeer = new MapperConfiguration(cfg =>
+                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
+            var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByAlcohol());
+            return View(bar);
+        }
+        public ActionResult SortByPrice()
+        {
+
+            SessionStatus();
+            IMapper mappeer = new MapperConfiguration(cfg =>
+                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
+            var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByPrice());
+            return View(bar);
+        }
     }
 }

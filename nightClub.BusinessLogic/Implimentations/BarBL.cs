@@ -32,13 +32,25 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return UpdateBarPhoto(data);
         }
+
         public void DeleteBar(int id)
         {
             DeleteBarPhoto(id);
         }
+
         public List<PhotoBar> GetBarsByCategory()
         {
             return GetBarsPhotoByCategory();
+        }
+
+        public List<PhotoBar> GetBarsByPrice()
+        {
+            return GetBarsPhotoByPrice();
+        }
+
+        public List<PhotoBar> GetBarsByAlcohol()
+        {
+            return GetBarsPhotoByAlcohol();
         }
     }
 }
