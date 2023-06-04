@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using nightClub.Helpers;
 using nightClub.Domain.Entities.Table;
 using nightClub.Domain.Enums;
+using nightClub.Domain.Entities.Bar;
 
 namespace nightClub.BusinessLogic.Core
 {
@@ -426,6 +427,122 @@ namespace nightClub.BusinessLogic.Core
                 }
             }
         }
+        //Bar
+        internal List<PhotoBar> GetBarsPhoto()
+        {
+            List<BarDbTable> context;
 
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
+        internal UResponse AddBarEntity(PhotoBar photo)
+        {
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, BarDbTable>()).CreateMapper();
+            BarDbTable context = mapper.Map<BarDbTable>(photo);
+
+            context.Date = DateTime.Now;
+            using (var db = new BarContext())
+            {
+                db.Bars.Add(context);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
+        internal PhotoBar GetBarPhotoById(int id)
+        {
+            BarDbTable context;
+            using (var db = new BarContext())
+                context = db.Bars.FirstOrDefault(u => u.Id == id);
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+
+            return context != null ? mapper.Map<PhotoBar>(context) : null;
+        }
+
+        internal UResponse UpdateBarPhoto(PhotoBar data)
+        {
+            if (GetBarPhotoById(data.Id) == null)
+                return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
+
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, BarDbTable>()).CreateMapper();
+            var result = mapper.Map<BarDbTable>(data);
+            result.Date = DateTime.Now;
+
+            using (var db = new BarContext())
+            {
+                db.Bars.AddOrUpdate(result);
+                db.SaveChanges();
+            }
+            return new UResponse { Status = true };
+        }
+        internal void DeleteBarPhoto(int id)
+        {
+            using (var db = new BarContext())
+            {
+                var photo = db.Bars.FirstOrDefault(p => p.Id == id);
+                if (photo != null)
+                {
+                    db.Bars.Remove(photo);
+                    db.SaveChanges();
+                }
+            }
+        }
+        internal List<PhotoBar> GetBarsPhotoByCategory()
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.OrderBy(p => p.Category).ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
+        internal List<PhotoBar> GetBarsPhotoByPrice()
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.OrderBy(p => p.Price).ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
+        internal List<PhotoBar> GetBarsPhotoByAlcohol()
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                context = db.Bars.OrderBy(p => p.Alcohol).ToList();
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
+        internal List<PhotoBar> SearchBarProducts(string search)
+        {
+            List<BarDbTable> context;
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            using (var db = new BarContext())
+            {
+                if (!string.IsNullOrEmpty(search))
+                {
+                    context = db.Bars.Where(e =>
+                        e.Title.Contains(search) ||
+                        e.Category.Contains(search) ||
+                        e.Description.Contains(search)).ToList();
+                }
+                else
+                {
+                    context = db.Bars.ToList();
+                }
+            }
+            return mapper.Map<List<PhotoBar>>(context);
+        }
     }
 }
