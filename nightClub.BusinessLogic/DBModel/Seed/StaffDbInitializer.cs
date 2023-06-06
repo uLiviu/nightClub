@@ -1,16 +1,11 @@
-﻿using System;
+﻿using nightClub.Domain.Entities.Staff;
+using nightClub.Domain.Enums;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.Staff;
-using nightClub.Domain.Enums;
-using static System.Net.WebRequestMethods;
 
 namespace nightClub.BusinessLogic.DBModel.Seed
 {
-    public class StaffDbInitializer: CreateDatabaseIfNotExists<StaffContext>
+    public class StaffDbInitializer : CreateDatabaseIfNotExists<StaffContext>
     {
         protected override void Seed(StaffContext context)
         {
@@ -74,7 +69,7 @@ namespace nightClub.BusinessLogic.DBModel.Seed
                     Description = "Skilled DJ with experience in different music genres and venues."
                 }
             };
-            employees.ForEach(e=> context.Staff.Add(e));
+            employees.ForEach(e => context.Staff.Add(e));
             context.SaveChanges();
         }
     }

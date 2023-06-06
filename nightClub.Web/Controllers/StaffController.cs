@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Staff;
+using nightClub.Helpers;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Gallery;
+using nightClub.Helpers;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -23,7 +23,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            IMapper mapper =MappingHelper.Configure<PhotoModel, Photo>();
+            IMapper mapper = MappingHelper.Configure<PhotoModel, Photo>();
             var photo = mapper.Map<List<Photo>>(_galleryBL.GetAll());
             return View(photo);
         }

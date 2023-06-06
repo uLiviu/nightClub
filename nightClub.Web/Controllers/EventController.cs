@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
-using nightClub.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Event;
-using nightClub.Web.Filters;
-using System.Net.Sockets;
 using nightClub.Domain.Entities.Ticket;
-using nightClub.Domain.Entities.Contact;
 using nightClub.Helpers;
+using nightClub.Web.Filters;
+using nightClub.Web.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {
@@ -31,7 +26,7 @@ namespace nightClub.Web.Controllers
         public ActionResult Index()
         {
             SessionStatus();
-            IMapper mapper =MappingHelper.Configure<EventModel, Event>();
+            IMapper mapper = MappingHelper.Configure<EventModel, Event>();
 
             var eventsList = mapper.Map<List<Event>>(_eventBl.GetAll());
             return View(eventsList);

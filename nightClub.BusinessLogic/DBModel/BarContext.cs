@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using nightClub.Domain.Entities.Bar;
+﻿using nightClub.Domain.Entities.Bar;
+using System.Data.Entity;
 
 namespace nightClub.BusinessLogic.DBModel
 {
-    public class BarContext:DbContext
+    public class BarContext : DbContext
     {
         public BarContext() :
             base("name=nightClub")

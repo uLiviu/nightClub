@@ -63,6 +63,7 @@
     <Compile Include="DBModel\EventContext.cs" />
     <Compile Include="DBModel\GalleryContext.cs" />
     <Compile Include="DBModel\ReviewContext.cs" />
+    <Compile Include="DBModel\Seed\BarDbInitializer.cs" />
     <Compile Include="DBModel\Seed\EventDbInitializer.cs" />
     <Compile Include="DBModel\Seed\GalleryDbInitializer.cs" />
     <Compile Include="DBModel\Seed\Seed.cs" />

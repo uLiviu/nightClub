@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace nightClub.Web.Models
 {
@@ -16,9 +13,9 @@ namespace nightClub.Web.Models
         [Required]
         public string Category { get; set; }
         [Required]
-        public decimal Alcohol { get; set; }
+        public double Alcohol { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         [Required]
         public string Description { get; set; }
         public DateTime Date { get; set; }

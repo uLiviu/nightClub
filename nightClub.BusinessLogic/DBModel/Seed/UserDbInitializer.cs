@@ -1,16 +1,9 @@
-﻿using nightClub.Domain.Entities.Staff;
+﻿using nightClub.Domain.Entities.User;
 using nightClub.Domain.Enums;
+using nightClub.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.User;
-using nightClub.Helpers;
-using nightClub.BusinessLogic.Implimentations;
-using System.Web.UI.WebControls;
-using System.Web;
 
 namespace nightClub.BusinessLogic.DBModel.Seed
 {

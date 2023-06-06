@@ -1,12 +1,11 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using nightClub.BusinessLogic.DBModel;
 using nightClub.Domain.Entities.User;
+using nightClub.Domain.Enums;
+using nightClub.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using nightClub.Domain.Enums;
-using System.Runtime.Remoting.Contexts;
-using nightClub.Helpers;
 
 namespace nightClub.BusinessLogic.Core
 {

@@ -1,14 +1,11 @@
-﻿using System;
+﻿using nightClub.Domain.Entities.Gallery;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.Gallery;
 
 namespace nightClub.BusinessLogic.DBModel.Seed
 {
-    public class GalleryDbInitializer: CreateDatabaseIfNotExists<GalleryContext>
+    public class GalleryDbInitializer : CreateDatabaseIfNotExists<GalleryContext>
     {
         protected override void Seed(GalleryContext context)
         {
@@ -43,7 +40,7 @@ namespace nightClub.BusinessLogic.DBModel.Seed
                     Date = DateTime.Now
                 },
             };
-            photos.ForEach(p=>context.Photos.Add(p));
+            photos.ForEach(p => context.Photos.Add(p));
             context.SaveChanges();
         }
     }

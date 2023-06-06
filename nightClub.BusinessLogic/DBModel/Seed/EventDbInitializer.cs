@@ -1,14 +1,11 @@
-﻿using System;
+﻿using nightClub.Domain.Entities.Event;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.Domain.Entities.Event;
 
 namespace nightClub.BusinessLogic.DBModel.Seed
 {
-    public class EventDbInitializer:CreateDatabaseIfNotExists<EventContext>
+    public class EventDbInitializer : CreateDatabaseIfNotExists<EventContext>
     {
         protected override void Seed(EventContext context)
         {
@@ -39,7 +36,7 @@ namespace nightClub.BusinessLogic.DBModel.Seed
                     SpecialGuest = "none"
                 }
             };
-            events.ForEach(e=>context.Events.Add(e));
+            events.ForEach(e => context.Events.Add(e));
             context.SaveChanges();
         }
     }

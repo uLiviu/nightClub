@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using nightClub.Domain.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using nightClub.Domain.Enums;
 
 namespace nightClub.Web.Models
 {

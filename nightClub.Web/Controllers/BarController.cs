@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
+using nightClub.Domain.Entities.Bar;
+using nightClub.Helpers;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using nightClub.Domain.Entities.Bar;
-using nightClub.Domain.Entities.Gallery;
-using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -28,7 +27,7 @@ namespace nightClub.Web.Controllers
             var bar = mapper.Map<List<Bar>>(_barBL.GetBars());
             return View(bar);
         }
-        
+
         public ActionResult Create()
         {
             SessionStatus();

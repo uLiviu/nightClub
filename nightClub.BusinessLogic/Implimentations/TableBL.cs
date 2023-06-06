@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.BusinessLogic.Core;
+﻿using nightClub.BusinessLogic.Core;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Table;
 using nightClub.Domain.Entities.User;
+using System.Collections.Generic;
 
 namespace nightClub.BusinessLogic.Implimentations
 {
@@ -21,7 +17,7 @@ namespace nightClub.BusinessLogic.Implimentations
         {
             return AddTableReservation(tableModel);
         }
-        
+
         public void Delete(int id)
         {
             DeleteTableReservation(id);

@@ -2,11 +2,11 @@
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Ticket;
 using nightClub.Domain.Entities.User;
+using nightClub.Helpers;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {

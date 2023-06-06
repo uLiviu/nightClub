@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace nightClub.BusinessLogic.DBModel.Seed
+﻿namespace nightClub.BusinessLogic.DBModel.Seed
 {
     public class Seed
     {
@@ -14,6 +8,7 @@ namespace nightClub.BusinessLogic.DBModel.Seed
             System.Data.Entity.Database.SetInitializer(new StaffDbInitializer());
             System.Data.Entity.Database.SetInitializer(new UserDbInitializer());
             System.Data.Entity.Database.SetInitializer(new EventDbInitializer());
+            System.Data.Entity.Database.SetInitializer(new BarDbInitializer());
         }
     }
 }

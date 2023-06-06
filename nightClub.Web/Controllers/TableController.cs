@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper;
-using nightClub.BusinessLogic.Implimentations;
-using nightClub.BusinessLogic.Interfaces;
+﻿using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Table;
 using nightClub.Helpers;
 using nightClub.Web.Filters;
 using nightClub.Web.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace nightClub.Web.Controllers
 {

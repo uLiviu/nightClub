@@ -1,11 +1,6 @@
 ﻿using nightClub.Domain.Entities.Event;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using nightClub.Domain.Entities.Ticket;
+using System.Data.Entity;
 
 namespace nightClub.BusinessLogic.DBModel
 {

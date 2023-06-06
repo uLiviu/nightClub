@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.User;
+using nightClub.Helpers;
 using nightClub.Web.Models;
 using System;
 using System.Web.Mvc;
-using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using nightClub.BusinessLogic.Core;
+﻿using nightClub.BusinessLogic.Core;
 using nightClub.BusinessLogic.Interfaces;
 using nightClub.Domain.Entities.Ticket;
 using nightClub.Domain.Entities.User;
+using System.Collections.Generic;
 
 namespace nightClub.BusinessLogic.Implimentations
 {
-    public class TicketBookingBL: ContentApi, ITicketBooking
+    public class TicketBookingBL : ContentApi, ITicketBooking
     {
         //Create
         public UResponse Book(int ticketEventId, TicketModel ticketModel)

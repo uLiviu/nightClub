@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using nightClub.BusinessLogic.Interfaces;
-using nightClub.Domain.Entities.Gallery;
 using nightClub.Domain.Entities.User;
 using nightClub.Helpers;
 using nightClub.Web.Models;

@@ -23,7 +23,7 @@ namespace nightClub.BusinessLogic.Core
             using (var db = new UserContext())
             {
                 result = new EmailAddressAttribute().IsValid(data.Credential)
-                    ? db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass) 
+                    ? db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass)
                     : db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == pass);
             }
 
