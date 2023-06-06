@@ -18,11 +18,11 @@
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
                         <li class="dropdown">
-                            <a class="nav-link @(ViewBag.Title == " Sortare" ? "active" : "" )">Sortare<i class="bi bi-chevron-down"></i></a>
+                            <a class="nav-link @(ViewBag.Title == " Sort" ? "active" : "" )">Sort<i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href=@Url.Action("SortByCategory","Bar")>După Categorie</a></li>
-                                <li><a href="@Url.Action("SortByAlcohol", "Bar")">După %Alc</a></li>
-                                <li><a href="@Url.Action("SortByPrice", "Bar")">După preț</a></li>
+                                <li><a href=@Url.Action("SortByCategory","Bar")>By Category</a></li>
+                                <li><a href="@Url.Action("SortByAlcohol", "Bar")">By %Alc</a></li>
+                                <li><a href="@Url.Action("SortByPrice", "Bar")">By Price</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -32,9 +32,9 @@
         </div>
 
         <form action="@Url.Action("Search", "Bar")" method="get">
-            <input type="text" name="searchQuery" placeholder="Introduceți informația căutată" />
-            <button type="submit">Caută</button>
-            <a href="@Url.Action("Index", "Bar")" class="btn btn-primary">Pagina principală Bar</a>
+            <input type="text" name="searchQuery" placeholder="Search for product" />
+            <button type="submit">Search</button>
+            <a href="@Url.Action("Index", "Bar")" class="btn btn-primary">Main Bar</a>
         </form>
 
         <div class="row portfolio-container mt-3" data-aos="fade-up" data-aos-delay="200">
@@ -73,8 +73,8 @@
                             <div class="portfolio-info">
                                 <h4>@bar.Title</h4>
                                 <div class="price-alcohol-container">
-                                    <p class="price">Preț: @bar.Price LEI</p>
-                                    <p class="alcohol">Alcoolime: @bar.Alcohol</p>
+                                    <p class="price">Price: @bar.Price.ToString("C")</p>
+                                    <p class="alcohol">Alcohol: @bar.Alcohol.ToString("P")</p>
                                 </div>
                             </div>
                         </div>
@@ -82,12 +82,12 @@
                 }
                 else
                 {
-                    <p>Nu au fost găsite produse care să corespundă căutării.</p>
+                    <p>No products matching your search were found.</p>
                 }
             }
             else
             {
-                <p>Introduceți un termen de căutare.</p>
+                <p>Enter a search term.</p>
             }
         </div>
         <style>
