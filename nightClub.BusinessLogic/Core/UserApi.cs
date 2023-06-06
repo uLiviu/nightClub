@@ -147,6 +147,36 @@ namespace nightClub.BusinessLogic.Core
             return userMinimal;
         }
 
+        internal List<ReviewModel> GetReviewList()
+        {
+            List<RDbTable> context;
+
+            IMapper mapper = MappingHelper.Configure<RDbTable, ReviewModel>();
+
+            using (var db = new ReviewContext())
+            {
+                context = db.Reviews.ToList();
+            }
+            var reviewModel = mapper.Map<List<ReviewModel>>(context);
+            return reviewModel;
+        }
+
+        internal void AddNewReview(ReviewModel review)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ReviewModel, RDbTable>();
+            });
+            IMapper mapper = config.CreateMapper();
+            var result = mapper.Map<RDbTable>(review);
+
+            using (var db = new ReviewContext())
+            {
+                db.Reviews.Add(result);
+                db.SaveChanges();
+            }
+        }
+
     }
 }
 //HOST, CONTENT TYPE, MINE, COOKIES -Sunt campurile protocolului HTTP 
