@@ -5,7 +5,7 @@
 <section>
     <div class="container d-flex justify-content-center" data-aos="fade-up">
         <div class="col-md-8 mt-5">
-            <h2>Add an event</h2>
+            <h2>Update @Model.Title</h2>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @using (Html.BeginForm("Edit", "Event", FormMethod.Post, new { @id = "EventForm " }))
             {

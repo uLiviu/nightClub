@@ -73,6 +73,12 @@ namespace nightClub.Web.Controllers
             return View();
         }
 
+        public ActionResult Confirmation()
+        {
+            Table table = new Table();
+            return View(table);
+        }
+
         [AdminMod]
         public ActionResult Delete(int id)
         {

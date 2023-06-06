@@ -16,9 +16,9 @@ namespace nightClub.Web.Models
         [Required]
         public string Category { get; set; }
         [Required]
-        public int Alcohol { get; set; }
+        public decimal Alcohol { get; set; }
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         [Required]
         public string Description { get; set; }
         public DateTime Date { get; set; }

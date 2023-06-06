@@ -33,7 +33,7 @@ namespace nightClub.Web.Filters
                 }
             }
             filterContext.Result = new RedirectToRouteResult(
-                new RouteValueDictionary(new { controller = "Error", action = "Error404" }));
+                new RouteValueDictionary(new { controller = "Error", action = "NotFound" }));
         }
     }
 }
