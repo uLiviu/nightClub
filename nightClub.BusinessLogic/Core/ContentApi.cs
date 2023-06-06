@@ -431,8 +431,7 @@ namespace nightClub.BusinessLogic.Core
         internal List<PhotoBar> GetBarsPhoto()
         {
             List<BarDbTable> context;
-
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            var mapper = MappingHelper.Configure<BarDbTable, PhotoBar>();
             using (var db = new BarContext())
             {
                 context = db.Bars.ToList();
@@ -441,7 +440,7 @@ namespace nightClub.BusinessLogic.Core
         }
         internal UResponse AddBarEntity(PhotoBar photo)
         {
-            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, BarDbTable>()).CreateMapper();
+            var mapper = MappingHelper.Configure<PhotoBar, BarDbTable>();
             BarDbTable context = mapper.Map<BarDbTable>(photo);
 
             context.Date = DateTime.Now;
@@ -457,7 +456,7 @@ namespace nightClub.BusinessLogic.Core
             BarDbTable context;
             using (var db = new BarContext())
                 context = db.Bars.FirstOrDefault(u => u.Id == id);
-            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            var mapper = MappingHelper.Configure<BarDbTable, PhotoBar>();
 
             return context != null ? mapper.Map<PhotoBar>(context) : null;
         }
@@ -467,7 +466,7 @@ namespace nightClub.BusinessLogic.Core
             if (GetBarPhotoById(data.Id) == null)
                 return new UResponse { Status = false, StatusMsg = "An Error occur at updating" };
 
-            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, BarDbTable>()).CreateMapper();
+            var mapper = MappingHelper.Configure<PhotoBar, BarDbTable>();
             var result = mapper.Map<BarDbTable>(data);
             result.Date = DateTime.Now;
 
@@ -494,7 +493,7 @@ namespace nightClub.BusinessLogic.Core
         {
             List<BarDbTable> context;
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            var mapper = MappingHelper.Configure<BarDbTable, PhotoBar>();
             using (var db = new BarContext())
             {
                 context = db.Bars.OrderBy(p => p.Category).ToList();
@@ -505,7 +504,7 @@ namespace nightClub.BusinessLogic.Core
         {
             List<BarDbTable> context;
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            var mapper = MappingHelper.Configure<BarDbTable, PhotoBar>();
             using (var db = new BarContext())
             {
                 context = db.Bars.OrderBy(p => p.Price).ToList();
@@ -516,7 +515,7 @@ namespace nightClub.BusinessLogic.Core
         {
             List<BarDbTable> context;
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            var mapper = MappingHelper.Configure<BarDbTable, PhotoBar>();
             using (var db = new BarContext())
             {
                 context = db.Bars.OrderBy(p => p.Alcohol).ToList();
@@ -527,7 +526,7 @@ namespace nightClub.BusinessLogic.Core
         {
             List<BarDbTable> context;
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<BarDbTable, PhotoBar>()).CreateMapper();
+            var mapper = MappingHelper.Configure<BarDbTable, PhotoBar>();
             using (var db = new BarContext())
             {
                 if (!string.IsNullOrEmpty(search))

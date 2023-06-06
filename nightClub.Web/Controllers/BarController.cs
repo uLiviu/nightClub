@@ -4,6 +4,8 @@ using nightClub.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using nightClub.Domain.Entities.Bar;
+using nightClub.Domain.Entities.Gallery;
+using nightClub.Helpers;
 
 namespace nightClub.Web.Controllers
 {
@@ -22,9 +24,8 @@ namespace nightClub.Web.Controllers
         {
 
             SessionStatus();
-            IMapper mappeer = new MapperConfiguration(cfg =>
-                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
-            var bar = mappeer.Map<List<Bar>>(_barBL.GetBars());
+            IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
+            var bar = mapper.Map<List<Bar>>(_barBL.GetBars());
             return View(bar);
         }
         
@@ -39,9 +40,9 @@ namespace nightClub.Web.Controllers
             SessionStatus();
             if (ModelState.IsValid)
             {
-                IMapper mappeer = new MapperConfiguration(cfg =>
-                    cfg.CreateMap<Bar, PhotoBar>()).CreateMapper();
-                var data = mappeer.Map<PhotoBar>(bar);
+                IMapper mapper = MappingHelper.Configure<Bar, PhotoBar>();
+
+                var data = mapper.Map<PhotoBar>(bar);
 
                 var newPhoto = _barBL.Add(data);
                 if (newPhoto.Status)
@@ -62,8 +63,7 @@ namespace nightClub.Web.Controllers
             var bar = _barBL.GetBarById(id);
             if (bar != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, Bar>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
                 var data = mapper.Map<Bar>(bar);
                 return View(data);
             }
@@ -77,8 +77,7 @@ namespace nightClub.Web.Controllers
             var bar = _barBL.GetBarById(id);
             if (bar != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, Bar>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
                 var data = mapper.Map<Bar>(bar);
                 return View(data);
             }
@@ -92,9 +91,9 @@ namespace nightClub.Web.Controllers
             SessionStatus();
             if (ModelState.IsValid)
             {
-                IMapper mappeer = new MapperConfiguration(cfg =>
-                    cfg.CreateMap<Bar, PhotoBar>()).CreateMapper();
-                var data = mappeer.Map<PhotoBar>(bar);
+                IMapper mapper = MappingHelper.Configure<Bar, PhotoBar>();
+
+                var data = mapper.Map<PhotoBar>(bar);
 
                 var uBar = _barBL.Update(data);
                 if (uBar.Status)
@@ -116,8 +115,7 @@ namespace nightClub.Web.Controllers
             var bar = _barBL.GetBarById(id);
             if (bar != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoBar, Bar>());
-                IMapper mapper = config.CreateMapper();
+                IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
                 var data = mapper.Map<Bar>(bar);
                 return View(data);
             }
@@ -136,29 +134,23 @@ namespace nightClub.Web.Controllers
 
         public ActionResult SortByCategory()
         {
-
             SessionStatus();
-            IMapper mappeer = new MapperConfiguration(cfg =>
-                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
-            var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByCategory());
+            IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
+            var bar = mapper.Map<List<Bar>>(_barBL.GetBarsByCategory());
             return View(bar);
         }
         public ActionResult SortByAlcohol()
         {
-
             SessionStatus();
-            IMapper mappeer = new MapperConfiguration(cfg =>
-                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
-            var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByAlcohol());
+            IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
+            var bar = mapper.Map<List<Bar>>(_barBL.GetBarsByAlcohol());
             return View(bar);
         }
         public ActionResult SortByPrice()
         {
-
             SessionStatus();
-            IMapper mappeer = new MapperConfiguration(cfg =>
-                cfg.CreateMap<PhotoBar, Bar>()).CreateMapper();
-            var bar = mappeer.Map<List<Bar>>(_barBL.GetBarsByPrice());
+            IMapper mapper = MappingHelper.Configure<PhotoBar, Bar>();
+            var bar = mapper.Map<List<Bar>>(_barBL.GetBarsByPrice());
             return View(bar);
         }
         public ActionResult Search(string searchQuery)
@@ -167,7 +159,7 @@ namespace nightClub.Web.Controllers
 
             if (string.IsNullOrEmpty(searchQuery))
             {
-                ModelState.AddModelError("", "Vă rugăm să introduceți un termen de căutare valid.");
+                ModelState.AddModelError("", "Please, enter a valid search term!");
                 return RedirectToAction("Index");
             }
 
